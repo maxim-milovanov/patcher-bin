@@ -432,7 +432,7 @@ addSystemOption(frmGame,"cbxRunmodel","Movement","Use Server Movement","Off","On
 addSystemOption(frmGame,"cbxLockmodel","Auto-Lock","Lock Bag on Logout","Off","On",66)
 
 addSystemOption(frmGame,"cbxIsTop1CamMode","Camera","Select Camera Mode","Top 1","Top 2",86)
-addSystemOption(frmGame,"cbxIsFPSMode","FPS Mode","","30","60",106)
+--addSystemOption(frmGame,"cbxIsFPSMode","FPS Mode","","30","60",106)
 
 addSystemOption2(frmGame,"cbxIsWeaponGlowMode","Weapon glow","", "Hide", "Show", 86)
 addSystemOption2(frmGame,"cbxIsAurasShow","Character auras","", "Hide", "Show", 106)
