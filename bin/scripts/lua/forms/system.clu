@@ -665,7 +665,7 @@ imgBackGround7 = UI_CreateCompent( frmChaTopKDA, IMAGE_TYPE, "imgBackGround7", 5
 UI_LoadImage( imgBackGround7, "texture/ui/talesofpirates.net/kda-rating-table.png", NORMAL, 527, 309, 0, 0 )
 
 labTitleD = UI_CreateCompent( frmChaTopKDA, LABELEX_TYPE, "labTitleD", 100, 11, 10, 4 )
-UI_SetCaption( labTitleD, "Kills-Deaths-Assists rating" )
+UI_SetCaption( labTitleD, "Kills\\Deaths rating" )
 UI_SetTextColor( labTitleD, COLOR_BLACK )
 UI_SetLabelExFont( labTitleD, DEFAULT_FONT, TRUE, COLOR_WHITE )
 
@@ -683,8 +683,8 @@ UI_SetCaption( labTitle1, "Player")
 UI_SetTextColor( labTitle1, COLOR_BLACK )
 UI_SetLabelExFont( labTitle1, FONT18, TRUE, COLOR_WHITE )
 
-labTitle2 = UI_CreateCompent( frmChaTopKDA, LABELEX_TYPE, "labTitle2", 400, 150, 210, 55 )
-UI_SetCaption( labTitle2, "K\\D\\A")
+labTitle2 = UI_CreateCompent( frmChaTopKDA, LABELEX_TYPE, "labTitle2", 400, 150, 220, 55 )
+UI_SetCaption( labTitle2, "K\\D")
 UI_SetTextColor( labTitle2, COLOR_BLACK )
 UI_SetLabelExFont( labTitle2, FONT18, TRUE, COLOR_WHITE )
 
