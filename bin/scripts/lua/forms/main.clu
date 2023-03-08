@@ -357,11 +357,10 @@ UI_MenuLoadSelect( selfMouseRight, "texture/ui/SystemBotton3.tga", 79, 13, 25, 2
 
 -- 增加菜单
 UI_MenuAddText( selfMouseRight, "Leave Party" )
-
 -----------------------------------------------------------------------------------
 ---快捷区
 -----------------------------------------------------------------------------------
-frmFast = UI_CreateForm( "frmFast", FALSE, 432, 43, 380, 557, TRUE, FALSE )
+frmFast = UI_CreateForm( "frmFast", FALSE, 432, 86, 380, 557, TRUE, FALSE )
 --UI_FormSetHotKey( , ALT_KEY, HOTKEY_T ) 
 UI_ShowForm( frmFast, TRUE )
 UI_SetFormStyleEx( frmFast, FORM_BOTTOM, 0, 0)
@@ -370,23 +369,42 @@ UI_SetIsDrag( frmFast, TRUE )
 UI_FormSetIsEscClose( frmFast, FALSE )
 
 imgMain1 = UI_CreateCompent( frmFast, IMAGE_TYPE, "imgMain1", 256, 43, 0, 0 )
-UI_LoadImage( imgMain1, "texture/ui/new4.tga", NORMAL, 256, 43, 0, 33 )
+UI_LoadImage( imgMain1, "texture/ui/new4.tga", NORMAL, 256, 43, 0, 125 )
 
 imgMain2 = UI_CreateCompent( frmFast, IMAGE_TYPE, "imgMain2", 176, 43, 256, 0 )
-UI_LoadImage( imgMain2, "texture/ui/new4.tga", NORMAL, 176, 43, 52, 79 )
+UI_LoadImage( imgMain2, "texture/ui/new4.tga", NORMAL, 176, 43, 52, 171 )
 
-fscMainF0  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF0",  32, 32, 5, 5 )
-fscMainF1  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF1",  32, 32, 39, 5 )
-fscMainF2  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF2",  32, 32, 73, 5 )
-fscMainF3  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF3",  32, 32, 107, 5 )
-fscMainF4  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF4",  32, 32, 141, 5 )
-fscMainF5  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF5",  32, 32, 175, 5 )
-fscMainF6  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF6",  32, 32, 209, 5 )
-fscMainF7  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF7",  32, 32, 243, 5 )
-fscMainF8  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF8",  32, 32, 277, 5 )
-fscMainF9  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF9",  32, 32, 311, 5 )
-fscMainF10 = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF10", 32, 32, 345, 5 )
-fscMainF11 = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF11", 32, 32, 379, 5 )
+imgMain3 = UI_CreateCompent( frmFast, IMAGE_TYPE, "imgMain3", 256, 43, 0, 50-8 )
+UI_LoadImage( imgMain3, "texture/ui/new4.tga", NORMAL, 256, 43, 0, 33 )
+
+imgMain4 = UI_CreateCompent( frmFast, IMAGE_TYPE, "imgMain4", 176, 43, 256, 42 )
+UI_LoadImage( imgMain4, "texture/ui/new4.tga", NORMAL, 176, 43, 52, 79 )
+
+fscMainN12  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainN12",  32, 32, 5, 5 )
+fscMainN13  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainN13",  32, 32, 39, 5 )
+fscMainN14  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainN14",  32, 32, 73, 5 )
+fscMainN15  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainN15",  32, 32, 107, 5 )
+fscMainN16  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainN16",  32, 32, 141, 5 )
+fscMainN17  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainN17",  32, 32, 175, 5 )
+fscMainN18  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainN18",  32, 32, 209, 5 )
+fscMainN19  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainN19",  32, 32, 243, 5 )
+fscMainN20  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainN20",  32, 32, 277, 5 )
+fscMainN21  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainN21",  32, 32, 311, 5 )
+fscMainN22  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainN22", 32, 32, 345, 5 )
+fscMainN23  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainN23", 32, 32, 379, 5 )
+
+fscMainF0  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF0",  32, 32, 5, 47 )
+fscMainF1  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF1",  32, 32, 39, 47 )
+fscMainF2  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF2",  32, 32, 73, 47 )
+fscMainF3  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF3",  32, 32, 107, 47 )
+fscMainF4  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF4",  32, 32, 141, 47 )
+fscMainF5  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF5",  32, 32, 175, 47 )
+fscMainF6  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF6",  32, 32, 209, 47 )
+fscMainF7  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF7",  32, 32, 243, 47 )
+fscMainF8  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF8",  32, 32, 277, 47 )
+fscMainF9  = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF9",  32, 32, 311, 47 )
+fscMainF10 = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF10", 32, 32, 345, 47 )
+fscMainF11 = UI_CreateCompent( frmFast, FAST_COMMANG_TYPE, "fscMainF11", 32, 32, 379, 47 )
 
 btnFastUp = UI_CreateCompent( frmFast, BUTTON_TYPE, "btnFastUp", 7, 8, 417, 12 )
 UI_LoadButtonImage( btnFastUp, "texture/ui/Nbotton.tga", 7, 8, 82, 2, TRUE )
@@ -395,33 +413,6 @@ UI_SetHint( btnFastUp, "+" )
 btnFastDown = UI_CreateCompent( frmFast, BUTTON_TYPE, "btnFastDown", 7, 8, 417, 22 )
 UI_LoadButtonImage( btnFastDown, "texture/ui/Nbotton.tga", 7, 8, 82, 12, TRUE )
 UI_SetHint( btnFastDown, "-" )
-
------------------------------------------------------------------------
-frmFast2 = UI_CreateForm( "frmFast2", FALSE, 432, 43, 380, 514, TRUE, FALSE )
-UI_ShowForm( frmFast2, TRUE )
-UI_SetFormStyleEx( frmFast2, FORM_BOTTOM, 0, 43)
-UI_AddFormToTemplete( frmFast2, FORM_MAIN )
-UI_SetIsDrag( frmFast2, TRUE ) --true or false 
-UI_FormSetIsEscClose( frmFast2, FALSE )
-
-imgMain1 = UI_CreateCompent( frmFast2, IMAGE_TYPE, "imgMain1", 256, 43, 0, 0 )
-UI_LoadImage( imgMain1, "texture/ui/new4.tga", NORMAL, 256, 43, 0, 125 )
-
-imgMain2 = UI_CreateCompent( frmFast2, IMAGE_TYPE, "imgMain2", 176, 43, 256, 0 )
-UI_LoadImage( imgMain2, "texture/ui/new4.tga", NORMAL, 176, 43, 52, 171 )
-
-fscMainN12  = UI_CreateCompent( frmFast2, FAST_COMMANG_TYPE, "fscMainN12",  32, 32, 5, 5 )
-fscMainN13  = UI_CreateCompent( frmFast2, FAST_COMMANG_TYPE, "fscMainN13",  32, 32, 39, 5 )
-fscMainN14  = UI_CreateCompent( frmFast2, FAST_COMMANG_TYPE, "fscMainN14",  32, 32, 73, 5 )
-fscMainN15  = UI_CreateCompent( frmFast2, FAST_COMMANG_TYPE, "fscMainN15",  32, 32, 107, 5 )
-fscMainN16  = UI_CreateCompent( frmFast2, FAST_COMMANG_TYPE, "fscMainN16",  32, 32, 141, 5 )
-fscMainN17  = UI_CreateCompent( frmFast2, FAST_COMMANG_TYPE, "fscMainN17",  32, 32, 175, 5 )
-fscMainN18  = UI_CreateCompent( frmFast2, FAST_COMMANG_TYPE, "fscMainN18",  32, 32, 209, 5 )
-fscMainN19  = UI_CreateCompent( frmFast2, FAST_COMMANG_TYPE, "fscMainN19",  32, 32, 243, 5 )
-fscMainN20  = UI_CreateCompent( frmFast2, FAST_COMMANG_TYPE, "fscMainN20",  32, 32, 277, 5 )
-fscMainN21  = UI_CreateCompent( frmFast2, FAST_COMMANG_TYPE, "fscMainN21",  32, 32, 311, 5 )
-fscMainN22  = UI_CreateCompent( frmFast2, FAST_COMMANG_TYPE, "fscMainN22", 32, 32, 345, 5 )
-fscMainN23  = UI_CreateCompent( frmFast2, FAST_COMMANG_TYPE, "fscMainN23", 32, 32, 379, 5 )
 
 -----------------------------------------------------------------------
 -- 定义功能区
