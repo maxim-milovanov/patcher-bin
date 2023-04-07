@@ -42,6 +42,7 @@ UI_SetProgressHintStyle( proMainSP, PROGRESS_HINT_NUM )
 
 -- Player avatar
 d3dSelf = UI_CreateCompent( frmDetail, UI3D_COMPENT_TYPE, "d3dSelf", 40, 45, 14, 20 )
+d3dSelfDown = UI_CreateCompent( frmDetail, UI3D_COMPENT_TYPE, "d3dSelfDown", 189, 51, 0, 0 )
 
 frameAvatar = UI_CreateCompent( frmDetail, IMAGE_TYPE, "frameAvatar", 80, 81, 1, 0 )
 UI_LoadImage( frameAvatar, "texture/gui/detail-01.png", NORMAL, 80, 81, 15, 86 )
@@ -90,15 +91,6 @@ UI_LoadImage( expBackground, "texture/gui/detail-01.png", NORMAL, 81, 21, 138, 1
 proMainEXP = UI_CreateCompent( frmDetail, PROGRESS_TYPE, "proMainEXP", 77, 19, 167, 3 )
 UI_LoadScaleImage( proMainEXP, "texture/gui/detail-01.png", PROGRESS_PROGRESS, 77, 19, 140, 171, 1.0, 1.0 )
 UI_SetHint( proMainEXP, "\206\239\251\242" )
-
---加载玩家id
-labMainID = UI_CreateCompent( frmDetail, LABELEX_TYPE, "labMainID", 95, 11, 1177, 7 )
-UI_SetTextColor( labMainID, COLOR_WHITE )
-UI_SetLabelExFont( labMainID, DEFAULT_FONT, TRUE, COLOR_BLACK )
---UI_SetCaption( labMainID, "就就就就就就就就" )
-
---创建施法区域
-d3dSelfDown = UI_CreateCompent( frmDetail, UI3D_COMPENT_TYPE, "d3dSelfDown", 189, 51, 0, 0 )
 
 -----------------------------------------------------------------------
 -- 定义800*600主界面
@@ -346,14 +338,15 @@ UI_MenuLoadSelect( selfMouseRight, "texture/gui/right.png", 15, 6, 17, 26  )
 
 -- 增加菜单
 UI_MenuAddText( selfMouseRight, "Leave Party" )
+
 -----------------------------------------------------------------------------------
----快捷区
+-- Fast bar
 -----------------------------------------------------------------------------------
 frmFast = UI_CreateForm( "frmFast", FALSE, 487, 82, 380, 557, TRUE, FALSE )
 UI_ShowForm( frmFast, TRUE )
 UI_SetFormStyleEx( frmFast, FORM_BOTTOM, 0, 0)
 UI_AddFormToTemplete( frmFast, FORM_MAIN )
-UI_SetIsDrag( frmFast, TRUE )
+UI_SetIsDrag( frmFast, FALSE )
 UI_FormSetIsEscClose( frmFast, FALSE )
 
 imgMain1 = UI_CreateCompent( frmFast, IMAGE_TYPE, "imgMain1", 487, 84, 0, 0 )
