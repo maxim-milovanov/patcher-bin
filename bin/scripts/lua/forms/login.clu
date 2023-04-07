@@ -1,119 +1,52 @@
 -----------------------------------------------------------------------
--- 定义区域列表
+-- Region list
 -----------------------------------------------------------------------	
--- 创建区域列表表单
-frmArea = UI_CreateForm( "frmArea", FALSE, 403, 290, 396, 225, FALSE, FALSE )
+frmArea = UI_CreateForm( "frmArea", FALSE, 441, 281, 396, 225, FALSE, FALSE )
 UI_SetFormStyle( frmArea , 2 )
 UI_AddFormToTemplete( frmArea, FORM_LOGIN )
 --UI_SetAlpha( frmArea, 1 )
 UI_FormSetIsEscClose( frmArea, FALSE )
 
--- 加载背景图片
-imgBakTop = UI_CreateCompent( frmArea, IMAGE_TYPE, "imgBakTop", 256, 256, 0, 0 )
-UI_LoadImage( imgBakTop, "texture/ui/list1.tga", NORMAL, 256, 256, 0, 0 )
-UI_SetImageAlpha(imgBakTop,180)
+imgBakTop = UI_CreateCompent( frmArea, IMAGE_TYPE, "imgBakTop", 441, 281, 0, 0 )
+UI_LoadImage( imgBakTop, "texture/gui/region.png", NORMAL, 441, 281, 0, 0 )
+--UI_SetImageAlpha(imgBakTop,180)
 
-imgBakDown = UI_CreateCompent( frmArea, IMAGE_TYPE, "imgBakDown", 147, 256, 256, 0 )
-UI_LoadImage( imgBakDown, "texture/ui/list2.tga", NORMAL, 147, 256, 0, 0 )
-UI_SetImageAlpha(imgBakDown,180)
+btnClose = UI_CreateCompent( frmArea, BUTTON_TYPE, "btnClose", 32, 32, 416-20, 13 )
+UI_LoadButtonImage( btnClose, "texture/gui/Inventory.png", 32, 32, 0, 368, TRUE )
+UI_SetButtonModalResult( btnClose, BUTTON_CLOSE )
 
-imgBakDown1 = UI_CreateCompent( frmArea, IMAGE_TYPE, "imgBakDown1", 256, 34, 0, 256 )
-UI_LoadImage( imgBakDown1, "texture/ui/list3.tga", NORMAL, 256, 34, 0, 0 )
-UI_SetImageAlpha(imgBakDown1,180)
-
-imgBakDown1 = UI_CreateCompent( frmArea, IMAGE_TYPE, "imgBakDown1", 147, 34, 256, 256 )
-UI_LoadImage( imgBakDown1, "texture/ui/list3.tga", NORMAL, 147, 34, 0, 44 )
-UI_SetImageAlpha(imgBakDown1,180)
-
-imgPapa = UI_CreateCompent( frmArea, IMAGE_TYPE, "imgPapa", 43, 32, 7, 22 )
-UI_LoadImage( imgPapa, "texture/ui/PublicC.tga", NORMAL, 43, 32, 213, 15 )
-UI_SetImageAlpha(imgPapa,180)
-
--- 加载界面title
---imgServerTitle1 = UI_CreateCompent( frmArea, IMAGE_TYPE, "imgServerTitle1", 61, 13, 175, 27 )
---UI_LoadImage( imgServerTitle1, "texture/ui/Word.dds", NORMAL, 61, 13, 158, 183 )
-labTitle = UI_CreateCompent( frmArea, LABELEX_TYPE, "labTitle", 400, 150, 175, 27 )
-UI_SetCaption( labTitle, "Region")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
---获得区域列表
-lstRegion0 = UI_CreateCompent( frmArea, LIST_TYPE, "lstRegion0", 184, 150, 16, 35 )
+lstRegion0 = UI_CreateCompent( frmArea, LIST_TYPE, "lstRegion0", 210, 200, 16, 35 )
 UI_SetMargin( lstRegion0, 19, 20, 15, 0 )
-UI_ListSetItemMargin( lstRegion0, 10, 9 )
-UI_SetListRowHeight( lstRegion0, 23 )
+UI_ListSetItemMargin( lstRegion0, 20, 15 )
+UI_SetListRowHeight( lstRegion0, 45 )
 UI_SetListIsMouseFollow( lstRegion0, TRUE)
-UI_ListLoadSelectImage( lstRegion0, "texture/ui/SystemBotton3.tga", 79, 13, 25, 227 )
-UI_SetImageAlpha( lstRegion0, 134 )
-UI_SetListFontColor( lstRegion0, COLOR_BLACK, COLOR_RED )
+UI_ListLoadSelectImage( lstRegion0, "texture/gui/region.png", 130, 22, 155, 292 )
+--UI_LoadListItemImage( lstRegion0, "texture/gui/region.png", 126, 21, 0, 281, 160, 45 )
+UI_SetListFontColor( lstRegion0, 4286213985, 4291467848 )
 
-lstRegion1 = UI_CreateCompent( frmArea, LIST_TYPE, "lstRegion1", 184, 150, 202, 35 )
+lstRegion1 = UI_CreateCompent( frmArea, LIST_TYPE, "lstRegion1", 210, 200, 220, 35 )
 UI_SetMargin( lstRegion1, 19, 20, 15, 0 )
-UI_ListSetItemMargin( lstRegion1, 10, 9 )
-UI_SetListRowHeight( lstRegion1, 23 )
+UI_ListSetItemMargin( lstRegion1, 20, 15 )
+UI_SetListRowHeight( lstRegion1, 45 )
 UI_SetListIsMouseFollow( lstRegion1, TRUE)
-UI_ListLoadSelectImage( lstRegion1, "texture/ui/SystemBotton3.tga", 79, 13, 25, 227 )
-UI_SetImageAlpha( lstRegion1, 134 )
-UI_SetListFontColor( lstRegion1, COLOR_BLACK, COLOR_RED )
+UI_ListLoadSelectImage( lstRegion1, "texture/gui/region.png", 130, 22, 155, 292 )
+--UI_LoadListItemImage( lstRegion1, "texture/gui/region.png", 126, 21, 0, 281, 160, 45 )
+UI_SetListFontColor( lstRegion1, 4286213985, 4291467848 )
 
---获得滚动条
-scrollid = UI_GetScroll( lstServer1 )
---UI_SetIsEnabled( scrollid, FALSE )
-UI_SetSize( scrollid, 11, 1 )
-UI_LoadImage( scrollid, "texture/ui/PublicC.tga", COMPENT_BACK, 11, 1, 194, 13 )
-
---加载向上按钮
-id = UI_GetScrollObj( scrollid, SCROLL_UP )
-UI_LoadButtonImage( id, "texture/ui/PublicC.tga", 11, 9, 166, 0, TRUE )
-UI_SetSize( id, 11, 9 )
-
---加载滚动条
-id = UI_GetScrollObj( scrollid, SCROLL_SCROLL )
-UI_LoadImage( id, "texture/ui/PublicC.tga", COMPENT_BACK, 11, 43, 166, 10 )
-UI_SetSize( id, 11, 43 )
-
---加载向下按钮
-id = UI_GetScrollObj( scrollid, SCROLL_DOWN )
-UI_LoadButtonImage( id, "texture/ui/PublicC.tga", 11, 9, 166, 0, TRUE )
-UI_SetSize( id, 11, 9 )
-
-
---取消按钮
-btnNo = UI_CreateCompent( frmArea, BUTTON_TYPE, "btnNo", 41, 19, 185, 263 )
-UI_LoadButtonImage( btnNo, "texture/ui/SystemBotton3.tga", 41, 19, 0, 152, TRUE )
-UI_SetAlpha(btnNo,210)
 -----------------------------------------------------------------------
--- 定义服务器列表
+-- Selete gate
 -----------------------------------------------------------------------	
--- 创建服务器列表表单
-frmServer = UI_CreateForm( "frmServer", FALSE, 403, 290, 396, 225, FALSE, FALSE )
+frmServer = UI_CreateForm( "frmServer", FALSE, 441, 281, 396, 225, FALSE, FALSE )
 UI_SetFormStyle( frmServer , 2 )
 UI_AddFormToTemplete( frmServer, FORM_LOGIN )
 UI_FormSetIsEscClose( frmServer, FALSE )
 
--- 加载背景图片
-imgBakTop = UI_CreateCompent( frmServer, IMAGE_TYPE, "imgBakTop", 256, 256, 0, 0 )
-UI_LoadImage( imgBakTop, "texture/ui/list1.tga", NORMAL, 256, 256, 0, 0 )
-UI_SetImageAlpha(imgBakTop,220)
+imgBakTop = UI_CreateCompent( frmServer, IMAGE_TYPE, "imgBakTop", 441, 280, 0, 0 )
+UI_LoadImage( imgBakTop, "texture/gui/region.png", NORMAL, 441, 281, 456, 0 )
 
-imgBakDown = UI_CreateCompent( frmServer, IMAGE_TYPE, "imgBakDown", 147, 256, 256, 0 )
-UI_LoadImage( imgBakDown, "texture/ui/list2.tga", NORMAL, 147, 256, 0, 0 )
-UI_SetImageAlpha(imgBakDown,220)
-
-imgBakDown1 = UI_CreateCompent( frmServer, IMAGE_TYPE, "imgBakDown1", 256, 34, 0, 256 )
-UI_LoadImage( imgBakDown1, "texture/ui/list3.tga", NORMAL, 256, 34, 0, 0 )
-UI_SetImageAlpha(imgBakDown1,220)
-
-imgBakDown1 = UI_CreateCompent( frmServer, IMAGE_TYPE, "imgBakDown1", 147, 34, 256, 256 )
-UI_LoadImage( imgBakDown1, "texture/ui/list3.tga", NORMAL, 147, 34, 0, 44 )
-UI_SetImageAlpha(imgBakDown1,220)
-
-imgPapa = UI_CreateCompent( frmServer, IMAGE_TYPE, "imgPapa", 43, 32, 7, 22 )
-UI_LoadImage( imgPapa, "texture/ui/PublicC.tga", NORMAL, 43, 32, 213, 15 )
-UI_SetImageAlpha(imgPapa,220)
-
-imgServerTitle = UI_CreateCompent( frmServer, IMAGE_TYPE, "imgServerTitle", 360, 58, 25, 195 )
-UI_LoadImage( imgServerTitle, "texture/ui/serverlist_notice.png", NORMAL, 360, 58, 0, 0 )
+btnNo = UI_CreateCompent( frmServer, BUTTON_TYPE, "btnNo", 32, 32, 416-20, 13 )
+UI_LoadButtonImage( btnNo, "texture/gui/Inventory.png", 32, 32, 0, 368, TRUE )
+UI_SetAlpha(btnNo,210)
 
 --加载服务器状态图片
 imgServerIcon0 = UI_CreateCompent( frmServer, IMAGE_TYPE, "imgServerIcon0", 12, 12, 175, 27 )
@@ -126,107 +59,52 @@ UI_LoadImage( imgServerIcon0, "texture/ui/forge3.tga", 2, 11, 11, 197, 76 )
 imgServer1Icon = UI_CreateCompent( frmServer, IMAGE_TYPE, "imgServer1Icon", 16, 11, 0, 0 )
 UI_LoadImage( imgServer1Icon, "texture/ui/forge3.tga", NORMAL, 16, 11, 164, 76 )
 
-
 --获得服务器列表
-lvServer0 = UI_CreateListView( frmServer, "lvServer0", 184, 150, 16, 35, 3, 2 )
+lvServer0 = UI_CreateListView( frmServer, "lvServer0", 210, 200, 16, 35, 3, 2 )
 UI_SetMargin( lvServer0, 19, 20, 15, 0 )
 UI_ListViewSetTitle( lvServer0, 0, 20, "", 0, 0, 0, 0 )
 UI_ListViewSetTitle( lvServer0, 1, 75, "", 0, 0, 0, 0 )
 UI_ListViewSetTitle( lvServer0, 2, 30, "", 0, 0, 0, 0 )
-UI_ListSetItemMargin( lvServer0, 10, 9 )
-UI_SetListRowHeight( lvServer0, 23 )
+UI_ListSetItemMargin( lvServer0, 20, 15 )
+UI_SetListRowHeight( lvServer0, 45 )
 UI_SetListIsMouseFollow( lvServer0, TRUE)
-UI_ListLoadSelectImage( lvServer0, "texture/ui/SystemBotton3.tga", 79, 13, 25, 227 )
+UI_ListLoadSelectImage( lvServer0, "texture/gui/region.png", 130, 22, 155, 292 )
 UI_SetImageAlpha( lvServer0, 134 )
-UI_SetListFontColor( lvServer0, COLOR_BLACK, COLOR_RED )
+UI_SetListFontColor( lvServer0, 4286213985, 4291467848 )
 
-lvServer1 = UI_CreateListView( frmServer, "lvServer1", 184, 150, 202, 35, 3, 2 )
+lvServer1 = UI_CreateListView( frmServer, "lvServer1", 210, 200, 220, 35, 3, 2 )
 UI_SetMargin( lvServer1, 19, 20, 15, 0 )
 UI_ListViewSetTitle( lvServer1, 0, 20, "", 0, 0, 0, 0 )
 UI_ListViewSetTitle( lvServer1, 1, 75, "", 0, 0, 0, 0 )
 UI_ListViewSetTitle( lvServer1, 2, 30, "", 0, 0, 0, 0 )
-UI_ListSetItemMargin( lvServer1, 10, 9 )
-UI_SetListRowHeight( lvServer1, 23 )
+UI_ListSetItemMargin( lvServer1, 20, 15 )
+UI_SetListRowHeight( lvServer1, 45 )
 UI_SetListIsMouseFollow( lvServer1, TRUE)
-UI_ListLoadSelectImage( lvServer1, "texture/ui/SystemBotton3.tga", 79, 13, 25, 227, 2, 2 )
+UI_ListLoadSelectImage( lvServer1, "texture/gui/region.png", 130, 22, 155, 292 )
 UI_SetImageAlpha( lvServer1, 134 )
-UI_SetListFontColor( lvServer1, COLOR_BLACK, COLOR_RED )
+UI_SetListFontColor( lvServer1, 4286213985, 4291467848 )
 
-
---获得滚动条
-scrollid = UI_GetScroll( lstServer )
---UI_SetIsEnabled( scrollid, FALSE )
-UI_SetSize( scrollid, 11, 1 )
-UI_LoadImage( scrollid, "texture/ui/PublicC.tga", COMPENT_BACK, 11, 1, 194, 13 )
-
---加载向上按钮
-id = UI_GetScrollObj( scrollid, SCROLL_UP )
-UI_LoadButtonImage( id, "texture/ui/PublicC.tga", 11, 9, 166, 0, TRUE )
-UI_SetSize( id, 11, 9 )
-
---加载滚动条
-id = UI_GetScrollObj( scrollid, SCROLL_SCROLL )
-UI_LoadImage( id, "texture/ui/PublicC.tga", COMPENT_BACK, 11, 43, 166, 10 )
-UI_SetSize( id, 11, 43 )
-
---加载向下按钮
-id = UI_GetScrollObj( scrollid, SCROLL_DOWN )
-UI_LoadButtonImage( id, "texture/ui/PublicC.tga", 11, 9, 166, 0, TRUE )
-UI_SetSize( id, 11, 9 )
-
-
---取消按钮
-btnNo = UI_CreateCompent( frmServer, BUTTON_TYPE, "btnNo", 41, 19, 185, 263 )
-UI_LoadButtonImage( btnNo, "texture/ui/SystemBotton3.tga", 41, 19, 0, 152, TRUE )
-UI_SetAlpha(btnNo,210)
 -----------------------------------------------------------------------
 -- Login Form
 -----------------------------------------------------------------------
-frmAccount = UI_CreateForm( "frmAccount", FALSE, 185, 101, 310, 340, FALSE, FALSE )
+frmAccount = UI_CreateForm( "frmAccount", FALSE, 501, 330, 310, 340, FALSE, FALSE )
 UI_AddFormToTemplete( frmAccount, FORM_LOGIN )
 UI_SetFormStyle( frmAccount, 2 )
 UI_FormSetIsEscClose( frmAccount, FALSE )
 
-imgLogo1 = UI_CreateCompent( frmAccount, IMAGE_TYPE, "imgLogo1", 256, 256, -117, -197 )
+imgBackground = UI_CreateCompent( frmAccount, IMAGE_TYPE, "imgBackground", 501, 330, 0, -150 )
+UI_LoadImage( imgBackground, "texture/gui/region.png", NORMAL, 501, 330, 0, 324 )
 
-imgLogo2 = UI_CreateCompent( frmAccount, IMAGE_TYPE, "imgLogo2", 256, 256, 139, -173 )
-
-imgAccout = UI_CreateCompent( frmAccount, IMAGE_TYPE, "imgAccout", 185, 101, 0, 0 )
-UI_LoadImage( imgAccout, "texture/ui/sure.bmp", NORMAL, 185, 101, 0, 0 )
-UI_SetImageAlpha(imgAccout,235)
-
-labTitle = UI_CreateCompent( frmAccount, LABELEX_TYPE, "labTitle", 400, 150, 10, 3 )
-UI_SetCaption( labTitle, "Account Login")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labID = UI_CreateCompent( frmAccount, LABELEX_TYPE, "labID", 23, 11, 28, 32 )
-UI_SetCaption( labID, "Account" )
-UI_SetTextColor( labID, COLOR_BLACK )
-UI_SetLabelExFont( labID, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labPass = UI_CreateCompent( frmAccount, LABELEX_TYPE, "labPass", 23, 11, 22, 54 )
-UI_SetCaption( labPass, "Password" )
-UI_SetTextColor( labPass, COLOR_BLACK )
-UI_SetLabelExFont( labPass, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-imgID = UI_CreateCompent( frmAccount, IMAGE_TYPE, "imgID", 87, 18, 70, 28 )
-UI_LoadImage( imgID, "texture/ui/PublicC.tga", NORMAL, 87, 18, 99, 235 )
-imgPass = UI_CreateCompent( frmAccount, IMAGE_TYPE, "imgPass", 87, 18, 70, 50 )
-UI_LoadImage( imgPass, "texture/ui/PublicC.tga", NORMAL, 87, 18, 99, 235 )
-
-chkID = UI_CreateCompent( frmAccount, CHECK_TYPE, "chkID", 10, 10, 161, 32 )
-UI_LoadImage( chkID, "texture/ui/QQ2.tga", UNCHECKED, 10, 10, 40, 231 )
-UI_LoadImage( chkID, "texture/ui/QQ2.tga", CHECKED, 10, 10, 52, 231 )
+chkID = UI_CreateCompent( frmAccount, CHECK_TYPE, "chkID", 28, 28, 180+41, 25+4 )
+UI_LoadImage( chkID, "texture/gui/region.png", UNCHECKED, 28, 28, 312, 295 )
+UI_LoadImage( chkID, "texture/gui/region.png", CHECKED, 28, 28, 341, 295 )
 UI_SetHint( chkID, "Remember ID" )
 
--- Login Button
-btnYes = UI_CreateCompent( frmAccount, BUTTON_TYPE, "btnYes", 41, 19, 84, 78 )
-UI_LoadButtonImage( btnYes, "texture/ui/corsairs/coButtons.png", 41, 19, 0, 57, TRUE )
+btnYes = UI_CreateCompent( frmAccount, BUTTON_TYPE, "btnYes", 151, 44, 84+140, 70 )
+UI_LoadButtonImage( btnYes, "texture/gui/region.png", 151, 44, 666, 339, FALSE )
 
--- Exit Button
-btnNo = UI_CreateCompent( frmAccount, BUTTON_TYPE, "btnNo", 41, 19, 129, 78 )
-UI_LoadButtonImage( btnNo, "texture/ui/corsairs/coButtons.png", 41, 19, 0, 76, TRUE )
+btnNo = UI_CreateCompent( frmAccount, BUTTON_TYPE, "btnNo", 151, 44, 84+140, 70+44+10 )
+UI_LoadButtonImage( btnNo, "texture/gui/region.png", 151, 44, 514, 339, FALSE )
 
 labYes = UI_CreateCompent( frmAccount, LABELEX_TYPE, "labYes", 42, 10, 107, 155 )
 UI_SetCaption( labYes, "" )
@@ -238,17 +116,17 @@ UI_SetCaption( labNo, "" )
 UI_SetTextColor( labNo, COLOR_WHITE )
 UI_SetLabelExFont( labNo, DEFAULT_FONT, TRUE, COLOR_BLACK )
 
+edtID = UI_CreateCompent( frmAccount, EDIT_TYPE, "edtID", 120, 12, 240, -30 )
+UI_SetTextColor( edtID, COLOR_B1A58E )
+UI_SetEditMaxNum( edtID, 24 )
+UI_SetEditMaxNumVisible( edtID, 24 )
+UI_SetEditCursorColor( edtID, COLOR_WHITE )
 
---加载帐号和密码输入框
-edtID = UI_CreateCompent( frmAccount, EDIT_TYPE, "edtID", 80, 12, 76, 32 )
-UI_SetTextColor( edtID, COLOR_BLACK )
-UI_SetEditMaxNum( edtID, 20 )
-UI_SetEditMaxNumVisible( edtID, 12 )
-
-edtPassword = UI_CreateCompent( frmAccount, EDIT_TYPE, "edtPassword", 80, 12, 76, 54 )
-UI_SetTextColor( edtPassword, COLOR_BLACK )
+edtPassword = UI_CreateCompent( frmAccount, EDIT_TYPE, "edtPassword", 120, 12, 240, -2 )
+UI_SetTextColor( edtPassword, COLOR_B1A58E )
 UI_SetEditMaxNum( edtPassword, 20 )
 UI_SetEditMaxNumVisible( edtPassword, 12 )
+UI_SetEditCursorColor( edtPassword, COLOR_WHITE )
 
 -----------------------------------------------------------------------
 -- 定义健康通告
@@ -276,97 +154,6 @@ labYes = UI_CreateCompent( frmAnnounce, LABELEX_TYPE, "labYes", 24, 10, 109, 324
 UI_SetCaption( labYes, "" )
 UI_SetTextColor( labYes, COLOR_WHITE )
 UI_SetLabelExFont( labYes, DEFAULT_FONT, TRUE, COLOR_BLACK )
-
------------------------------------------------------------------------
--- Coded by Billy | GUI by Foxseiz
------------------------------------------------------------------------
-
-frmRegister = UI_CreateForm( "frmRegister", FALSE, 268, 170, 310, 160, FALSE, FALSE )
-UI_AddFormToTemplete( frmRegister, FORM_LOGIN )
-UI_SetFormStyle( frmRegister, 2 )
-UI_FormSetIsEscClose( frmRegister, FALSE )
-
-imgAccout = UI_CreateCompent( frmRegister, IMAGE_TYPE, "imgAccout", 268, 170, 0, 0 )
-UI_LoadImage( imgAccout, "texture/ui/corsairs/register.png", NORMAL, 268, 170, 0, 0 )
-UI_SetImageAlpha(imgAccout,235)
-
-labTitle = UI_CreateCompent( frmRegister, LABELEX_TYPE, "labTitle", 400, 150, 10, 3 )
-UI_SetCaption( labTitle, "Account Registration")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labID = UI_CreateCompent( frmRegister, LABELEX_TYPE, "labID", 23, 11, 18, 50 )
-UI_SetCaption( labID, "Account" )
-UI_SetTextColor( labID, COLOR_BLACK )
-UI_SetLabelExFont( labID, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labPass = UI_CreateCompent( frmRegister, LABELEX_TYPE, "labPass", 23, 11, 18, 74 )
-UI_SetCaption( labPass, "Password" )
-UI_SetTextColor( labPass, COLOR_BLACK )
-UI_SetLabelExFont( labPass, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labPass2 = UI_CreateCompent( frmRegister, LABELEX_TYPE, "labPass2", 23, 11, 18, 98 )
-UI_SetCaption( labPass2, "Re-Password" )
-UI_SetTextColor( labPass2, COLOR_BLACK )
-UI_SetLabelExFont( labPass2, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labEmail = UI_CreateCompent( frmRegister, LABELEX_TYPE, "labEmail", 23, 11, 18, 122 )
-UI_SetCaption( labEmail, "Email" )
-UI_SetTextColor( labEmail, COLOR_BLACK )
-UI_SetLabelExFont( labEmail, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
--- IMAGES FOR FIELD
--- imgID = UI_CreateCompent( frmRegister, IMAGE_TYPE, "imgID", 87, 18, 70, 28 )
--- UI_LoadImage( imgID, "texture/ui/PublicC.tga", NORMAL, 87, 18, 99, 235 )
-
--- imgPass = UI_CreateCompent( frmRegister, IMAGE_TYPE, "imgPass", 87, 18, 70, 50 )
--- UI_LoadImage( imgPass, "texture/ui/PublicC.tga", NORMAL, 87, 18, 99, 235 )
-
--- imgPass2 = UI_CreateCompent( frmRegister, IMAGE_TYPE, "imgPass2", 87, 18, 70, 72 )
--- UI_LoadImage( imgPass2, "texture/ui/PublicC.tga", NORMAL, 87, 18, 99, 235 )
-
--- imgEmail = UI_CreateCompent( frmRegister, IMAGE_TYPE, "imgEmail", 87, 18, 70, 94 )
--- UI_LoadImage( imgEmail, "texture/ui/PublicC.tga", NORMAL, 87, 18, 99, 235 )
-
-btnRegYes = UI_CreateCompent( frmRegister, BUTTON_TYPE, "btnRegYes", 41, 19, 82, 148 )
-UI_LoadButtonImage( btnRegYes, "texture/ui/corsairs/coButtons.png", 41, 19, 0, 152, TRUE )
-
-btnRegNo = UI_CreateCompent( frmRegister, BUTTON_TYPE, "btnRegNo", 41, 19, 148, 148 )
-UI_LoadButtonImage( btnRegNo, "texture/ui/corsairs/coButtons.png", 41, 19, 0, 133, TRUE )
-
--- YES/NO BUTTONS
-labYes = UI_CreateCompent( frmRegister, LABELEX_TYPE, "labYes", 42, 10, 107, 155 )
-UI_SetCaption( labYes, "" )
-UI_SetTextColor( labYes, COLOR_WHITE )
-UI_SetLabelExFont( labYes, DEFAULT_FONT, TRUE, COLOR_BLACK )
-
-labNo = UI_CreateCompent( frmRegister, LABELEX_TYPE, "labNo", 42, 10, 152, 155 )
-UI_SetCaption( labNo, "" )
-UI_SetTextColor( labNo, COLOR_WHITE )
-UI_SetLabelExFont( labNo, DEFAULT_FONT, TRUE, COLOR_BLACK )
-
--- TYPING BOXES
-edtRegID = UI_CreateCompent( frmRegister, EDIT_TYPE, "edtRegID", 130, 12, 120, 51 )
-UI_SetTextColor( edtRegID, COLOR_BLACK )
-UI_SetEditMaxNum( edtRegID, 20 )
-UI_SetEditMaxNumVisible( edtRegID, 12 )
-
-edtRegPassword = UI_CreateCompent( frmRegister, EDIT_TYPE, "edtRegPassword", 130, 12, 120, 75 )
-UI_SetTextColor( edtRegPassword, COLOR_BLACK )
-UI_SetEditMaxNum( edtRegPassword, 20 )
-UI_SetEditMaxNumVisible( edtRegPassword, 12 )
-
-edtRegPassword2 = UI_CreateCompent( frmRegister, EDIT_TYPE, "edtRegPassword2", 130, 12, 120, 99 )
-UI_SetTextColor( edtRegPassword2, COLOR_BLACK )
-UI_SetEditMaxNum( edtRegPassword2, 20 )
-UI_SetEditMaxNumVisible( edtRegPassword2, 12 )
-
-edtRegEmail = UI_CreateCompent( frmRegister, EDIT_TYPE, "edtRegEmail", 130, 12, 120, 123 )
-UI_SetTextColor( edtRegEmail, COLOR_BLACK )
-UI_SetEditMaxNum( edtRegEmail, 254 )
-UI_SetEditMaxNumVisible( edtRegEmail, 12 )
-
-
 -----------------------------------------------------------------------
 -- 定义软件盘
 -----------------------------------------------------------------------	
@@ -572,88 +359,50 @@ UI_LoadButtonImage( btnOther505, "texture/ui/Keyboard3.tga", 27, 17, 108, 238, T
 btnOther506 = UI_CreateCompent( frmKeyboard, BUTTON_TYPE, "btnOther506", 27, 17, 325, 101 )
 UI_LoadButtonImage( btnOther506, "texture/ui/Keyboard4.tga", 27, 17, 0, 68, TRUE )
 
-
 -----------------------------------------------------------------------
--- 测试FORM1 -added by Arcol
+-- Create security code
 -----------------------------------------------------------------------	
-frmTest1 = UI_CreateForm( "frmTest1_Arcol", FALSE, 160, 120, 600, 200, FALSE, FALSE )
-UI_LoadFormImage( frmTest1, "texture/ui/Test1.bmp", 160, 120, 0, 0, "", 0, 0 )
-UI_AddFormToTemplete( frmTest1, FORM_LOGIN )
-UI_SetIsDrag( frmTest1, TRUE )
-
------------------------------------------------------------------------
--- 测试FORM2 -added by Arcol
------------------------------------------------------------------------	
-frmTest2 = UI_CreateForm( "frmTest2_Arcol", FALSE, 160, 120, 600, 400, FALSE, FALSE )
-UI_LoadFormImage( frmTest2, "texture/ui/Test2.bmp", 160, 120, 0, 0, "", 0, 0 )
-UI_AddFormToTemplete( frmTest2, FORM_LOGIN )
-UI_SetIsDrag( frmTest2, TRUE )
-labTest = UI_CreateCompent( frmTest2, LABELEX_TYPE, "labTest", 24, 10, 20, 90 )
-UI_SetCaption( labTest, "Speed Test -by Arcol" )
-UI_SetTextColor( labTest, COLOR_BLACK )
-UI_SetLabelExFont( labTest, DEFAULT_FONT, TRUE, COLOR_BLACK )
-
-
-
-
-
-
------------------------------------------------------------------------
--- 定义二次密码创建窗体  2006.07.13
------------------------------------------------------------------------	
--- 创建 二次密码创建窗体
-frmDoublePwdCreate = UI_CreateForm("frmDoublePwdCreate", FALSE, 247, 129, 200, 200, FALSE, FALSE)
+frmDoublePwdCreate = UI_CreateForm("frmDoublePwdCreate", FALSE, 263, 133, 200, 200, FALSE, FALSE)
 UI_AddFormToTemplete( frmDoublePwdCreate, FORM_SELECT )
---UI_SetFormStyle( frmDoublePwdCreate, 2 )
 UI_FormSetIsEscClose( frmDoublePwdCreate, FALSE)
 UI_SetIsDrag( frmDoublePwdCreate, FALSE)
 UI_ShowForm( frmDoublePwdCreate, FALSE)
-
 UI_FormSetEnterButton(frmDoublePwdCreate,btnYes)
 
---UI_FormSetHotKey( frmDoublePwdCreate, ALT_KEY, HOTKEY_V ) 
+-- background
+imgDoublePwdCreate = UI_CreateCompent( frmDoublePwdCreate, IMAGE_TYPE,"imgDoublePwdCreate" ,263, 133, 0, 0)
+UI_LoadImage(imgDoublePwdCreate, "texture/gui/window-01.png", NORMAL, 263, 133, 0, 0)
 
--- 加载背景图片
-imgDoublePwdCreate = UI_CreateCompent( frmDoublePwdCreate, IMAGE_TYPE,"imgDoublePwdCreate" ,247, 129, 0, 0)
-UI_LoadImage(imgDoublePwdCreate, "texture/ui/a001.tga", NORMAL , 247, 129, 0, 0)
+-- label
+imgDoublePwdCreate = UI_CreateCompent( frmDoublePwdCreate, IMAGE_TYPE,"imgDoublePwdCreate", 224, 56, 20, 20)
+UI_LoadImage(imgDoublePwdCreate, "texture/gui/window-01.png", NORMAL, 224, 56, 0, 166)
 
---加载确定按钮
-btnYes = UI_CreateCompent( frmDoublePwdCreate, BUTTON_TYPE, "btnYes", 41, 19, 130, 107 )
-UI_LoadButtonImage( btnYes, "texture/ui/PublicC.tga", 41, 19, 0, 0, TRUE )
+-- botton "ok"
+btnYes = UI_CreateCompent( frmDoublePwdCreate, BUTTON_TYPE, "btnYes", 102, 35, 29, 106 )
+UI_LoadButtonImage( btnYes, "texture/gui/window-01.png", 102, 35, 0, 269, TRUE )
 
---加载取消按钮
-btnClear = UI_CreateCompent( frmDoublePwdCreate, BUTTON_TYPE, "btnClear", 41, 19, 175, 107 )
-UI_LoadButtonImage( btnClear, "texture/ui/PublicC.tga", 41, 19, 0, 20, TRUE )
+--botton "cancel"
+btnClear = UI_CreateCompent( frmDoublePwdCreate, BUTTON_TYPE, "btnClear", 102, 35, 134, 106 )
+UI_LoadButtonImage( btnClear, "texture/gui/window-01.png", 102, 35, 0, 304, TRUE )
 
--- 加载密码显示框
-lab1 = UI_CreateCompent( frmDoublePwdCreate, LABELEX_TYPE, "lab1", 210, 11, 17, 35)
-UI_SetCaption( lab1, "Enter security code" )
-UI_SetTextColor( lab1,COLOR_BLACK )
-UI_SetLabelExFont( lab1, DEFAULT_FONT, TRUE, COLOR_WHITE )
-edtDoublePwdCreate = UI_CreateCompent(frmDoublePwdCreate, EDIT_TYPE,"edtDoublePwdCreate" ,66, 14, 137, 35)
-UI_SetEditMaxNum( edtDoublePwdCreate, 12 )
+-- enter security code
+edtDoublePwdCreate = UI_CreateCompent(frmDoublePwdCreate, EDIT_TYPE,"edtDoublePwdCreate" ,66, 14, 137, 27)
+UI_SetEditCursorColor(edtDoublePwdCreate, COLOR_968774 )
+UI_SetTextColor(edtDoublePwdCreate, COLOR_968774 )
+UI_SetEditMaxNum(edtDoublePwdCreate, 12 )
 UI_SetEditMaxNumVisible(edtDoublePwdCreate,12)
 
-lab2 = UI_CreateCompent( frmDoublePwdCreate, LABELEX_TYPE, "lab2", 210, 11, 17, 60)
-UI_SetCaption( lab2, "Re-enter" )
-UI_SetTextColor( lab2,COLOR_BLACK )
-UI_SetLabelExFont( lab2, DEFAULT_FONT, TRUE, COLOR_WHITE )
-edtDoublePwdCreateRetry = UI_CreateCompent(frmDoublePwdCreate, EDIT_TYPE,"edtDoublePwdCreateRetry", 66, 14, 137, 59)
-UI_SetEditMaxNum( edtDoublePwdCreateRetry, 12 )
+-- re-enter
+edtDoublePwdCreateRetry = UI_CreateCompent(frmDoublePwdCreate, EDIT_TYPE,"edtDoublePwdCreateRetry", 66, 14, 137, 54)
+UI_SetEditCursorColor(edtDoublePwdCreateRetry, COLOR_968774 )
+UI_SetTextColor(edtDoublePwdCreateRetry, COLOR_968774 )
+UI_SetEditMaxNum(edtDoublePwdCreateRetry, 12 )
 UI_SetEditMaxNumVisible(edtDoublePwdCreateRetry,12)
 
---创建TITLE
---labID = UI_CreateCompent( frmDoublePwdCreate, LABELEX_TYPE, "labID", 210, 11, 16, 84)
---UI_SetCaption( labID, "For the safety of your account, please make a security code" )
---UI_SetTextColor( labID,COLOR_RED )
---UI_SetLabelExFont( labID, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-
 -----------------------------------------------------------------------
--- 定义二次密码修改窗体
+-- Change secret code
 -----------------------------------------------------------------------	
--- 创建 二次密码修改窗体
-frmDoublePwdAlter = UI_CreateForm("frmDoublePwdAlter", TRUE, 247, 129, 200, 200, TRUE, TRUE)
+frmDoublePwdAlter = UI_CreateForm("frmDoublePwdAlter", TRUE, 263, 133, 200, 200, TRUE, TRUE)
 UI_ShowForm(frmDoublePwdAlter, FALSE)
 --UI_SetFormStyle( frmDoublePwdAlter, 2 )
 UI_SetIsDrag(frmDoublePwdAlter, FALSE)
@@ -663,53 +412,46 @@ UI_FormSetIsEscClose(frmDoublePwdAlter, TRUE)
 UI_FormSetEnterButton(frmDoublePwdAlter,btnYes)
 --UI_FormSetHotKey( frmDoublePwdAlter, ALT_KEY, HOTKEY_C )
 
--- 加载背景图片
-imgDoublePwdAlter = UI_CreateCompent(frmDoublePwdAlter, IMAGE_TYPE,"imgDoublePwdAlter", 247, 129, 0, 0)
-UI_LoadImage( imgDoublePwdAlter, "texture/ui/a002.tga", NORMAL, 247, 129, 0, 0)
+-- background
+imgDoublePwdAlter = UI_CreateCompent(frmDoublePwdAlter, IMAGE_TYPE,"imgDoublePwdAlter", 263, 133, 0, 0)
+UI_LoadImage( imgDoublePwdAlter, "texture/gui/window-01.png", NORMAL, 263, 133, 0, 0)
 
--- 加载确定按钮
-btnYes = UI_CreateCompent( frmDoublePwdAlter, BUTTON_TYPE, "btnYes", 41, 19, 130, 107 )
-UI_LoadButtonImage( btnYes, "texture/ui/PublicC.tga", 41, 19, 0, 0, TRUE )
+imgDoublePwdAlter = UI_CreateCompent(frmDoublePwdAlter, IMAGE_TYPE,"imgDoublePwdAlter", 228, 95, 20, 14)
+UI_LoadImage( imgDoublePwdAlter, "texture/gui/window-01.png", NORMAL, 228, 95, 0, 133)
 
---加载取消按钮
-btnClear = UI_CreateCompent( frmDoublePwdAlter, BUTTON_TYPE, "btnClear", 41, 19, 175, 107 )
-UI_LoadButtonImage( btnClear, "texture/ui/PublicC.tga", 41, 19, 0, 20, TRUE )
+-- botton "ok"
+btnYes = UI_CreateCompent( frmDoublePwdAlter, BUTTON_TYPE, "btnYes", 102, 35, 29, 106 )
+UI_LoadButtonImage( btnYes, "texture/gui/window-01.png", 102, 35, 0, 269, TRUE )
 
---title
-labTitle = UI_CreateCompent( frmDoublePwdAlter, LABELEX_TYPE, "labTitle", 400, 150, 10, 3 )
-UI_SetCaption( labTitle, "Edit security code")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
--- 加载密码显示框
-lab1 = UI_CreateCompent( frmDoublePwdAlter, LABELEX_TYPE, "lab1", 210, 11, 16, 32)
-UI_SetCaption( lab1, "Enter old code" )
-UI_SetTextColor( lab1,COLOR_BLACK )
-UI_SetLabelExFont( lab1, DEFAULT_FONT, TRUE, COLOR_WHITE )
-edtDoublePwdAlterOld = UI_CreateCompent(frmDoublePwdAlter, EDIT_TYPE,"edtDoublePwdAlterOld", 66, 14, 137, 34)
+--botton "cancel"
+btnClear = UI_CreateCompent( frmDoublePwdAlter, BUTTON_TYPE, "btnClear", 102, 35, 134, 106 )
+UI_LoadButtonImage( btnClear, "texture/gui/window-01.png", 102, 35, 0, 304, TRUE )
+
+-- old code
+edtDoublePwdAlterOld = UI_CreateCompent(frmDoublePwdAlter, EDIT_TYPE,"edtDoublePwdAlterOld", 66, 14, 137, 26)
+UI_SetEditCursorColor( edtDoublePwdAlterOld, COLOR_968774 )
+UI_SetTextColor(edtDoublePwdAlterOld, COLOR_968774 )
 UI_SetEditMaxNum( edtDoublePwdAlterOld, 12 )
 UI_SetEditMaxNumVisible(edtDoublePwdAlterOld,12)
 
-lab2 = UI_CreateCompent( frmDoublePwdAlter, LABELEX_TYPE, "lab2", 210, 11, 16, 56)
-UI_SetCaption( lab2, "Enter new code" )
-UI_SetTextColor( lab2,COLOR_BLACK )
-UI_SetLabelExFont( lab2, DEFAULT_FONT, TRUE, COLOR_WHITE )
-edtDoublePwdAlterNew = UI_CreateCompent(frmDoublePwdAlter, EDIT_TYPE,"edtDoublePwdAlterNew", 66, 14, 137, 58)
+-- new code
+edtDoublePwdAlterNew = UI_CreateCompent(frmDoublePwdAlter, EDIT_TYPE,"edtDoublePwdAlterNew", 66, 14, 137, 54)
+UI_SetEditCursorColor( edtDoublePwdAlterNew, COLOR_968774 )
+UI_SetTextColor(edtDoublePwdAlterNew, COLOR_968774 )
 UI_SetEditMaxNum( edtDoublePwdAlterNew, 12 )
 UI_SetEditMaxNumVisible(edtDoublePwdAlterNew,12)
-lab3 = UI_CreateCompent( frmDoublePwdAlter, LABELEX_TYPE, "lab3", 210, 11, 16, 80)
-UI_SetCaption( lab3, "Re-enter" )
-UI_SetTextColor( lab3,COLOR_BLACK )
-UI_SetLabelExFont( lab3, DEFAULT_FONT, TRUE, COLOR_WHITE )
 
+-- re-enter
 edtDoublePwdAlterNewRetry = UI_CreateCompent(frmDoublePwdAlter, EDIT_TYPE,"edtDoublePwdAlterNewRetry" ,66, 14, 137, 82)
+UI_SetEditCursorColor( edtDoublePwdAlterNewRetry, COLOR_968774 )
+UI_SetTextColor(edtDoublePwdAlterNewRetry, COLOR_968774 )
 UI_SetEditMaxNum( edtDoublePwdAlterNewRetry, 12 )
 UI_SetEditMaxNumVisible(edtDoublePwdAlterNewRetry,12)
 
 -----------------------------------------------------------------------
--- 定义二次密码显示窗体
+-- Delete character
 -----------------------------------------------------------------------	
--- 创建 二次密码显示窗体
-frmDoublePwd = UI_CreateForm("frmDoublePwd", TRUE, 247, 129, 290, 640, TRUE, TRUE)
+frmDoublePwd = UI_CreateForm("frmDoublePwd", TRUE, 263, 133, 200, 200, TRUE, TRUE)
 UI_ShowForm( frmDoublePwd, FALSE )
 --UI_SetFormStyle( frmDoublePwd, 2 )
 UI_AddFormToTemplete( frmDoublePwd, FORM_SELECT )
@@ -719,147 +461,100 @@ UI_FormSetIsEscClose( frmDoublePwd, TRUE)
 UI_FormSetEnterButton(frmDoublePwd,btnYes)
 --UI_FormSetHotKey( frmDoublePwd, ALT_KEY, HOTKEY_Z )
 
--- 加载背景图片
-imgDoublePwd = UI_CreateCompent(frmDoublePwd, IMAGE_TYPE,"imgDoublePwd", 247, 129, 0, 0)
-UI_LoadImage( imgDoublePwd, "texture/ui/a003.tga", NORMAL, 247, 129, 0, 0)
---title
-labTitle = UI_CreateCompent( frmDoublePwd, LABELEX_TYPE, "labTitle", 400, 150, 10, 3 )
-UI_SetCaption( labTitle, "Enter security code")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
---加载label
-lab1 = UI_CreateCompent( frmDoublePwd, LABELEX_TYPE, "lab1", 210, 11, 16, 46)
-UI_SetCaption( lab1, "Enter security code" )
-UI_SetTextColor( lab1,COLOR_BLACK )
-UI_SetLabelExFont( lab1, DEFAULT_FONT, TRUE, COLOR_WHITE )
+-- Background
+imgDoublePwd = UI_CreateCompent(frmDoublePwd, IMAGE_TYPE,"imgDoublePwd", 263, 133, 0, 0)
+UI_LoadImage( imgDoublePwd, "texture/gui/window-01.png", NORMAL, 263, 133, 0, 0)
 
--- 加载密码显示框
-edtDoublePwd = UI_CreateCompent(frmDoublePwd, EDIT_TYPE,"edtDoublePwd", 66, 14, 137, 44)
-UI_SetIsKeyFocus(edtDoublePwd, TRUE)
+-- Label
+imgDoublePwd = UI_CreateCompent(frmDoublePwd, IMAGE_TYPE,"imgDoublePwd", 228, 41, 20, 46)
+UI_LoadImage( imgDoublePwd, "texture/gui/window-01.png", NORMAL, 228, 41, 0, 228)
+
+-- Enter code
+edtDoublePwd = UI_CreateCompent(frmDoublePwd, EDIT_TYPE,"edtDoublePwd", 66, 14, 137, 60)
+UI_SetIsKeyFocus(edtDoublePwd,FALSE)
+UI_SetEditCursorColor(edtDoublePwd, COLOR_968774 )
+UI_SetTextColor(edtDoublePwd, COLOR_968774 )
 UI_SetEditMaxNum(edtDoublePwd, 12 )
 UI_SetEditMaxNumVisible(edtDoublePwd,12)
 
--- 加载确定按钮
-btnYes = UI_CreateCompent( frmDoublePwd, BUTTON_TYPE, "btnYes", 41, 19, 130, 107 )
-UI_LoadButtonImage( btnYes, "texture/ui/PublicC.tga", 41, 19, 0, 0, TRUE )
+-- botton "ok"
+btnYes = UI_CreateCompent( frmDoublePwd, BUTTON_TYPE, "btnYes", 102, 35, 29, 106 )
+UI_LoadButtonImage( btnYes, "texture/gui/window-01.png", 102, 35, 0, 269, TRUE )
 
---加载取消按钮
-btnClear = UI_CreateCompent( frmDoublePwd, BUTTON_TYPE, "btnClear", 41, 19, 175, 107 )
-UI_LoadButtonImage( btnClear, "texture/ui/PublicC.tga", 41, 19, 0, 20, TRUE )
-
+--botton "cancel"
+btnClear = UI_CreateCompent( frmDoublePwd, BUTTON_TYPE, "btnClear", 102, 35, 134, 106 )
+UI_LoadButtonImage( btnClear, "texture/gui/window-01.png", 102, 35, 0, 304, TRUE )
 
 -----------------------------------------------------------------------
--- 定义二次密码输入软键盘窗体
+-- create security code: keyboard
 -----------------------------------------------------------------------	
--- 创建 二次密码输入软键盘界面
 frmDoublePwdInput = UI_CreateForm("frmDoublePwdInput", TRUE, 131, 129, 392, 300, TRUE,TRUE)
 UI_ShowForm(frmDoublePwdInput, FALSE )
 UI_AddAllFormTemplete( frmDoublePwdInput)
 UI_SetIsDrag(frmDoublePwdInput, FALSE)
 UI_FormSetIsEscClose(frmDoublePwdInput, TRUE)
 
---UI_FormSetHotKey( frmDoublePwdInput, ALT_KEY, HOTKEY_X ) 
+imgDoublePwdInput = UI_CreateCompent(frmDoublePwdInput, IMAGE_TYPE,"imgDoublePwdInput", 80, 80, 0, 0)
+UI_LoadImage( imgDoublePwdInput, "texture/gui/window-01.png", NORMAL, 80, 80, 0, 0)
 
--- 加载背景图片
-imgDoublePwdInput = UI_CreateCompent(frmDoublePwdInput, IMAGE_TYPE,"imgDoublePwdInput", 131, 129, 0, 0)
-UI_LoadImage( imgDoublePwdInput, "texture/ui/a004.tga", NORMAL, 131,129, 0, 0)
+imgDoublePwdInput = UI_CreateCompent(frmDoublePwdInput, IMAGE_TYPE,"imgDoublePwdInput", 80, 80, 80, 0)
+UI_LoadImage( imgDoublePwdInput, "texture/gui/window-01.png", NORMAL, 80, 80, 208, 0)
 
--- 加载数字按钮图片
-btnNum1 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum1", 27, 17, 17, 26 )
-UI_LoadButtonImage( btnNum1, "texture/ui/Keyboard2.tga", 27, 17, 108, 17, TRUE )
-btnNum2 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum2", 27, 17, 51, 26 )
-UI_LoadButtonImage( btnNum2, "texture/ui/Keyboard2.tga", 27, 17, 0, 102, TRUE )
-btnNum3 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum3", 27, 17, 85, 26 )
-UI_LoadButtonImage( btnNum3, "texture/ui/Keyboard2.tga", 27, 17, 108, 102, TRUE )
-btnNum4 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum4", 27, 17, 17, 50 )
-UI_LoadButtonImage( btnNum4, "texture/ui/Keyboard2.tga", 27, 17, 0, 187, TRUE )
-btnNum5 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum5", 27, 17, 51, 50 )
-UI_LoadButtonImage( btnNum5, "texture/ui/Keyboard2.tga", 27, 17, 108, 187, TRUE )
-btnNum6 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum6", 27, 17, 85, 50 )
-UI_LoadButtonImage( btnNum6, "texture/ui/Keyboard3.tga", 27, 17, 0, 17, TRUE )
-btnNum7 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum7", 27, 17, 17, 74 )
-UI_LoadButtonImage( btnNum7, "texture/ui/Keyboard3.tga", 27, 17, 108, 17, TRUE )
-btnNum8 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum8", 27, 17, 51, 74 )
-UI_LoadButtonImage( btnNum8, "texture/ui/Keyboard3.tga", 27, 17, 0, 102, TRUE )
-btnNum9 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum9", 27, 17, 85, 74 )
-UI_LoadButtonImage( btnNum9, "texture/ui/Keyboard3.tga", 27, 17, 108, 102, TRUE )
-btnNum0 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum0", 27, 17, 17, 98 )
-UI_LoadButtonImage( btnNum0, "texture/ui/Keyboard3.tga", 27, 17, 0, 187, TRUE )
+imgDoublePwdInput = UI_CreateCompent(frmDoublePwdInput, IMAGE_TYPE,"imgDoublePwdInput", 98, 80, 0, 80)
+UI_LoadImage( imgDoublePwdInput, "texture/gui/window-01.png", NORMAL, 98, 80, 0, 45)
 
---加载清除按钮
-btnClear = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnClear", 61, 17, 51, 98 )
-UI_LoadButtonImage( btnClear, "texture/ui/a002.tga", 54, 17, 0, 129, TRUE )
+imgDoublePwdInput = UI_CreateCompent(frmDoublePwdInput, IMAGE_TYPE,"imgDoublePwdInput", 98, 80, 80, 80)
+UI_LoadImage( imgDoublePwdInput, "texture/gui/window-01.png", NORMAL, 98, 80, 208, 45)
+
+btnNum1 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum1", 32, 32, 17, 17 )
+UI_LoadButtonImage( btnNum1, "texture/gui/keyboard.png", 32, 32, 0, 0, TRUE )
+
+btnNum2 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum2", 32, 32, 51, 17 )
+UI_LoadButtonImage( btnNum2, "texture/gui/keyboard.png", 32, 32, 0, 32, TRUE )
+
+btnNum3 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum3", 32, 32, 85, 17 )
+UI_LoadButtonImage( btnNum3, "texture/gui/keyboard.png", 32, 32, 0, 64, TRUE )
+
+btnNum4 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum4", 32, 32, 17, 51 )
+UI_LoadButtonImage( btnNum4, "texture/gui/keyboard.png", 32, 32, 0, 96, TRUE )
+
+btnNum5 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum5", 32, 32, 51, 51 )
+UI_LoadButtonImage( btnNum5, "texture/gui/keyboard.png", 32, 32, 0, 128, TRUE )
+
+btnNum6 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum6", 32, 32, 85, 51 )
+UI_LoadButtonImage( btnNum6, "texture/gui/keyboard.png", 32, 32, 0, 160, TRUE )
+
+btnNum7 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum7", 32, 32, 17, 85 )
+UI_LoadButtonImage( btnNum7, "texture/gui/keyboard.png", 32, 32, 0, 192, TRUE )
+
+btnNum8 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum8", 32, 32, 51, 85 )
+UI_LoadButtonImage( btnNum8, "texture/gui/keyboard.png", 32, 32, 0, 224, TRUE )
+
+btnNum9 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum9", 32, 32, 85, 85 )
+UI_LoadButtonImage( btnNum9, "texture/gui/keyboard.png", 32, 32, 0, 256, TRUE )
+
+btnNum0 = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnNum0", 32, 32, 17, 119 )
+UI_LoadButtonImage( btnNum0, "texture/gui/keyboard.png", 32, 32, 0, 288, TRUE )
+
+btnClear = UI_CreateCompent( frmDoublePwdInput, BUTTON_TYPE, "btnClear", 66, 32, 51, 119 )
+UI_LoadButtonImage( btnClear, "texture/gui/keyboard.png", 68, 32, 0, 320, TRUE )
 
 -----------------------------------------------------------------------
--- 定义二次密码介绍窗体
+-- create security code: Welcome notification 
 -----------------------------------------------------------------------	
 frmDoublePwdInfo =  UI_CreateForm("frmDoublePwdInfo", TRUE, 378, 129, 200, 329, TRUE,TRUE)
 UI_ShowForm(frmDoublePwdInfo, TRUE )
 UI_AddFormToTemplete( frmDoublePwdInfo, FORM_SELECT )
 UI_SetIsDrag(frmDoublePwdInfo, FALSE)
 
---UI_FormSetHotKey( frmDoublePwdInfo, ALT_KEY, HOTKEY_Z ) 
-
-imgWelcomeNotice1 = UI_CreateCompent(frmDoublePwdInfo, IMAGE_TYPE,"imgWelcomeNotice1", 256, 122, 0, 0)
-UI_LoadImage( imgWelcomeNotice1, "texture/ui/Keyboard1.tga", NORMAL, 256,122, 0, 0)
-UI_SetImageAlpha(imgWelcomeNotice1,220)
-
-imgWelcomeNotice2 = UI_CreateCompent(frmDoublePwdInfo, IMAGE_TYPE,"imgWelcomeNotice2", 122, 122, 256, 0)
-UI_LoadImage( imgWelcomeNotice2, "texture/ui/Keyboard1.tga", NORMAL, 122,122, 69, 123)
-UI_SetImageAlpha(imgWelcomeNotice2,220)
-
-labText1  = UI_CreateCompent( frmDoublePwdInfo, LABELEX_TYPE, "labText1", 400, 150, 10, 5 )
-labText2  = UI_CreateCompent( frmDoublePwdInfo, LABELEX_TYPE, "labText2", 400, 150, 10, 25 )
-labText3  = UI_CreateCompent( frmDoublePwdInfo, LABELEX_TYPE, "labText3", 400, 150, 10, 45 )
-labText4  = UI_CreateCompent( frmDoublePwdInfo, LABELEX_TYPE, "labText4", 400, 150, 10, 65 )
-labText5  = UI_CreateCompent( frmDoublePwdInfo, LABELEX_TYPE, "labText5", 400, 150, 10, 85 )
---labText6  = UI_CreateCompent( frmDoublePwdInfo, LABELEX_TYPE, "labText6", 400, 150, 10, 105 )
-UI_SetCaption( labText1, "Dear player, you have not create a security code.")
-UI_SetCaption( labText2, "Please select a security code to keep your account safe.")
-UI_SetCaption( labText3, "You will require the security code to")
-UI_SetCaption( labText4, "delete character or unlock inventory")
-UI_SetCaption( labText5, "Please remember your security code well!")
---UI_SetCaption( labText6,"Requires a valid Security Code to delete character or withdraw inventory items")
-UI_SetTextColor( labText1, COLOR_BLACK )
-UI_SetLabelExFont( labText1, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetTextColor( labText2, COLOR_BLACK )
-UI_SetLabelExFont( labText2, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetTextColor( labText3, COLOR_BLACK )
-UI_SetLabelExFont( labText3, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetTextColor( labText4, COLOR_BLACK )
-UI_SetLabelExFont( labText4, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetTextColor( labText5, COLOR_BLACK )
-UI_SetLabelExFont( labText5, DEFAULT_FONT, TRUE, COLOR_WHITE )
---UI_SetTextColor( labText6, COLOR_BLACK )
---UI_SetLabelExFont( labText6, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
+-- notification
+imgWelcomeNotice1 = UI_CreateCompent(frmDoublePwdInfo, IMAGE_TYPE,"imgWelcomeNotice1", 494, 184, 0, 20)
+UI_LoadImage( imgWelcomeNotice1, "texture/gui/welcome-notification-01.png", NORMAL, 494, 184, 0, 0)
 
 -----------------------------------------------------------------------
--- 定义版本Logo界面
+-- Welcome notification 02
 -----------------------------------------------------------------------	
--- 创建版本Logo界面
-frmPathLogo = UI_CreateForm("frmPathLogo", TRUE, 256, 129, 50 , 450, TRUE,TRUE)
-UI_ShowForm(frmPathLogo, FALSE )
-UI_AddAllFormTemplete( frmPathLogo)
-UI_SetIsDrag(frmPathLogo, FALSE)
-UI_FormSetIsEscClose(frmPathLogo, FALSE)
-
---UI_FormSetHotKey( frmPathLogo, ALT_KEY, HOTKEY_Z ) 
-
--- 加载背景图片
-imgPathLogo = UI_CreateCompent(frmPathLogo, IMAGE_TYPE,"imgPathLogo", 256, 129, 0, 0)
---UI_LoadImage( imgPathLogo, "texture/ui/PathLogo.tga", NORMAL, 256,129, 0, 0)
-
------------------------------------------------------------------------
---								     --
---		创建角色流程修改 2006.08.08 by Leo	             --
---								     --
------------------------------------------------------------------------	
-
------------------------------------------------------------------------
--- 定义欢迎界面   该界面仅在当前帐号内无角色时出现
------------------------------------------------------------------------	
-frmWelcomeNotice = UI_CreateForm("frmWelcomeNotice", TRUE, 500, 170, 0 , 0, TRUE,TRUE)
+frmWelcomeNotice = UI_CreateForm("frmWelcomeNotice", TRUE, 606, 270, 0 , 0, TRUE,TRUE)
 UI_ShowForm(frmWelcomeNotice, FALSE )
 UI_SetIsDrag(frmWelcomeNotice, FALSE)
 UI_FormSetIsEscClose(frmWelcomeNotice, FALSE)
@@ -868,161 +563,26 @@ UI_AddFormToTemplete( frmWelcomeNotice, FORM_SELECT )
 
 --UI_FormSetHotKey( frmWelcomeNotice, ALT_KEY, HOTKEY_Z ) 
 
-imgWelcomeNotice1 = UI_CreateCompent(frmWelcomeNotice, IMAGE_TYPE,"imgWelcomeNotice1", 256, 170, 0, 0)
-UI_LoadImage( imgWelcomeNotice1, "texture/ui/newshelp/login_out_01.tga", NORMAL, 256,170, 0, 0)
+imgWelcomeNotice1 = UI_CreateCompent(frmWelcomeNotice, IMAGE_TYPE,"imgWelcomeNotice1", 606, 270, 0, 0)
+UI_LoadImage( imgWelcomeNotice1, "texture/gui/welcome-notification-02.png", NORMAL, 606, 270, 0, 0)
 UI_SetImageAlpha(imgWelcomeNotice1,220)
 
-imgWelcomeNotice2 = UI_CreateCompent(frmWelcomeNotice, IMAGE_TYPE,"imgWelcomeNotice2", 244, 170, 256, 0)
-UI_LoadImage( imgWelcomeNotice2, "texture/ui/newshelp/login_out_02.tga", NORMAL, 244,170, 0, 0)
-UI_SetImageAlpha(imgWelcomeNotice2,220)
-
-labTitle = UI_CreateCompent( frmWelcomeNotice, LABELEX_TYPE, "labTitle", 400, 150, 10, 3 )
-UI_SetCaption( labTitle, "Newbie Guide")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labText1  = UI_CreateCompent( frmWelcomeNotice, LABELEX_TYPE, "labText1", 400, 150, 20, 25 )
-labText2  = UI_CreateCompent( frmWelcomeNotice, LABELEX_TYPE, "labText2", 400, 150, 20, 45 )
-labText3  = UI_CreateCompent( frmWelcomeNotice, LABELEX_TYPE, "labText3", 400, 150, 20, 65 )
-labText4  = UI_CreateCompent( frmWelcomeNotice, LABELEX_TYPE, "labText4", 400, 150, 20, 85 )
-labText5  = UI_CreateCompent( frmWelcomeNotice, LABELEX_TYPE, "labText5", 400, 150, 20, 105 )
-labText6  = UI_CreateCompent( frmWelcomeNotice, LABELEX_TYPE, "labText6", 400, 150, 20, 125 )
-UI_SetCaption( labText1, "Dear player, you can now enter the fantasy world of Tales of Pirates")
-UI_SetCaption( labText2,"Please select the \"Create\" button to make your first character.")
-UI_SetCaption( labText3,"You will be guided you through to allow you to familiarize with the game background")
-UI_SetCaption( labText4,"Learn about the unique features of each class and you eptomize your character")
-UI_SetCaption( labText5,"Carefully consider a unique name as it cannot be altered once confirmed" )
-UI_SetCaption( labText6,"Create a character and join us now!")
-UI_SetTextColor( labText1, COLOR_BLACK )
-UI_SetLabelExFont( labText1, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetTextColor( labText2, COLOR_BLACK )
-UI_SetLabelExFont( labText2, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetTextColor( labText3, COLOR_BLACK )
-UI_SetLabelExFont( labText3, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetTextColor( labText4, COLOR_BLACK )
-UI_SetLabelExFont( labText4, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetTextColor( labText5, COLOR_BLACK )
-UI_SetLabelExFont( labText5, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetTextColor( labText6, COLOR_BLACK )
-UI_SetLabelExFont( labText6, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-btnYes = UI_CreateCompent( frmWelcomeNotice, BUTTON_TYPE, "btnYes", 41, 19, 230, 145 )
-UI_LoadButtonImage( btnYes, "texture/ui/PublicC.tga", 41, 19, 0, 0, TRUE )
+btnYes = UI_CreateCompent( frmWelcomeNotice, BUTTON_TYPE, "btnYes", 204, 70, 196, 230 )
+UI_LoadButtonImage( btnYes, "texture/gui/welcome-notification-02.png", 204, 70, 0, 270, TRUE )
 
 -----------------------------------------------------------------------
--- 定义首次创建角色成功提示界面   该界面仅在该帐号走完第一个角色的创建流程后显示
+-- Before create one chars
 -----------------------------------------------------------------------	
-frmCreateOKNotice = UI_CreateForm("frmCreateOKNotice", TRUE, 500, 170, 0 , 0, TRUE,TRUE)
+frmCreateOKNotice = UI_CreateForm("frmCreateOKNotice", TRUE, 606, 270, 0, 0, TRUE,TRUE)
 UI_ShowForm(frmCreateOKNotice, FALSE )
 UI_SetIsDrag(frmCreateOKNotice, FALSE)
 UI_FormSetIsEscClose(frmCreateOKNotice, FALSE)
 UI_SetFormStyle(frmCreateOKNotice,1)
 UI_AddFormToTemplete( frmCreateOKNotice, FORM_SELECT )
 
---UI_FormSetHotKey( frmCreateOKNotice, ALT_KEY, HOTKEY_Z ) 
+imgWelcomeNotice1 = UI_CreateCompent(frmCreateOKNotice, IMAGE_TYPE,"imgWelcomeNotice1", 606, 270, 0, 0)
+UI_LoadImage( imgWelcomeNotice1, "texture/gui/welcome-notification-03.png", NORMAL, 606, 270, 0, 0)
+UI_SetImageAlpha(imgWelcomeNotice1,220)
 
-imgCreateOKNotice1 = UI_CreateCompent(frmCreateOKNotice, IMAGE_TYPE,"imgCreateOKNotice1", 256, 150, 0, 0)
-UI_LoadImage( imgCreateOKNotice1, "texture/ui/newshelp/login_out_01.tga", NORMAL, 256,150, 0, 0)
-UI_SetImageAlpha(imgCreateOKNotice1,220)
-
-imgCreateOKNotice2 = UI_CreateCompent(frmCreateOKNotice, IMAGE_TYPE,"imgCreateOKNotice2", 244, 150, 256, 0)
-UI_LoadImage( imgCreateOKNotice2, "texture/ui/newshelp/login_out_02.tga", NORMAL, 244,150, 0, 0)
-UI_SetImageAlpha(imgCreateOKNotice2,220)
-
-labTitle = UI_CreateCompent( frmCreateOKNotice, LABELEX_TYPE, "labTitle", 400, 150, 10, 3 )
-UI_SetCaption( labTitle, "Created successfully")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labText1  = UI_CreateCompent( frmCreateOKNotice, LABELEX_TYPE, "labText1", 400, 150, 20, 30 )
-labText2  = UI_CreateCompent( frmCreateOKNotice, LABELEX_TYPE, "labText2", 400, 150, 20, 50 )
-labText3  = UI_CreateCompent( frmCreateOKNotice, LABELEX_TYPE, "labText3", 400, 150, 20, 70 )
-labText4  = UI_CreateCompent( frmCreateOKNotice, LABELEX_TYPE, "labText4", 400, 150, 20, 90 )
-UI_SetCaption( labText1, "You have successfully created a character. You can still create 2 more characters")
-UI_SetCaption( labText2, "Now you only need to double click on character or select the Enter button to enter game")
-UI_SetCaption( labText3, "to enter game and begins your journey")
-UI_SetCaption( labText4, "Tips: Look for the Newbie Guide NPC after you entered the game. It will be helpful")
-UI_SetTextColor( labText1, COLOR_BLACK )
-UI_SetLabelExFont( labText1, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetTextColor( labText2, COLOR_BLACK )
-UI_SetLabelExFont( labText2, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetTextColor( labText3, COLOR_BLACK )
-UI_SetLabelExFont( labText3, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetTextColor( labText4, COLOR_BLACK )
-UI_SetLabelExFont( labText4, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-btnYes = UI_CreateCompent( frmCreateOKNotice, BUTTON_TYPE, "btnYes", 41, 19, 230, 125 )
-UI_LoadButtonImage( btnYes, "texture/ui/PublicC.tga", 41, 19, 0, 0, TRUE )
-
-
------------------------------------------------------------------------
--- 定义改名界面，该界面仅对台湾版本有效，请做好备份工作
------------------------------------------------------------------------	
-frmChaNameAlter = UI_CreateForm("frmChaNameAlter", TRUE, 500, 170, 0 , 0, TRUE,TRUE)
-UI_ShowForm(frmChaNameAlter, FALSE )
-UI_SetIsDrag(frmChaNameAlter, FALSE)
-UI_FormSetIsEscClose(frmChaNameAlter, FALSE)
-UI_SetFormStyle(frmChaNameAlter,1)
-UI_AddFormToTemplete( frmChaNameAlter, FORM_SELECT )
-
---加载背景
-imgCreateOKNotice1 = UI_CreateCompent(frmChaNameAlter, IMAGE_TYPE,"imgCreateOKNotice1", 256, 150, 0, 0)
-UI_LoadImage( imgCreateOKNotice1, "texture/ui/newshelp/login_out_01.tga", NORMAL, 256,150, 0, 0)
-UI_SetImageAlpha(imgCreateOKNotice1,220)
-
---加载标题
-labTitle = UI_CreateCompent( frmChaNameAlter, LABELEX_TYPE, "labTitle", 400, 150, 10, 3 )
-UI_SetCaption( labTitle, "Edit character name")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
---修改面板
-labText1 = UI_CreateCompent( frmChaNameAlter, LABELEX_TYPE, "labText1", 400, 150, 10, 20)
-UI_SetCaption( labText1, "Please change character name")
-UI_SetTextColor( labText1, COLOR_BLACK )
-UI_SetLabelExFont( labText1, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-
---新角色名
-labTitle = UI_CreateCompent( frmChaNameAlter, LABELEX_TYPE, "labTitle", 400, 150, 40, 30 )
-UI_SetCaption( labTitle, "New character name")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
---重新输入
-labTitle = UI_CreateCompent( frmChaNameAlter, LABELEX_TYPE, "labTitle", 400, 150, 40, 50 )
-UI_SetCaption( labTitle, "Edit character name")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
---修改框
-edtChaNameNew = UI_CreateCompent(frmChaNameAlter, EDIT_TYPE,"edtChaNameNew", 66, 14, 140, 30)
-UI_SetEditMaxNum( edtDoublePwdAlterNew, 12 )
-UI_SetEditMaxNumVisible(edtDoublePwdAlterNew,12)
-
-edtChaNameNewRetry = UI_CreateCompent(frmChaNameAlter, EDIT_TYPE,"edtChaNameNewRetry" ,66, 14, 140, 50)
-UI_SetEditMaxNum( edtDoublePwdAlterNewRetry, 12 )
-UI_SetEditMaxNumVisible(edtDoublePwdAlterNewRetry,12)
-
---确定，取消按钮
-btnYes = UI_CreateCompent( frmChaNameAlter, BUTTON_TYPE, "btnYes", 41, 19, 50, 120 )
-UI_LoadButtonImage( btnYes, "texture/ui/PublicC.tga", 41, 19, 0, 0, TRUE )
-
-btnClear = UI_CreateCompent( frmChaNameAlter, BUTTON_TYPE, "btnClear", 41, 19, 80, 120 )
-UI_LoadButtonImage( btnClear, "texture/ui/PublicC.tga", 41, 19, 0, 20, TRUE )
-
-
-
-frmModel = UI_CreateForm( "frmModel", FALSE, 280, 450, 0, 0, TRUE, FALSE )
-UI_ShowForm( frmModel, TRUE )
-UI_AddFormToTemplete( frmModel, FORM_LOGIN )
-
-cardBack = UI_CreateCompent( frmModel, IMAGE_TYPE, "cardBack", 280, 450, 0, 0 )
-UI_LoadImage( cardBack, "texture/ui/corsairs/card.png", NORMAL, 280, 450, 22,120 )
-
-iconBack = UI_CreateCompent( frmModel, IMAGE_TYPE, "iconBack", 130, 130, 0, 0 )
-UI_LoadImage( iconBack, "texture/ui/corsairs/discord.png", NORMAL, 128, 128, 0,0 )
-
-
-ui3dCha = UI_CreateCompent( frmModel, UI3D_COMPENT, "ui3dCha", 280, 450, 0, 40 )
-ui3dIcon = UI_CreateCompent( frmModel, UI3D_COMPENT, "ui3dIcon", 128, 128, 0, 0 )
+btnYes = UI_CreateCompent( frmCreateOKNotice, BUTTON_TYPE, "btnYes", 204, 70, 196, 230 )
+UI_LoadButtonImage( btnYes, "texture/gui/welcome-notification-03.png", 204, 70, 0, 270, TRUE )

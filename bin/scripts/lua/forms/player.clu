@@ -1,8 +1,7 @@
 -----------------------------------------------------------------------
--- Player Item Trade | GUI by Foxseiz
+-- Player Item Trade
 -----------------------------------------------------------------------	
--- 创建玩家间交易表单
-frmPlayertrade = UI_CreateForm( "frmPlayertrade", FALSE, 198, 466, 240, 468, TRUE, FALSE )
+frmPlayertrade = UI_CreateForm( "frmPlayertrade", FALSE, 251, 331, 240, 468, TRUE, FALSE )
 --UI_FormSetHotKey( frmPlayertrade, ALT_KEY, HOTKEY_T )
 UI_ShowForm( frmPlayertrade, TRUE )
 UI_SetIsDrag( frmPlayertrade, TRUE )
@@ -10,330 +9,217 @@ UI_AddFormToTemplete( frmPlayertrade, FORM_MAIN )
 UI_SetFormStyle( frmPlayertrade, 1 )---左右居中
 UI_FormSetIsEscClose( frmPlayertrade, FALSE )
 
--- 加载背景图片
-imgBakTop = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgBakTop", 198, 466, 0, 0 )
-UI_LoadImage( imgBakTop, "texture/ui/corsairs/trade.png", NORMAL, 198, 466, 0, 0 )
+imgBackground = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgBackground", 251, 331, 0, 0 )
+UI_LoadImage( imgBackground, "texture/gui/trade.png", NORMAL, 251, 331, 0, 0 )
 
-
-
---创建关闭按钮
-btnClose = UI_CreateCompent( frmPlayertrade, BUTTON_TYPE, "btnClose", 14, 14, 177, 1 )
-UI_LoadButtonImage( btnClose, "texture/ui/PublicC.tga", 14, 14, 116, 175, TRUE )
-
--- 加载界面title
-labTitle = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labTitle", 400, 150, 10, 3 )
-UI_LoadImage( imgBakTitle, "texture/ui/word.dds", NORMAL, 48, 13, 36, 29 )
-
---加载对方的道具几个字
--- imgOtherItem = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgOtherItem", 90, 13, 6, 28 )
--- UI_LoadImage( imgOtherItem, "texture/ui/SysBotton1.dds", NORMAL, 90, 13, 12, 226 )
-
---加载对方姓名显示
-labPlayertradeName = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labPlayertradeName", 95, 11, 90, 29 )
+-- from \ to
+labPlayertradeName = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labPlayertradeName", 95, 11, 15, 15 )
 UI_SetCaption( labPlayertradeName, "Wuwuwuw...Ah...Tatatata" )
-UI_SetTextColor( labPlayertradeName, COLOR_BLACK )
-UI_SetLabelExFont( labPlayertradeName, DEFAULT_FONT, TRUE, COLOR_WHITE )
+UI_SetTextColor( labPlayertradeName, COLOR_968774 )
+UI_SetLabelExFont( labPlayertradeName, FONT016, FALSE, COLOR_WHITE )
 
--- Grid Other
-grdBuy = UI_CreateCompent( frmPlayertrade, GOODS_GRID_TYPE, "grdBuy", 184, 121, 7, 46 ) 
-UI_LoadImage( grdBuy,  "texture/ui/sure.dds", NORMAL, 184, 121, 0, 119 )
-UI_SetGridSpace( grdBuy, 4, 4 )
-UI_SetGridContent( grdBuy, 3, 4 )
-UI_SetGridUnitSize( grdBuy, 32, 32 )
-UI_SetMargin( grdBuy, 21, 10, 0, 3 )
-UI_SetIsEnabled( grdBuy, FALSE )
-
--- Other Gold Label
--- imgOtherGold = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgOtherGold", 90, 13, 6, 172 + 8 )
--- UI_LoadImage( imgOtherGold, "texture/ui/SysBotton1.dds", NORMAL, 90, 13, 14, 240 )
-
--- Other Gold Box
-imgOtherGoldBak = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgOtherGoldBak", 87, 18, 79, 169 + 8 )
-UI_LoadImage( imgOtherGoldBak, "texture/ui/PublicC.tga", NORMAL, 87, 18, 99, 235 )
-
--- Other Gold
-labOtherGold = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labOtherGold", 47, 11, 88, 174 + 8 )
-UI_SetCaption( labOtherGold, "0" )
-UI_SetTextColor( labOtherGold, COLOR_WHITE )
-UI_SetLabelExFont( labOtherGold, DEFAULT_FONT, TRUE, COLOR_BLACK )
-
--- Other Gold Icon
-imgOtherGoldBak = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgOtherGoldBak", 26, 26, 167, 167 + 8)
-UI_LoadImage( imgOtherGoldBak, "texture/ui/corsairs/trade.png", NORMAL, 26, 26, 202, 0 )
-
--- Other IMP Label
--- imgOtherIMP = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgOtherIMP", 90, 13, 6, 172 + 36 )
--- UI_LoadImage( imgOtherIMP, "texture/ui/SysBotton1.dds", NORMAL, 90, 13, 14, 240 )
-
--- Other IMP Box
-imgOtherIMPBak = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgOtherIMPBak", 87, 18, 79, 169 + 36 )
-UI_LoadImage( imgOtherIMPBak, "texture/ui/PublicC.tga", NORMAL, 87, 18, 99, 235 )
-
--- Other IMP Label
-labOtherIMP = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labOtherIMP", 47, 11, 88, 174 + 36 )
-UI_SetCaption( labOtherIMP, "0" )
-UI_SetTextColor( labOtherIMP, COLOR_WHITE )
-UI_SetLabelExFont( labOtherIMP, DEFAULT_FONT, TRUE, COLOR_BLACK )
-
--- Other IMP Icon
-imgOtherGoldBak = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgOtherGoldBak", 26, 26, 167, 167 + 36)
-UI_LoadImage( imgOtherGoldBak, "texture/ui/corsairs/trade.png", NORMAL, 26, 26, 202, 26 )
-
--- Trade / Confirm Indicators
--- Trade Items Label
--- imgMineItem = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgMineItem", 90, 13, 6, 202 + 30 )
--- UI_LoadImage( imgMineItem, "texture/ui/SysBotton1.dds", NORMAL, 90, 13, 116, 212 )
-
--- Confirm Label
-labOtherYes = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labOtherYes", 23, 11, 79, 203 + 30 )
-UI_SetCaption( labOtherYes, "Confirm" )
-UI_SetTextColor( labOtherYes, COLOR_BLACK )
-UI_SetLabelExFont( labOtherYes, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
--- Confirm Indicator
-chkYes = UI_CreateCompent( frmPlayertrade, CHECK_TYPE, "chkYes", 11, 12, 124, 202 + 30)
-UI_LoadImage( chkYes, "texture/ui/PublicC.tga", UNCHECKED, 11, 12, 227, 47 )
-UI_LoadImage( chkYes, "texture/ui/PublicC.tga", CHECKED, 11, 12, 214, 47 )
+chkYes = UI_CreateCompent( frmPlayertrade, CHECK_TYPE, "chkYes", 62, 19, 185, 6)
+UI_LoadImage( chkYes, "texture/gui/trade.png", UNCHECKED, 62, 19, 257, 6 )
+UI_LoadImage( chkYes, "texture/gui/trade.png", CHECKED, 62, 19, 257, 42 )
 UI_SetIsEnabled( chkYes, FALSE )
 
--- Trade Label
-labOtherTrade = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labOtherTrade", 23, 11, 136, 203 + 30 )
-UI_SetCaption( labOtherTrade, "Trade" )
-UI_SetTextColor( labOtherTrade, COLOR_WHITE )
-UI_SetLabelExFont( labOtherTrade, DEFAULT_FONT, TRUE, COLOR_BLACK )
-
--- Trade Indicator
-chkTrade = UI_CreateCompent( frmPlayertrade, CHECK_TYPE, "chkTrade", 11, 12, 168, 202 + 30 )
-UI_LoadImage( chkTrade, "texture/ui/PublicC.tga", UNCHECKED, 11, 12, 227, 47 )
-UI_LoadImage( chkTrade, "texture/ui/PublicC.tga", CHECKED, 11, 12, 214, 47 )
+chkTrade = UI_CreateCompent( frmPlayertrade, CHECK_TYPE, "chkTrade", 62, 19, 185, 24)
+UI_LoadImage( chkTrade, "texture/gui/trade.png", UNCHECKED, 62, 19, 257, 24 )
+UI_LoadImage( chkTrade, "texture/gui/trade.png", CHECKED, 62, 19, 257, 60 )
 UI_SetIsEnabled( chkTrade, FALSE )
 
+grdBuy = UI_CreateCompent( frmPlayertrade, GOODS_GRID_TYPE, "grdBuy", 231, 80, 10, 52 ) 
+UI_LoadImage( grdBuy,  "texture/gui/trade.png", NORMAL, 231, 80, 259, 82 )
+UI_SetGridSpace( grdBuy, 7, 7 )
+UI_SetGridContent( grdBuy, 2, 6 )
+UI_SetGridUnitSize( grdBuy, 32, 32 )
+UI_SetMargin( grdBuy, 2, 2, 0, 0 )
+UI_SetIsEnabled( grdBuy, FALSE )
 
--- Grid
-grdSale = UI_CreateCompent( frmPlayertrade, GOODS_GRID_TYPE, "grdSale", 184, 121, 11 - 4, 220 + 36 ) 
-UI_LoadImage( grdSale,  "texture/ui/sure.dds", NORMAL, 184, 121, 0, 119 )
-UI_SetGridSpace( grdSale, 4, 4 )
-UI_SetGridContent( grdSale, 3, 4 )
+imgBackgroundGI = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgBackgroundGI", 222, 15, 14, 136 )
+UI_LoadImage( imgBackgroundGI, "texture/gui/trade.png", NORMAL, 222, 16, 261, 163 )
+
+labOtherGold = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labOtherGold", 47, 11, 40, 136 )
+UI_SetCaption( labOtherGold, "0" )
+UI_SetTextColor( labOtherGold, 4292790446 )
+UI_SetLabelExFont( labOtherGold, DEFAULT_FONT, TRUE, COLOR_BLACK )
+
+labOtherIMP = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labOtherIMP", 47, 11, 159, 136 )
+UI_SetCaption( labOtherIMP, "0" )
+UI_SetTextColor( labOtherIMP, 4292790446 )
+UI_SetLabelExFont( labOtherIMP, DEFAULT_FONT, TRUE, COLOR_BLACK )
+
+grdSale = UI_CreateCompent( frmPlayertrade, GOODS_GRID_TYPE, "grdSale", 231, 80, 10, 163 ) 
+UI_LoadImage( grdSale,  "texture/gui/trade.png", NORMAL, 231, 80, 259, 82 )
+UI_SetGridSpace( grdSale, 7, 7 )
+UI_SetGridContent( grdSale, 2, 6 )
 UI_SetGridUnitSize( grdSale, 32, 32 )
-UI_SetMargin( grdSale, 21, 10, 0, 3 )
+UI_SetMargin( grdSale, 2, 2, 0, 0 )
 
--- Gold Label
--- imgMineGold = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgMineGold", 90, 13, 6, 347 + 43 )
--- UI_LoadImage( imgMineGold, "texture/ui/SysBotton1.dds", NORMAL, 90, 13, 117, 226 )
+imgBackground = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgBackground", 222, 15, 14, 247 )
+UI_LoadImage( imgBackground, "texture/gui/trade.png", NORMAL, 222, 16, 261, 163 )
 
--- Gold Box
-imgMineGoldBak = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgMineGoldBak", 87, 18, 79, 344 + 43 )
-UI_LoadImage( imgMineGoldBak, "texture/ui/PublicC.tga", NORMAL, 87, 18, 99, 235 )
-
--- Gold
-labSelfGold = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labSelfGold", 47, 11, 88, 349 + 43 )
+labSelfGold = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labSelfGold", 47, 11, 40, 247 )
 UI_SetCaption( labSelfGold, "0" )
-UI_SetTextColor( labSelfGold, COLOR_WHITE )
-UI_SetLabelExFont( labSelfGold, DEFAULT_FONT, TRUE, COLOR_BLACK )
+UI_SetTextColor( labSelfGold, 4292790446 )
+UI_SetLabelExFont( labSelfGold, DEFAULT_FONT, FALSE, COLOR_BLACK )
 
--- Gold Button
-btnGold = UI_CreateCompent( frmPlayertrade, BUTTON_TYPE, "btnGold", 26, 26, 167, 341 + 43 )
-UI_LoadButtonImage( btnGold, "texture/ui/mordo/trade.png", 26, 26, 202, 0, TRUE )
+btnGold = UI_CreateCompent( frmPlayertrade, BUTTON_TYPE, "btnGold", 24, 20, 12, 246 )
+UI_LoadButtonImage( btnGold, "texture/gui/trade.png", 24, 20, 259, 187, TRUE )
 UI_SetHint( btnGold, "Click here to input gold for trade" )
 
--- IMP Label
--- imgMineIMP = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgMineIMP", 90, 13, 6, 347 + 71 )
--- UI_LoadImage( imgMineIMP, "texture/ui/SysBotton1.dds", NORMAL, 90, 13, 117, 226 )
-
--- IMP Box
-imgMineIMPBak = UI_CreateCompent( frmPlayertrade, IMAGE_TYPE, "imgMineIMPBak", 87, 18, 79, 344 + 71 )
-UI_LoadImage( imgMineIMPBak, "texture/ui/PublicC.tga", NORMAL, 87, 18, 99, 235 )
-
--- IMP
-labSelfIMP = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labSelfIMP", 47, 11, 88, 349 + 71 )
+labSelfIMP = UI_CreateCompent( frmPlayertrade, LABELEX_TYPE, "labSelfIMP", 47, 11, 159, 247 )
 UI_SetCaption( labSelfIMP, "0" )
-UI_SetTextColor( labSelfIMP, COLOR_WHITE )
-UI_SetLabelExFont( labSelfIMP, DEFAULT_FONT, TRUE, COLOR_BLACK )
+UI_SetTextColor( labSelfIMP, 4292790446 )
+UI_SetLabelExFont( labSelfIMP, DEFAULT_FONT, FALSE, COLOR_BLACK )
 
--- IMP Button
-btnIMP = UI_CreateCompent( frmPlayertrade, BUTTON_TYPE, "btnIMP", 26, 26, 167, 341 + 71 )
-UI_LoadButtonImage( btnIMP, "texture/ui/mordo/trade.png", 26, 26, 202, 26, TRUE )
+btnIMP = UI_CreateCompent( frmPlayertrade, BUTTON_TYPE, "btnIMP", 25, 20, 131, 246 )
+UI_LoadButtonImage( btnIMP, "texture/gui/trade.png", 24, 20, 259, 187, TRUE )
 UI_SetHint( btnIMP, "Click here to input Piastres for trade" )
 
 -- Confirm Button
-btnYes = UI_CreateCompent( frmPlayertrade, BUTTON_TYPE, "btnYes", 41, 19, 55, 368 + 72 )
-UI_LoadButtonImage( btnYes, "texture/ui/PublicC.tga", 41, 19, 0, 0, TRUE )
+btnYes = UI_CreateCompent( frmPlayertrade, BUTTON_TYPE, "btnYes", 72, 37, 12, 280 )
+UI_LoadButtonImage( btnYes, "texture/gui/trade.png", 72, 37, 259, 209, FALSE )
 
 -- Trade Button
-btnTrade = UI_CreateCompent( frmPlayertrade, BUTTON_TYPE, "btnTrade", 41, 19, 102, 368 + 72 )
-UI_LoadButtonImage( btnTrade, "texture/ui/PublicC.tga", 41, 19, 0, 40, TRUE )
+btnTrade = UI_CreateCompent( frmPlayertrade, BUTTON_TYPE, "btnTrade", 72, 37, 89, 280 )
+UI_LoadButtonImage( btnTrade, "texture/gui/trade.png", 72, 37, 331, 209, FALSE )
 
 -- Cancel Button
-btnNo = UI_CreateCompent( frmPlayertrade, BUTTON_TYPE, "btnNo", 41, 19, 149, 368 + 72 )
-UI_LoadButtonImage( btnNo, "texture/ui/PublicC.tga", 41, 19, 0, 20, TRUE )
-
-
+btnNo = UI_CreateCompent( frmPlayertrade, BUTTON_TYPE, "btnNo", 72, 37, 167, 280 )
+UI_LoadButtonImage( btnNo, "texture/gui/trade.png", 72, 37, 403, 209, FALSE )
 
 -----------------------------------------------------------------------
--- 定义是否添加为好友 -added by Arcol
+-- add to friends
 -----------------------------------------------------------------------
-frmAcceptFrnd = UI_CreateForm( "frmAcceptFrnd",  FALSE, 185, 101, 0, 0, FALSE, FALSE )
-UI_LoadFormImage( frmAcceptFrnd, "texture/ui/sure.dds", 185, 101, 0, 0, "", 0, 0 )
+frmAcceptFrnd = UI_CreateForm( "frmAcceptFrnd",  FALSE, 248, 130, 397, 500, FALSE, FALSE )
+UI_LoadFormImage( frmAcceptFrnd, "texture/gui/window-02.png", 248, 118, 0, 0, "", 0, 0 )
+
 UI_ShowForm( frmAcceptFrnd, FALSE )
 UI_AddFormToTemplete( frmAcceptFrnd, FORM_MAIN )
 UI_SetFormStyle( frmAcceptFrnd, 0 )
 UI_SetIsDrag( frmAcceptFrnd, TRUE )
 UI_FormSetIsEscClose( frmAcceptFrnd, FALSE )
 
---创建关闭按钮
-btnClose = UI_CreateCompent( frmAcceptFrnd, BUTTON_TYPE, "btnClose", 14, 14, 164, 3 )
-UI_LoadButtonImage( btnClose, "texture/ui/PublicC.tga", 14, 14, 116, 175, TRUE )
-
---创建询问者姓名
 labFrndName = UI_CreateCompent( frmAcceptFrnd, LABELEX_TYPE, "labFrndName", 23, 11, 44, 32 )
 UI_SetCaption( labFrndName, "" )
-UI_SetTextColor( labFrndName, COLOR_BLACK )
-UI_SetLabelExFont( labFrndName, DEFAULT_FONT, TRUE, COLOR_WHITE )
+UI_SetTextColor( labFrndName, COLOR_FFEDCF )
+UI_SetLabelExFont( labFrndName, DEFAULT_FONT, FALSE, COLOR_WHITE )
 
---创建询问内容
 labFrnd = UI_CreateCompent( frmAcceptFrnd, LABELEX_TYPE, "labFrnd", 23, 11, 44, 54 )
 UI_SetCaption( labFrnd, "" )
-UI_SetTextColor( labFrnd, COLOR_BLACK )
-UI_SetLabelExFont( labFrnd, DEFAULT_FONT, TRUE, COLOR_WHITE )
+UI_SetTextColor( labFrnd, COLOR_FFEDCF )
+UI_SetLabelExFont( labFrnd, DEFAULT_FONT, FALSE, COLOR_WHITE )
 
---加载接受按钮
-btnYes = UI_CreateCompent( frmAcceptFrnd, BUTTON_TYPE, "btnYes", 41, 19, 74, 78 )
-UI_LoadButtonImage( btnYes, "texture/ui/SystemBotton3.tga", 41, 19, 0, 0, TRUE )
+btnYes = UI_CreateCompent( frmAcceptFrnd, BUTTON_TYPE, "btnYes", 93, 32, 23+10, 43+55 )
+UI_LoadButtonImage( btnYes, "texture/gui/friends.png", 93, 32, 0, 494, FALSE )
+UI_SetButtonModalResult( btnYes, BUTTON_YES )
+UI_FormSetEnterButton( frmAcceptFrnd, btnYes )
 
---加载取消按钮
-btnNo = UI_CreateCompent( frmAcceptFrnd, BUTTON_TYPE, "btnNo", 41, 19, 122, 78 )
-UI_LoadButtonImage( btnNo, "texture/ui/PublicC.tga", 41, 19, 0, 20, TRUE )
-
+btnNo = UI_CreateCompent( frmAcceptFrnd, BUTTON_TYPE, "btnNo", 93, 32, 119+10, 43+55 )
+UI_LoadButtonImage( btnNo, "texture/gui/friends.png", 93, 32, 93, 494, FALSE )
+UI_SetButtonModalResult( btnNo, BUTTON_CLOSE )
 
 -----------------------------------------------------------------------
--- 定义是否组队
+-- 
 -----------------------------------------------------------------------
-frmAcceptGroup = UI_CreateForm( "frmAcceptGroup",  FALSE, 185, 101, 0, 0, FALSE, FALSE )
-UI_LoadFormImage( frmAcceptGroup, "texture/ui/sure.dds", 185, 101, 0, 0, "", 0, 0 )
+frmAcceptGroup = UI_CreateForm( "frmAcceptGroup",  FALSE, 248, 130, 397, 500, FALSE, FALSE )
+UI_LoadFormImage( frmAcceptGroup, "texture/gui/window-02.png", 248, 118, 0, 0, "", 0, 0 )
+
 UI_ShowForm( frmAcceptGroup, FALSE )
 UI_AddFormToTemplete( frmAcceptGroup, FORM_MAIN )
 UI_SetFormStyle( frmAcceptGroup, 0 )
 UI_SetIsDrag( frmAcceptGroup, TRUE )
 UI_FormSetIsEscClose( frmAcceptGroup, FALSE )
---UI_SetAlpha( frmAcceptGroup, 200 )
---UI_FormSetHotKey( frmAcceptGroup, ALT_KEY, HOTKEY_V )
 
-
---创建Title
---labTitle = UI_CreateCompent( frmAcceptGroup, LABELEX_TYPE, "labTitle", 47, 11, 69, 5 )
---UI_SetCaption( labTitle, "Request Trade" )
---UI_SetTextColor( labTitle, COLOR_WHITE )
---UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_BLACK )
-
---创建关闭按钮
-btnClose = UI_CreateCompent( frmAcceptGroup, BUTTON_TYPE, "btnClose", 14, 14, 164, 3 )
-UI_LoadButtonImage( btnClose, "texture/ui/PublicC.tga", 14, 14, 116, 175, TRUE )
-
---创建询问者姓名
 labGroupName = UI_CreateCompent( frmAcceptGroup, LABELEX_TYPE, "labGroupName", 23, 11, 44, 32 )
 UI_SetCaption( labGroupName, "" )
-UI_SetTextColor( labGroupName, COLOR_BLACK )
-UI_SetLabelExFont( labGroupName, DEFAULT_FONT, TRUE, COLOR_WHITE )
+UI_SetTextColor( labGroupName, COLOR_FFEDCF )
+UI_SetLabelExFont( labGroupName, DEFAULT_FONT, FALSE, COLOR_WHITE )
 
---创建询问内容
 labGroup = UI_CreateCompent( frmAcceptGroup, LABELEX_TYPE, "labGroup", 23, 11, 44, 54 )
 UI_SetCaption( labGroup, "" )
-UI_SetTextColor( labGroup, COLOR_BLACK )
-UI_SetLabelExFont( labGroup, DEFAULT_FONT, TRUE, COLOR_WHITE )
+UI_SetTextColor( labGroup, COLOR_FFEDCF )
+UI_SetLabelExFont( labGroup, DEFAULT_FONT, FALSE, COLOR_WHITE )
 
---加载接受按钮
-btnYes = UI_CreateCompent( frmAcceptGroup, BUTTON_TYPE, "btnYes", 41, 19, 74, 78 )
-UI_LoadButtonImage( btnYes, "texture/ui/SystemBotton3.tga", 41, 19, 0, 0, TRUE )
+btnYes = UI_CreateCompent( frmAcceptGroup, BUTTON_TYPE, "btnYes", 93, 32, 23+10, 43+55 )
+UI_LoadButtonImage( btnYes, "texture/gui/friends.png", 93, 32, 0, 494, FALSE )
+UI_SetButtonModalResult( btnYes, BUTTON_YES )
+UI_FormSetEnterButton( frmAcceptGroup, btnYes )
 
---加载取消按钮
-btnNo = UI_CreateCompent( frmAcceptGroup, BUTTON_TYPE, "btnNo", 41, 19, 122, 78 )
-UI_LoadButtonImage( btnNo, "texture/ui/PublicC.tga", 41, 19, 0, 20, TRUE )
+btnNo = UI_CreateCompent( frmAcceptGroup, BUTTON_TYPE, "btnNo", 93, 32, 119+10, 43+55 )
+UI_LoadButtonImage( btnNo, "texture/gui/friends.png", 93, 32, 93, 494, FALSE )
+UI_SetButtonModalResult( btnNo, BUTTON_CLOSE )
 
-
------------------------------------------------------------------------
--- 定义玩家间组队队员4
------------------------------------------------------------------------	
--- 创建玩家间组队表单
-frmTeamMenber4 = UI_CreateForm( "frmTeamMenber4", FALSE, 166, 33, 6, 220, TRUE, FALSE )
---UI_FormSetHotKey( frmTeamMenber4, ALT_KEY, HOTKEY_U ) 
-
-imgTeamMember4 = UI_CreateCompent( frmTeamMenber4, IMAGE_TYPE, "imgTeamMember4", 166, 33, 0, 0 )
-UI_LoadImage( imgTeamMember4, "texture/ui/new3.tga", NORMAL, 166, 33, 0, 84 )
-
---UI_LoadFormImage( frmTeamMenber1, "texture/ui/new3.tga", 166, 33, 0, 84, "", 0, 0 )
---UI_LoadFormImage( frmTeamMenber4, "texture/ui/new3.tga", 166, 33, 0, 84, "", 0, 0 )
-UI_ShowForm( frmTeamMenber4, FLASE )
-UI_SetIsDrag( frmTeamMenber4, FLASE )
-UI_AddFormToTemplete( frmTeamMenber4, FORM_MAIN )
-UI_FormSetIsEscClose( frmTeamMenber4, FALSE )
-
---创建队员名称显示
-labMenber4Name = UI_CreateCompent( frmTeamMenber4, LABELEX_TYPE, "labMenber4Name", 1, 1, 61, 5 )
-UI_SetCaption( labMenber4Name, "就就就就就就就就" )
-UI_SetTextColor( labMenber4Name, COLOR_WHITE )
-UI_SetLabelExFont( labMenber4Name, DEFAULT_FONT, TRUE, COLOR_BLACK )
-
---加载HP显示
-proTeamMenber4HP = UI_CreateCompent( frmTeamMenber4, PROGRESS_TYPE, "proTeamMenber4HP", 111, 8, 51, 21 )
-UI_LoadScaleImage( proTeamMenber4HP, "texture/ui/new3.tga", PROGRESS_PROGRESS, 111, 8, 0, 129, 1.0, 1.0 )
-UI_SetHint( proTeamMenber4HP, "HP" )
-UI_SetProgressHintStyle( proTeamMenber4HP, PROGRESS_HINT_NUM )
-
---加载SP显示
-proTeamMenber4SP = UI_CreateCompent( frmTeamMenber4, PROGRESS_TYPE, "proTeamMenber4SP", 50, 4, 1, 59 )
---UI_LoadScaleImage( proTeamMenber4SP, "texture/ui/StartF.dds", PROGRESS_PROGRESS, 50, 4, 124, 16, 1.0, 1.0 )
-UI_SetHint( proTeamMenber4SP, "SP" )
-UI_SetProgressHintStyle( proTeamMenber4SP, PROGRESS_HINT_NUM )
-
---创建3D角色
-d3dHead = UI_CreateCompent( frmTeamMenber4, UI3D_COMPENT_TYPE, "d3dHead", 24, 24, 6, 5 )
-
-
-d3dDown = UI_CreateCompent( frmTeamMenber4, UI3D_COMPENT_TYPE, "d3dDown", 166, 33, 0, 0 )
-
---加载玩家等级
-labFLv = UI_CreateCompent( frmTeamMenber4, LABELEX_TYPE, "labFLv", 14, 9, 36, 6 )
-UI_SetTextColor( labFLv, COLOR_WHITE )
-UI_SetLabelExFont( labFLv, DEFAULT_FONT, TRUE, COLOR_BLACK )
-UI_SetCaption( labLv, "99" )
-
---加载玩家职业图标
-imgobj = UI_CreateCompent( frmTeamMenber4, IMAGE_TYPE, "imgobj", 9, 9, 23, 21 )
-UI_SetMaxImage( imgobj, 19 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 0, 9, 9, 0, 0 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 1, 9, 9, 0, 9 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 2, 9, 9, 0, 18 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 3, 9, 9, 0, 27 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 4, 9, 9, 0, 36 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 5, 9, 9, 0, 45 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 6, 9, 9, 0, 54 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 7, 9, 9, 0, 63 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 8, 9, 9, 0, 72 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 9, 9, 9, 0, 81 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 10, 9, 9, 0, 90 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 11, 9, 9, 0, 99 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 12, 9, 9, 0, 108 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 13, 9, 9, 0, 117 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 14, 9, 9, 9, 0 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 15, 9, 9, 9, 9 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 16, 9, 9, 9, 18 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 17, 9, 9, 9, 27 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 18, 9, 9, 9, 36 )
-
-imgLeader = UI_CreateCompent( frmTeamMenber4, IMAGE_TYPE, "imgLeader", 9, 9, 7, 5 )
-UI_LoadImage( imgLeader, "texture/ui/new3.tga", NORMAL, 9, 9, 0, 161 )
-
+------
+-- Party
+------
+for pos = 1, 4, 1 do
+	local label = "frmTeamMenber" .. pos
+	local labelname = "labMenber" .. pos .. "Name"
+	local labelbackground = "proTeamMenber" .. pos .. "Background"
+	local labeldead = "proTeamMenber" .. pos .. "Dead"
+	local labelhp = "proTeamMenber" .. pos .. "HP"
+	local labelsp = "proTeamMenber" .. pos .. "SP"
+	
+	label = UI_CreateForm( label, FALSE, 167, 40, 15, 70 + (pos * 58), TRUE, FALSE )
+	UI_ShowForm( label, FLASE )
+	UI_SetIsDrag( label, FLASE )
+	UI_AddFormToTemplete( label, FORM_MAIN )
+	UI_FormSetIsEscClose( label, FALSE )
+	
+	labelbackground = UI_CreateCompent( label, IMAGE_TYPE, labelbackground, 128, 37, 31, 5 )
+	UI_LoadImage( labelbackground, "texture/gui/detail-01.png", NORMAL, 221, 64, 96, 6 )
+	
+	labelhp = UI_CreateCompent( label, PROGRESS_TYPE, labelhp, 145, 15, 38, 13 )
+	UI_LoadScaleImage( labelhp, "texture/gui/detail-01.png", PROGRESS_PROGRESS, 145, 15, 389, 75, 0.8, 0.8 )
+	UI_SetHint( labelhp, "HP" )
+	UI_SetProgressHintStyle( labelhp, PROGRESS_HINT_NUM )
+	
+	labelsp = UI_CreateCompent( label, PROGRESS_TYPE, labelsp, 139, 14, 39, 28 )
+	UI_LoadScaleImage( labelsp, "texture/gui/detail-01.png", PROGRESS_PROGRESS, 139, 14, 394, 95, 0.8, 0.8 )
+	UI_SetHint( labelsp, "SP" )
+	UI_SetProgressHintStyle( labelsp, PROGRESS_HINT_NUM )
+	
+	avatarBackground = UI_CreateCompent( label, IMAGE_TYPE, "avatarBackground", 57, 57, 0, 0 )
+	UI_LoadImage( avatarBackground, "texture/gui/detail-01.png", NORMAL, 80, 81, 15, 3 )
+	
+	d3dHead = UI_CreateCompent( label, UI3D_COMPENT_TYPE, "d3dHead", 24, 24, 10+6, 10+7 )
+	d3dDown = UI_CreateCompent( label, UI3D_COMPENT_TYPE, "d3dDown", 166, 33, 0, 0 )
+	
+	frameAvatar = UI_CreateCompent( label, IMAGE_TYPE, "frameAvatar", 57, 57, 1, 0 )
+	UI_LoadImage( frameAvatar, "texture/gui/detail-01.png", NORMAL, 80, 81, 15, 86 )
+	
+	levelBackground = UI_CreateCompent( label, IMAGE_TYPE, "levelBackground", 30, 30, -2, 25 )
+	UI_LoadImage( levelBackground, "texture/gui/detail-01.png", NORMAL, 30, 30, 93, 82 )
+	
+	labFLv = UI_CreateCompent( label, LABELEX_TYPE, "labFLv", 14, 9, 7, 35 )
+	UI_SetTextColor( labFLv, COLOR_WHITE )
+	UI_SetLabelExFont( labFLv, DEFAULT_FONT, TRUE, COLOR_BLACK )
+	UI_SetCaption( labLv, "99" )
+	
+	labelname = UI_CreateCompent( label, LABELEX_TYPE, labelname, 1, 1, 61, -1 )
+	UI_SetCaption( labelname, "-" )
+	UI_SetTextColor( labelname, COLOR_WHITE )
+	UI_SetLabelExFont( labelname, DEFAULT_FONT, TRUE, COLOR_BLACK )
+	
+	imgobj = UI_CreateCompent( label, IMAGE_TYPE, "imgobj", 9, 9, 23, 21 )
+	UI_SetMaxImage( imgobj, 19 )
+	
+	imgLeader = UI_CreateCompent( label, IMAGE_TYPE, "imgLeader", 30, 30, -2, 1 )
+	UI_LoadImage( imgLeader, "texture/gui/detail-01.png", NORMAL, 30, 30, 93, 111 )
+	
+	labeldead = UI_CreateCompent( label, IMAGE_TYPE, labeldead, 57, 57, 1, 0 )
+	UI_LoadImage( labeldead, "texture/gui/detail-01.png", NORMAL, 80, 81, 362, 128 )
+end
 
 ------------------------------------------------------------------------------
----创建右键表单
-mainMouseRight = UI_CreateCompent( frmMain800, MENU_TYPE, "mainMouseRight", 90, 97, 240, 468 )
-UI_MenuLoadImage( mainMouseRight, TRUE, FALSE, "texture/ui/right.tga", 5, 5, 10, 10, "texture/ui/right.tga", 5, 5 )
+mainMouseRight = UI_CreateCompent( frmMain800, MENU_TYPE, "mainMouseRight", 105, 100, 240, 468 )
+UI_MenuLoadImage( mainMouseRight, TRUE, FALSE, "texture/gui/right.png", 5, 5, 3, 17, "texture/gui/right-off.png", 5, 5 )
 UI_SetMargin( mainMouseRight, 10, 5, 5, 5 )
 
--- 装载菜单选择条的图片
-UI_MenuLoadSelect( mainMouseRight, "texture/ui/SystemBotton3.tga", 79, 13, 25, 227  )
+UI_MenuLoadSelect( mainMouseRight, "texture/gui/right.png", 15, 6, 17, 26  )
 
--- 增加菜单
 UI_MenuAddText( mainMouseRight, "Trade" )
 UI_MenuAddText( mainMouseRight, "Add Friend" )
 UI_MenuAddText( mainMouseRight, "Party Invite" )
@@ -350,226 +236,6 @@ UI_MenuAddText( mainMouseRight, "Block" )
 UI_MenuAddText( mainMouseRight, "Unblock" )
 
 UI_MenuAddText( mainMouseRight, "Manage" )
-
------------------------------------------------------------------------
--- 定义玩家间组队队员3
------------------------------------------------------------------------	
--- 创建玩家间组队表单
-frmTeamMenber3 = UI_CreateForm( "frmTeamMenber3", FALSE, 166, 33, 6, 180, TRUE, FALSE )
---UI_FormSetHotKey( frmTeamMenber3, ALT_KEY, HOTKEY_Y ) 
---UI_LoadFormImage( frmTeamMenber3, "texture/ui/new3.tga", 166, 33, 0, 84, "", 0, 0 )
-
-imgTeamMember3 = UI_CreateCompent( frmTeamMenber3, IMAGE_TYPE, "imgTeamMember3", 166, 33, 0, 0 )
-UI_LoadImage( imgTeamMember3, "texture/ui/new3.tga", NORMAL, 166, 33, 0, 84 )
-
-UI_ShowForm( frmTeamMenber3, FLASE )
-UI_SetIsDrag( frmTeamMenber3, FLASE )
-UI_AddFormToTemplete( frmTeamMenber3, FORM_MAIN )
-UI_FormSetIsEscClose( frmTeamMenber3, FALSE )
-
---创建队员名称显示
-labMenber3Name = UI_CreateCompent( frmTeamMenber3, LABELEX_TYPE, "labMenber3Name", 1, 1, 61, 5 )
-UI_SetCaption( labMenber3Name, "就就就就就就就就" )
-UI_SetTextColor( labMenber3Name, COLOR_WHITE )
-UI_SetLabelExFont( labMenber3Name, DEFAULT_FONT, TRUE, COLOR_BLACK )
-
---加载HP显示
-proTeamMenber3HP = UI_CreateCompent( frmTeamMenber3, PROGRESS_TYPE, "proTeamMenber3HP", 111, 8, 51, 21 )
-UI_LoadScaleImage( proTeamMenber3HP, "texture/ui/new3.tga", PROGRESS_PROGRESS, 111, 8, 0, 129, 1.0, 1.0 )
-UI_SetHint( proTeamMenber3HP, "HP" )
-UI_SetProgressHintStyle( proTeamMenber3HP, PROGRESS_HINT_NUM )
-
-
---加载SP显示
-proTeamMenber3SP = UI_CreateCompent( frmTeamMenber3, PROGRESS_TYPE, "proTeamMenber3SP", 50, 4, 1, 59 )
---UI_LoadScaleImage( proTeamMenber3SP, "texture/ui/StartF.dds", PROGRESS_PROGRESS, 50, 4, 124, 16, 1.0, 1.0 )
-UI_SetHint( proTeamMenber3SP, "SP" )
-UI_SetProgressHintStyle( proTeamMenber3SP, PROGRESS_HINT_NUM )
-
---创建3D角色
-d3dHead = UI_CreateCompent( frmTeamMenber3, UI3D_COMPENT_TYPE, "d3dHead", 24, 24, 6, 5 )
-
-d3dDown = UI_CreateCompent( frmTeamMenber3, UI3D_COMPENT_TYPE, "d3dDown", 166, 33, 0, 0 )
-
-
---加载玩家等级
-labFLv = UI_CreateCompent( frmTeamMenber3, LABELEX_TYPE, "labFLv", 14, 9, 36, 6 )
-UI_SetTextColor( labFLv, COLOR_WHITE )
-UI_SetLabelExFont( labFLv, DEFAULT_FONT, TRUE, COLOR_BLACK )
-UI_SetCaption( labLv, "99" )
-
---加载玩家职业图标
-imgobj = UI_CreateCompent( frmTeamMenber3, IMAGE_TYPE, "imgobj", 9, 9, 23, 21 )
-UI_SetMaxImage( imgobj, 19 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 0, 9, 9, 0, 0 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 1, 9, 9, 0, 9 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 2, 9, 9, 0, 18 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 3, 9, 9, 0, 27 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 4, 9, 9, 0, 36 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 5, 9, 9, 0, 45 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 6, 9, 9, 0, 54 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 7, 9, 9, 0, 63 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 8, 9, 9, 0, 72 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 9, 9, 9, 0, 81 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 10, 9, 9, 0, 90 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 11, 9, 9, 0, 99 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 12, 9, 9, 0, 108 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 13, 9, 9, 0, 117 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 14, 9, 9, 9, 0 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 15, 9, 9, 9, 9 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 16, 9, 9, 9, 18 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 17, 9, 9, 9, 27 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 18, 9, 9, 9, 36 )
-
-imgLeader = UI_CreateCompent( frmTeamMenber3, IMAGE_TYPE, "imgLeader", 9, 9, 7, 5 )
-UI_LoadImage( imgLeader, "texture/ui/new3.tga", NORMAL, 9, 9, 0, 161 )
-
-
------------------------------------------------------------------------
--- 定义玩家间组队队员2
------------------------------------------------------------------------	
--- 创建玩家间组队表单
-frmTeamMenber2 = UI_CreateForm( "frmTeamMenber2", FALSE, 166, 33, 6, 140, TRUE, FALSE )
---UI_FormSetHotKey( frmTeamMenber2, ALT_KEY, HOTKEY_T ) 
-
-imgTeamMember2 = UI_CreateCompent( frmTeamMenber2, IMAGE_TYPE, "imgTeamMember2", 166, 33, 0, 0 )
-UI_LoadImage( imgTeamMember2, "texture/ui/new3.tga", NORMAL, 166, 33, 0, 84 )
-
-UI_ShowForm( frmTeamMenber2, FLASE )
-UI_SetIsDrag( frmTeamMenber2, FLASE )
-UI_AddFormToTemplete( frmTeamMenber2, FORM_MAIN )
-UI_FormSetIsEscClose( frmTeamMenber2, FALSE )
-
---创建队员名称显示
-labMenber2Name = UI_CreateCompent( frmTeamMenber2, LABELEX_TYPE, "labMenber2Name", 1, 1, 61, 5 )
-UI_SetCaption( labMenber2Name, "就就就就就就就就" )
-UI_SetTextColor( labMenber2Name, COLOR_WHITE )
-UI_SetLabelExFont( labMenber2Name, DEFAULT_FONT, TRUE, COLOR_BLACK )
-
---加载HP显示
-proTeamMenber2HP = UI_CreateCompent( frmTeamMenber2, PROGRESS_TYPE, "proTeamMenber2HP", 111, 8, 51, 21 )
-UI_LoadScaleImage( proTeamMenber2HP, "texture/ui/new3.tga", PROGRESS_PROGRESS, 111, 8, 0, 129, 1.0, 1.0 )
-UI_SetHint( proTeamMenber2HP, "HP" )
-UI_SetProgressHintStyle( proTeamMenber2HP, PROGRESS_HINT_NUM )
-
-
-
---加载SP显示
-proTeamMenber2SP = UI_CreateCompent( frmTeamMenber2, PROGRESS_TYPE, "proTeamMenber2SP", 50, 4, 1, 59 )
---UI_LoadScaleImage( proTeamMenber2SP, "texture/ui/StartF.dds", PROGRESS_PROGRESS, 50, 4, 124, 16, 1.0, 1.0 )
-UI_SetHint( proTeamMenber2SP, "SP" )
-UI_SetProgressHintStyle( proTeamMenber2SP, PROGRESS_HINT_NUM )
-
---创建3D角色
-d3dHead = UI_CreateCompent( frmTeamMenber2, UI3D_COMPENT_TYPE, "d3dHead", 24, 24, 6, 5 )
-
-d3dDown = UI_CreateCompent( frmTeamMenber2, UI3D_COMPENT_TYPE, "d3dDown", 166, 33, 0, 0 )
-
-
---加载玩家等级
-labFLv = UI_CreateCompent( frmTeamMenber2, LABELEX_TYPE, "labFLv", 14, 9, 36, 6 )
-UI_SetTextColor( labFLv, COLOR_WHITE )
-UI_SetLabelExFont( labFLv, DEFAULT_FONT, TRUE, COLOR_BLACK )
-UI_SetCaption( labLv, "99" )
-
---加载玩家职业图标
-imgobj = UI_CreateCompent( frmTeamMenber2, IMAGE_TYPE, "imgobj", 9, 9, 23, 21 )
-UI_SetMaxImage( imgobj, 19 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 0, 9, 9, 0, 0 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 1, 9, 9, 0, 9 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 2, 9, 9, 0, 18 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 3, 9, 9, 0, 27 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 4, 9, 9, 0, 36 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 5, 9, 9, 0, 45 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 6, 9, 9, 0, 54 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 7, 9, 9, 0, 63 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 8, 9, 9, 0, 72 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 9, 9, 9, 0, 81 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 10, 9, 9, 0, 90 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 11, 9, 9, 0, 99 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 12, 9, 9, 0, 108 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 13, 9, 9, 0, 117 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 14, 9, 9, 9, 0 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 15, 9, 9, 9, 9 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 16, 9, 9, 9, 18 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 17, 9, 9, 9, 27 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 18, 9, 9, 9, 36 )
-
-imgLeader = UI_CreateCompent( frmTeamMenber2, IMAGE_TYPE, "imgLeader", 9, 9, 7, 5 )
-UI_LoadImage( imgLeader, "texture/ui/new3.tga", NORMAL, 9, 9, 0, 161 )
-
------------------------------------------------------------------------
--- 定义玩家间组队队员1
------------------------------------------------------------------------	
--- 创建玩家间组队表单
-frmTeamMenber1 = UI_CreateForm( "frmTeamMenber1", FALSE, 166, 33, 6, 100, TRUE, FALSE )
-UI_FormSetHotKey( frmTeamMenber1, ALT_KEY, HOTKEY_P ) 
-
-imgTeamMember1 = UI_CreateCompent( frmTeamMenber1, IMAGE_TYPE, "imgTeamMember1", 166, 33, 0, 0 )
-UI_LoadImage( imgTeamMember1, "texture/ui/new3.tga", NORMAL, 166, 33, 0, 84 )
-
---UI_LoadFormImage( frmTeamMenber1, "texture/ui/new3.tga", 166, 33, 0, 84, "", 0, 0 )
-UI_ShowForm( frmTeamMenber1, FLASE )
-UI_SetIsDrag( frmTeamMenber1, FLASE )
-UI_AddFormToTemplete( frmTeamMenber1, FORM_MAIN )
-UI_FormSetIsEscClose( frmTeamMenber1, FALSE )
-
---创建队员名称显示
-labMenber1Name = UI_CreateCompent( frmTeamMenber1, LABELEX_TYPE, "labMenber1Name", 1, 1, 61, 5 )
-UI_SetCaption( labMenber1Name, "就就就就就就就就" )
-UI_SetTextColor( labMenber1Name, COLOR_WHITE )
-UI_SetLabelExFont( labMenber1Name, DEFAULT_FONT, TRUE, COLOR_BLACK )
-
-
---加载HP显示
-proTeamMenber1HP = UI_CreateCompent( frmTeamMenber1, PROGRESS_TYPE, "proTeamMenber1HP", 111, 8, 51, 21 )
-UI_LoadScaleImage( proTeamMenber1HP, "texture/ui/new3.tga", PROGRESS_PROGRESS, 111, 8, 0, 129, 1.0, 1.0 )
-UI_SetHint( proTeamMenber1HP, "HP" )
-UI_SetProgressHintStyle( proTeamMenber1HP, PROGRESS_HINT_NUM )
-
---加载SP显示
-proTeamMenber1SP = UI_CreateCompent( frmTeamMenber1, PROGRESS_TYPE, "proTeamMenber1SP", 50, 4, 1, 59 )
---UI_LoadScaleImage( proTeamMenber1SP, "texture/ui/StartF.dds", PROGRESS_PROGRESS, 50, 4, 124, 16, 1.0, 1.0 )
-UI_SetHint( proTeamMenber1SP, "SP" )
-UI_SetProgressHintStyle( proTeamMenber1SP, PROGRESS_HINT_NUM )
-
---创建3D角色
-d3dHead = UI_CreateCompent( frmTeamMenber1, UI3D_COMPENT_TYPE, "d3dHead", 24, 24, 6, 5 )
-
-d3dDown = UI_CreateCompent( frmTeamMenber1, UI3D_COMPENT_TYPE, "d3dDown", 166, 33, 0, 0 )
-
-
---加载玩家等级
-labFLv = UI_CreateCompent( frmTeamMenber1, LABELEX_TYPE, "labFLv", 14, 9, 36, 6 )
-UI_SetTextColor( labFLv, COLOR_WHITE )
-UI_SetLabelExFont( labFLv, DEFAULT_FONT, TRUE, COLOR_BLACK )
-UI_SetCaption( labLv, "99" )
-
---加载玩家职业图标
-imgobj = UI_CreateCompent( frmTeamMenber1, IMAGE_TYPE, "imgobj", 9, 9, 23, 21 )
-UI_SetMaxImage( imgobj, 19 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 0, 9, 9, 0, 0 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 1, 9, 9, 0, 9 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 2, 9, 9, 0, 18 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 3, 9, 9, 0, 27 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 4, 9, 9, 0, 36 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 5, 9, 9, 0, 45 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 6, 9, 9, 0, 54 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 7, 9, 9, 0, 63 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 8, 9, 9, 0, 72 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 9, 9, 9, 0, 81 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 10, 9, 9, 0, 90 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 11, 9, 9, 0, 99 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 12, 9, 9, 0, 108 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 13, 9, 9, 0, 117 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 14, 9, 9, 9, 0 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 15, 9, 9, 9, 9 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 16, 9, 9, 9, 18 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 17, 9, 9, 9, 27 )
---UI_LoadImage( imgobj, "texture/ui/obj1.tga", 18, 9, 9, 9, 36 )
-
-imgLeader = UI_CreateCompent( frmTeamMenber1, IMAGE_TYPE, "imgLeader", 9, 9, 7, 5 )
-UI_LoadImage( imgLeader, "texture/ui/new3.tga", NORMAL, 9, 9, 0, 161 )
 
 -----------------------------------------------------------------------
 -- 定义复活框
@@ -893,181 +559,85 @@ UI_LoadButtonImage( btnYes, "texture/ui/PublicC.tga", 41, 19, 0, 0, TRUE )
 btnNo = UI_CreateCompent( frmTeamPK, BUTTON_TYPE, "btnNo", 41, 19, 279, 382 )
 UI_LoadButtonImage( btnNo, "texture/ui/PublicC.tga", 41, 19, 0, 20, TRUE )
 
-
-
-
-
-
-
-
-
-
---frmDetail
-
-frmTargetInfo = UI_CreateForm( "frmTargetInfo", FALSE, 166, 49, 210, 3, TRUE, FALSE )
---UI_FormSetHotKey( frmTargetInfo, ALT_KEY, HOTKEY_U ) 
-
-imgTargetInfo = UI_CreateCompent( frmTargetInfo, IMAGE_TYPE, "imgTargetInfo", 166, 33, 0, 0 )
-UI_LoadImage( imgTargetInfo, "texture/ui/new3.tga", NORMAL, 166, 33, 0, 84 )
-
---UI_LoadFormImage( frmTargetInfo, "texture/ui/new3.tga", 166, 33, 0, 84, "", 0, 0 )
+------
+-- Target panel
+------
+frmTargetInfo = UI_CreateForm( "frmTargetInfo", FALSE, 0, 0, 380, 557, TRUE, FALSE )
 UI_ShowForm( frmTargetInfo, TRUE )
-UI_SetIsDrag( frmTargetInfo, FLASE )
+UI_SetFormStyleEx( frmTargetInfo, FORM_BOTTOM, 0, 145)
 UI_AddFormToTemplete( frmTargetInfo, FORM_MAIN )
-UI_FormSetIsEscClose( frmTargetInfo, FALSE )
+UI_SetIsDrag( frmTargetInfo, FALSE )
+UI_FormSetIsEscClose( frmTargetInfo, TRUE )
 
-frmTargetInfoHP = UI_CreateCompent( frmTargetInfo, PROGRESS_TYPE, "frmTargetInfoHP", 111, 8, 51, 21 )
-UI_LoadScaleImage( frmTargetInfoHP, "texture/ui/new3.tga", PROGRESS_PROGRESS, 111, 8, 0, 129, 1.0, 1.0 )
+imgTargetInfo = UI_CreateCompent( frmTargetInfo, IMAGE_TYPE, "imgTargetInfo", 465, 80, 0, 0 )
+UI_LoadImage( imgTargetInfo, "texture/gui/detail-01.png", NORMAL, 465, 80, 0, 251 )
+
+imgTargetName = UI_CreateCompent( frmTargetInfo, IMAGE_TYPE, "imgTargetName", 208, 21, 13, 42 )
+UI_LoadImage( imgTargetName, "texture/gui/detail-01.png", NORMAL, 208, 21, 13, 344 )
+
+frmTargetInfoHP = UI_CreateCompent( frmTargetInfo, PROGRESS_TYPE, "frmTargetInfoHP", 208, 21, 247, 42 )
+UI_LoadScaleImage( frmTargetInfoHP, "texture/gui/detail-01.png", PROGRESS_PROGRESS, 208, 21, 246, 344, 1.0, 1.0 )
 UI_SetHint( frmTargetInfoHP, "HP" )
 
-frmTargetInfoName = UI_CreateCompent( frmTargetInfo, LABELEX_TYPE, "frmTargetInfoName", 95, 11, 56, 5 )
-UI_SetTextColor( frmTargetInfoName, COLOR_WHITE )
-UI_SetLabelExFont( frmTargetInfoName, DEFAULT_FONT, TRUE, COLOR_BLACK )
+d3dTarget = UI_CreateCompent( frmTargetInfo, UI3D_COMPENT_TYPE, "d3dTarget",  35, 35, 215, 25 )
+Target3dSelfDown = UI_CreateCompent( frmTargetInfo, UI3D_COMPENT_TYPE, "Target3dSelfDown", 35, 35, 215, 25 )
 
-labTargetLv = UI_CreateCompent( frmTargetInfo, LABELEX_TYPE, "labTargetLv", 14, 9, 36, 6 )
-UI_SetTextColor( labTargetLv, COLOR_WHITE )
+imgTargetFrame = UI_CreateCompent( frmTargetInfo, IMAGE_TYPE, "imgTargetFrame", 80, 81, 192, 0 )
+UI_LoadImage( imgTargetFrame, "texture/gui/detail-01.png", NORMAL, 80, 81, 14, 86 )
+
+frmTargetInfoName = UI_CreateCompent( frmTargetInfo, LABELEX_TYPE, "frmTargetInfoName", 95, 11, 68, 45 )
+UI_SetTextColor( frmTargetInfoName, COLOR_C9C2B4 )
+UI_SetLabelExFont( frmTargetInfoName, FONT_16, TRUE, COLOR_BLACK )
+
+imgTargetLv = UI_CreateCompent( frmTargetInfo, IMAGE_TYPE, "imgTargetLv", 28, 26, 190, 38 )
+UI_LoadImage( imgTargetLv, "texture/gui/detail-01.png", NORMAL, 28, 26, 94, 85 )
+
+labTargetLv = UI_CreateCompent( frmTargetInfo, LABELEX_TYPE, "labTargetLv", 14, 9, 200, 45 )
+UI_SetTextColor( labTargetLv, COLOR_C9C2B4 )
 UI_SetLabelExFont( labTargetLv, DEFAULT_FONT, TRUE, COLOR_BLACK )
 UI_SetCaption( labLv, "99" )
 
+labTargetHP = UI_CreateCompent( frmTargetInfo, LABELEX_TYPE, "labTargetHP", 14, 9, 360, 45 )
+UI_SetTextColor( labTargetHP, COLOR_C9C2B4 )
+UI_SetLabelExFont( labTargetHP, DEFAULT_FONT, TRUE, COLOR_BLACK )
+UI_SetCaption( labLv, "99" )
 
-d3dTarget = UI_CreateCompent( frmTargetInfo, UI3D_COMPENT_TYPE, "d3dTarget", 23, 23, 6, 6 )
-
-btnTargetInfo = UI_CreateCompent( frmTargetInfo, BUTTON_TYPE, "btnTargetInfo", 41, 13, 125,36 )
-UI_LoadImage( btnTargetInfo, "texture/ui/targetForm.tga", 0, 41, 13, 2, 38 )
-UI_LoadImage( btnTargetInfo, "texture/ui/targetForm.tga", 1, 41, 13, 2, 38 )
-UI_LoadImage( btnTargetInfo, "texture/ui/targetForm.tga", 2, 41, 13, 2, 52 )
+btnTargetInfo = UI_CreateCompent( frmTargetInfo, BUTTON_TYPE, "btnTargetInfo", 16, 18, 247, 42 )
+UI_LoadButtonImage( btnTargetInfo, "texture/gui/fun-panel.png", 16, 18, 52, 28, TRUE )
 UI_SetHint( btnTargetInfo, "Show monster info" )
 UI_SetIsShow(btnTargetInfo, TRUE)
 
-
-
+------
 -- Drop Form
-
-frmTargetDrop = UI_CreateForm( "frmTargetDrop", FALSE, 198, 421, 210, 60, TRUE, FALSE )
+------
+frmTargetDrop = UI_CreateForm( "frmTargetDrop", FALSE, 460, 421, 380, 557, TRUE, FALSE )
 UI_ShowForm( frmTargetDrop, FALSE )
---UI_AddFormToTemplete( frmTargetDrop, FORM_MAIN )
 UI_FormSetIsEscClose( frmTargetDrop, TRUE )
 
-imgTargetDropForm = UI_CreateCompent( frmTargetDrop, IMAGE_TYPE, "imgTargetDropForm", 198, 421, 0, 0 )
-UI_LoadImage( imgTargetDropForm, "texture/ui/dropinfo.png", COMPENT_BACK, 198, 421, 0, 0 )
-
-labTargetInfoName = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "labTargetInfoName", 14, 12, 10, 3 )
-UI_SetTextColor( labTargetInfoName, COLOR_BLACK )
-UI_SetLabelExFont( labTargetInfoName, DEFAULT_FONT, TRUE, COLOR_WHITE )
-UI_SetCaption( labTargetInfoName, "Drop Info" )
-
-btnTargetDropFormClose = UI_CreateCompent( frmTargetDrop, BUTTON_TYPE, "btnTargetDropFormClose", 14, 14, 177, 2 )
-UI_LoadButtonImage( btnTargetDropFormClose, "texture/ui/PublicC.tga", 14, 14, 116, 175, TRUE )
-UI_SetButtonModalResult( btnTargetDropFormClose, BUTTON_CLOSE )
-
-
-_G["infoDrop1"] = UI_CreateCompent( frmTargetDrop, COMMAND_ONE_TYPE, "infoDrop1", 32, 32, 21, 30)
-UI_SetIsDrag( _G["infoDrop1"], FALSE )
-		
-_G["infoDropName1"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropName1", 85, 9, 63, 35 )
-UI_SetTextColor( _G["infoDropName1"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropName1"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-		
-_G["infoDropRate1"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropRate1", 85, 9, 63, 47 )
-UI_SetTextColor( _G["infoDropRate1"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropRate1"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-------------------------
-_G["infoDrop2"] = UI_CreateCompent( frmTargetDrop, COMMAND_ONE_TYPE, "infoDrop2", 32, 32, 21, 68 )
-UI_SetIsDrag( _G["infoDrop2"], FALSE )
-		
-_G["infoDropName2"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropName2", 85, 9, 63, 73 )
-UI_SetTextColor( _G["infoDropName2"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropName2"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-		
-_G["infoDropRate2"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropRate2", 85, 9, 63, 85 )
-UI_SetTextColor( _G["infoDropRate2"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropRate2"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-------------------------
-_G["infoDrop3"] = UI_CreateCompent( frmTargetDrop, COMMAND_ONE_TYPE, "infoDrop3", 32, 32, 21, 106 )
-UI_SetIsDrag( _G["infoDrop3"], FALSE )
-		
-_G["infoDropName3"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropName3", 85, 9, 63, 111 )
-UI_SetTextColor( _G["infoDropName3"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropName3"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-		
-_G["infoDropRate3"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropRate3", 85, 9, 63, 123 )
-UI_SetTextColor( _G["infoDropRate3"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropRate3"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-------------------------
-_G["infoDrop4"] = UI_CreateCompent( frmTargetDrop, COMMAND_ONE_TYPE, "infoDrop4", 32, 32, 21, 144 )
-UI_SetIsDrag( _G["infoDrop4"], FALSE )
-		
-_G["infoDropName4"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropName4", 85, 9, 63, 149 )
-UI_SetTextColor( _G["infoDropName4"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropName4"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-		
-_G["infoDropRate4"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropRate4", 85, 9, 63, 161 )
-UI_SetTextColor( _G["infoDropRate4"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropRate4"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-------------------------
-_G["infoDrop5"] = UI_CreateCompent( frmTargetDrop, COMMAND_ONE_TYPE, "infoDrop5", 32, 32, 21, 182 )
-UI_SetIsDrag( _G["infoDrop5"], FALSE )
-		
-_G["infoDropName5"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropName5", 85, 9, 63, 187 )
-UI_SetTextColor( _G["infoDropName5"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropName5"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-		
-_G["infoDropRate5"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropRate5", 85, 9, 63, 199 )
-UI_SetTextColor( _G["infoDropRate5"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropRate5"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-------------------------
-_G["infoDrop6"] = UI_CreateCompent( frmTargetDrop, COMMAND_ONE_TYPE, "infoDrop6", 32, 32, 21, 220 )
-UI_SetIsDrag( _G["infoDrop6"], FALSE )
-		
-_G["infoDropName6"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropName6", 85, 9, 63, 225 )
-UI_SetTextColor( _G["infoDropName6"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropName6"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-		
-_G["infoDropRate6"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropRate6", 85, 9, 63, 237 )
-UI_SetTextColor( _G["infoDropRate6"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropRate6"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-------------------------
-_G["infoDrop7"] = UI_CreateCompent( frmTargetDrop, COMMAND_ONE_TYPE, "infoDrop7", 32, 32, 21, 258 )
-UI_SetIsDrag( _G["infoDrop7"], FALSE )
-		
-_G["infoDropName7"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropName7", 85, 9, 63, 263 )
-UI_SetTextColor( _G["infoDropName7"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropName7"], DEFAULT_FONT, TRUE, COLOR_WHITE )
+for pos = 0, 9, 1 do
+	local collum = 0
 	
-_G["infoDropRate7"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropRate7", 85, 9, 63, 275 )
-UI_SetTextColor( _G["infoDropRate7"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropRate7"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-------------------------
-_G["infoDrop8"] = UI_CreateCompent( frmTargetDrop, COMMAND_ONE_TYPE, "infoDrop8", 32, 32, 21, 296 )
-UI_SetIsDrag( _G["infoDrop8"], FALSE )
-		
-_G["infoDropName8"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropName8", 85, 9, 63, 301 )
-UI_SetTextColor( _G["infoDropName8"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropName8"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-		
-_G["infoDropRate8"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropRate8", 85, 9, 63, 313 )
-UI_SetTextColor( _G["infoDropRate8"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropRate8"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-------------------------
-_G["infoDrop9"] = UI_CreateCompent( frmTargetDrop, COMMAND_ONE_TYPE, "infoDrop9", 32, 32, 21, 334 )
-UI_SetIsDrag( _G["infoDrop9"], FALSE )
+	if (pos > 4) then collum = 86 end
 	
-_G["infoDropName9"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropName9", 85, 9, 63, 339 )
-UI_SetTextColor( _G["infoDropName9"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropName9"], DEFAULT_FONT, TRUE, COLOR_WHITE )
+	imgSlot = UI_CreateCompent( frmTargetDrop, IMAGE_TYPE, "imgSlot", 35, 35, 7 + collum + (pos * 37), 65 )
+	UI_LoadImage(imgSlot, "texture/gui/detail-01.png", NORMAL, 35, 34, 336, 19 )
+	
+	local j0 = pos + 1
+	local j1 = "infoDrop" .. j0
+	--local j2 = "infoDropName" .. j0
+	local j3 = "infoDropRate" .. j0
+	
+	j1 = UI_CreateCompent( frmTargetDrop, COMMAND_ONE_TYPE, j1, 32, 32, 8 + collum + (pos * 37), 66)
+	UI_SetIsDrag(j1, FALSE )
 		
-_G["infoDropRate9"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropRate9", 85, 9, 63, 351 )
-UI_SetTextColor( _G["infoDropRate9"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropRate9"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-------------------------
-_G["infoDrop10"] = UI_CreateCompent( frmTargetDrop, COMMAND_ONE_TYPE, "infoDrop10", 32, 32, 21, 372 )
-UI_SetIsDrag( _G["infoDrop10"], FALSE )
-		
-_G["infoDropName10"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropName10", 85, 9, 63, 377 )
-UI_SetTextColor( _G["infoDropName10"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropName10"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-		
-_G["infoDropRate10"] = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, "infoDropRate10", 85, 9, 63, 389 )
-UI_SetTextColor( _G["infoDropRate10"], COLOR_BLACK )
-UI_SetLabelExFont( _G["infoDropRate10"], DEFAULT_FONT, TRUE, COLOR_WHITE )
-------------------------
+	--j2 = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, j2, 85, 9, 63, 35 )
+	--UI_SetTextColor( j2, COLOR_BLACK )
+	--UI_SetLabelExFont(j2, DEFAULT_FONT, TRUE, COLOR_WHITE )
+	
+	imgSlotBackground = UI_CreateCompent( frmTargetDrop, IMAGE_TYPE, "imgSlotBackground", 33, 11, 8 + collum + (pos * 37), 90 )
+	UI_LoadImage(imgSlotBackground, "texture/gui/detail-01.png", NORMAL, 10, 10, 336, 57 )
+	
+	j3 = UI_CreateCompent( frmTargetDrop, LABELEX_TYPE, j3, 30, 10, 14 + collum + (pos * 37), 91 )
+	UI_SetTextColor(j3, COLOR_958273 )
+	UI_SetLabelExFont(j3, ARIAL_FONT_MINI, FALSE, COLOR_WHITE )
+end

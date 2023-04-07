@@ -15,26 +15,21 @@ function addEquipGroup(X,Y,Xoff,Yoff,names,form,skillid)
 	end
 end
 
-
-frmInv = UI_CreateForm( "frmInv", FALSE, 440, 400, 198, 160, TRUE, FALSE )
+frmInv = UI_CreateForm( "frmInv", FALSE, 447, 368, 198, 160, TRUE, FALSE )
 UI_FormSetHotKey( frmInv, ALT_KEY, HOTKEY_E ) --'E'
 UI_ShowForm( frmInv, FALSE )
 UI_AddFormToTemplete( frmInv, FORM_MAIN )
 UI_SetIsDrag( frmInv, TRUE )
 
-imgfrmInv = UI_CreateCompent( frmInv, IMAGE_TYPE, "imgfrmInv", 440, 400, 0, 0 )
-UI_LoadImage( imgfrmInv, "texture/ui/corsairs/INV/invform.png", NORMAL, 440, 400, 0, 0 )
+imgfrmInv = UI_CreateCompent( frmInv, IMAGE_TYPE, "imgfrmInv", 196, 368, 0, 0 )
+UI_LoadImage( imgfrmInv, "texture/gui/Inventory.png", NORMAL, 196, 368, 0, 0 )
 
--- Close Button
-btnClose = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnClose", 14, 14, 415, 1 )
-UI_LoadButtonImage( btnClose, "texture/ui/PublicC.tga", 14, 14, 116, 175, TRUE )
+imgfrmInv = UI_CreateCompent( frmInv, IMAGE_TYPE, "imgfrmInv", 251, 414, 196, 0 )
+UI_LoadImage( imgfrmInv, "texture/gui/Inventory.png", NORMAL, 251, 414, 196, 0 )
+
+btnClose = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnClose", 32, 32, 408, 7 )
+UI_LoadButtonImage( btnClose, "texture/gui/Inventory.png", 32, 32, 0, 368, TRUE )
 UI_SetButtonModalResult( btnClose, BUTTON_CLOSE )
-
--- Title Bar
-labTitle = UI_CreateCompent( frmInv, LABELEX_TYPE, "labTitle", 400, 150, 10, 2 )
-UI_SetCaption( labTitle, "Inventory")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
 
 pgePublic = UI_CreateCompent( frmInv, PAGE_TYPE, "pgePublic", 192, 325, 8, 16 )
 UI_SetPageButton( pgePublic, PAGE_BUTTON_CUSTOM, 48, 16 )
@@ -49,11 +44,10 @@ local tabsY = 35
 --Equip Tab
 skillid = UI_CreatePageItem( pgePublic )
 ttlNum = UI_GetPageItemObj( skillid, PAGE_ITEM_TITLE )
-UI_LoadImage( ttlNum, "texture/ui/corsairs/INV/tabs.png", PAGE_ITEM_TITLE_ACTIVE, 55, 35, 0, 0 )
-UI_LoadImage( ttlNum, "texture/ui/corsairs/INV/tabs.png", PAGE_ITEM_TITLE_NORMAL, 55, 35, 56, 0 )
-UI_SetPos( ttlNum, tabX, tabY )
-UI_SetSize( ttlNum, tabsX, tabsY )
-
+UI_LoadImage( ttlNum, "texture/gui/Inventory.png", PAGE_ITEM_TITLE_ACTIVE, 46, 42, 0, 400 )
+--UI_LoadImage( ttlNum, "texture/gui/Inventory.png", PAGE_ITEM_TITLE_NORMAL, 46, 42, 0, 400 )
+UI_SetPos( ttlNum, -4, -7 )
+UI_SetSize( ttlNum, 51, 35 )
 
 --left col
 addEquipGroup(8,40,0,49,{"cmdArmet","cmdWing","cmdNecklace","cmdRightHand","cmdJewelry4","cmdCloak"},frmInv,skillid)
@@ -64,35 +58,26 @@ addEquipGroup(104,187,0,49,{"cmdCirclet2","cmdJewelry2","cmdPet"},frmInv,skillid
 --right col
 addEquipGroup(152,40,0,49,{"cmdBody","cmdGlove","cmdShoes","cmdLeftHand","cmdJewelry3","cmdMount"},frmInv,skillid)
 
-
-
 ui3dCha = UI_CreateCompent( frmInv, UI3D_COMPENT, "ui3dCha", 0, 0, 96, 180 )
 
+btnChaRight3d = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnChaRight3d", 17, 13, 70, 328 )
+UI_LoadButtonImage( btnChaRight3d, "texture/gui/Inventory.png", 17, 13, 202, 412+4, FALSE )
 
-
-btnChaLeft3d = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnChaLeft3d", 32, 38, 55,335 )
-UI_LoadButtonImage( btnChaLeft3d, "texture/ui/corsairs/coButtons.png", 32, 32, 217, 87, TRUE )
-
-btnChaRight3d = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnChaRight3d", 32, 38, 109,335 )
-UI_LoadButtonImage( btnChaRight3d, "texture/ui/corsairs/coButtons.png",  32, 32, 217, 119, TRUE )
+btnChaLeft3d = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnChaLeft3d", 17, 13, 70+17+20, 328 )
+UI_LoadButtonImage( btnChaLeft3d, "texture/gui/Inventory.png", 17, 13, 248, 412+4, FALSE )
 
 UI_AddCompent( skillid, btnChaLeft3d )
 UI_AddCompent( skillid, btnChaRight3d )
 UI_AddCompent( skillid, ui3dCha )
 
-
-
 --Apparel Tab
 skillid = UI_CreatePageItem( pgePublic )
 ttlNum = UI_GetPageItemObj( skillid, PAGE_ITEM_TITLE )
-UI_LoadImage( ttlNum, "texture/ui/corsairs/INV/tabs.png", PAGE_ITEM_TITLE_ACTIVE, 55, 35, 0, 35 )
-UI_LoadImage( ttlNum, "texture/ui/corsairs/INV/tabs.png", PAGE_ITEM_TITLE_NORMAL, 55, 35, 56, 35 )
-
-UI_SetPos( ttlNum, tabX+tabXoff , tabY )
-UI_SetSize( ttlNum, tabsX, tabsY )
+UI_LoadImage( ttlNum, "texture/gui/Inventory.png", PAGE_ITEM_TITLE_ACTIVE, 62, 42, 54, 400 )
+--UI_LoadImage( ttlNum, "texture/gui/Inventory.png", PAGE_ITEM_TITLE_NORMAL, 62, 42, 54, 400 )
+UI_SetPos( ttlNum, 48, -7 )
+UI_SetSize( ttlNum, 62, 35 )
 UI_AddCompent( skillid, lstNum )
-
-
 
 addEquipGroup(22,48,0,55,{"cmdPetApp","cmdDaggerApp","cmdGunApp","cmdSword1App","cmdGreatSwordApp"},frmInv,skillid)
 addEquipGroup(82,48,0,55,{"cmdArmetApp","cmdFaceApp","cmdBodyApp","cmdGloveApp","cmdShoesApp",},frmInv,skillid)
@@ -102,84 +87,68 @@ addEquipGroup(142,48,0,55,{"cmdGlowApp","cmdStaffApp","cmdBowApp","cmdSword2App"
 --Temp Tab
 skillid = UI_CreatePageItem( pgePublic )
 ttlNum = UI_GetPageItemObj( skillid, PAGE_ITEM_TITLE )
-UI_LoadImage( ttlNum, "texture/ui/corsairs/INV/tabs.png", PAGE_ITEM_TITLE_ACTIVE, 55, 35, 0, 70 )
-UI_LoadImage( ttlNum, "texture/ui/corsairs/INV/tabs.png", PAGE_ITEM_TITLE_NORMAL, 55, 35, 56, 70 )
+UI_LoadImage( ttlNum, "texture/gui/Inventory.png", PAGE_ITEM_TITLE_ACTIVE, 73, 42, 120, 400 )
+--UI_LoadImage( ttlNum, "texture/gui/Inventory.png", PAGE_ITEM_TITLE_NORMAL, 73, 42, 56, 70 )
 
-UI_SetPos( ttlNum, tabX+tabXoff+tabXoff, tabY )
-UI_SetSize( ttlNum, tabsX, tabsY )
+UI_SetPos( ttlNum, 111, -7 )
+UI_SetSize( ttlNum, 73, 35 )
 
 
-grid = UI_CreateCompent( frmInv, IMAGE_TYPE, "grid", 143,283, 26,38 )
-UI_LoadImage( grid, "texture/ui/corsairs/INV/temp_grid.png", NORMAL, 143,283, 0, 0 )
+grid = UI_CreateCompent( frmInv, IMAGE_TYPE, "grid", 153, 308, 17, 36 )
+UI_LoadImage( grid, "texture/gui/Inventory.png", NORMAL, 153, 308, 0, 445 )
 UI_AddCompent( skillid, grid )
 
-
-grdTempBag = UI_CreateCompent( frmInv, GOODS_GRID_TYPE, "grdTempBag", 184, 305, 8, 37 ) 
-UI_SetGridSpace( grdTempBag, 3, 3 )
-UI_SetGridContent( grdTempBag, 4, 4 )
+grdTempBag = UI_CreateCompent( frmInv, GOODS_GRID_TYPE, "grdTempBag", 153, 328, 19, 37 ) 
+UI_SetGridSpace( grdTempBag, 7, 7 )
+UI_SetGridContent( grdTempBag, 8, 4 )
 UI_SetGridUnitSize( grdTempBag, 32, 32 )
-UI_SetMargin( grdTempBag, 21, 4, 0, 0 )
+UI_SetMargin( grdTempBag, 0, 0, 0, 0 )
 
 UI_AddCompent( skillid, grdTempBag )
 
-
-
-grdItem = UI_CreateCompent( frmInv, GOODS_GRID_TYPE, "grdItem", 208, 280, 215,55 ) 
-UI_SetGridSpace( grdItem, 3, 3 )
+grdItem = UI_CreateCompent( frmInv, GOODS_GRID_TYPE, "grdItem", 230, 320, 208, 54 ) 
+UI_SetGridSpace( grdItem, 7, 7 )
 UI_SetGridContent( grdItem, 8, 6 )
 UI_SetGridUnitSize( grdItem, 32, 32 )
 UI_SetMargin( grdItem, 0, 0, 0, 0 )
 
-------
--- Подложка под голду и пст
-------
-imgimpgold = UI_CreateCompent( frmInv, IMAGE_TYPE, "imgimpgold", 150,53, 230, 342 )
-UI_LoadImage( imgimpgold, "texture/ui/corsairs/INV/goldimp.png", NORMAL, 150,53, 0, 0 )
+labItemgoldnumber = UI_CreateCompent( frmInv, LABELEX_TYPE, "labItemgoldnumber", 91, 8, 232, 329+43 )
+UI_SetTextColor( labItemgoldnumber, COLOR_B1A58E )
+UI_SetLabelExFont( labItemgoldnumber, DEFAULT_FONT, FALSE, 4289901234 )
 
-------
--- Отображение кол-во золота
-------
-
-labItemgoldnumber = UI_CreateCompent( frmInv, LABELEX_TYPE, "labItemgoldnumber", 91, 8, 257, 350 )
-UI_SetTextColor( labItemgoldnumber, COLOR_BLACK )
-UI_SetLabelExFont( labItemgoldnumber, DEFAULT_FONT, TRUE, 4289901234 )
-
-------
--- Отображение кол-во пиастров
-------
-labItemIMPnumber = UI_CreateCompent( frmInv, LABELEX_TYPE, "labItemIMPnumber", 91, 8, 257, 376 )
-UI_SetTextColor( labItemIMPnumber, COLOR_BLACK )
-UI_SetLabelExFont( labItemIMPnumber, DEFAULT_FONT, TRUE, 4289901234 )
+labItemIMPnumber = UI_CreateCompent( frmInv, LABELEX_TYPE, "labItemIMPnumber", 91, 8, 232, 348+43 )
+UI_SetTextColor( labItemIMPnumber, COLOR_B1A58E )
+UI_SetLabelExFont( labItemIMPnumber, DEFAULT_FONT, FALSE, 4289901234 )
 
 ------
 -- Блокировка предмета
 ------
-btnLockItem = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnLockItem", 20, 20, 408, 343 )
-UI_LoadImage( btnLockItem, "texture/ui/corsairs/coButtons.png", 0, 21, 20, 169, 146 )
-UI_LoadImage( btnLockItem, "texture/ui/corsairs/coButtons.png", 1, 21, 20, 190, 146 )
-UI_LoadImage( btnLockItem, "texture/ui/corsairs/coButtons.png", 2, 21, 20, 190, 146 )
+btnLockItem = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnLockItem", 21, 21, 392, 334+43 )
+UI_LoadImage( btnLockItem, "texture/gui/Inventory.png", 0, 21, 21, 129, 368 )
+UI_LoadImage( btnLockItem, "texture/gui/Inventory.png", 1, 21, 21, 129, 368 )
+UI_LoadImage( btnLockItem, "texture/gui/Inventory.png", 2, 21, 21, 129, 368 )
 UI_SetHint( btnLockItem, "Lock Item" )
 
 ------
 -- Блокировака инвенторя
 ------
-btnLock = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnLock", 12, 15, 385, 346 )
+btnLock = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnLock", 12, 15, 373, 337+43 )
 UI_FormSetHotKey( btnLock, ALT_KEY, HOTKEY_B )
 
-imgLock = UI_CreateCompent( frmInv, IMAGE_TYPE, "imgLock", 12, 15, 385, 346 )
-UI_LoadImage( imgLock, "texture/ui/a001.tga",NORMAL, 12, 15, 72, 165, TRUE )
+imgLock = UI_CreateCompent( frmInv, IMAGE_TYPE, "imgLock", 12, 15, 373, 337+43 )
+UI_LoadImage( imgLock, "texture/gui/a001.tga",NORMAL, 12, 15, 72, 165, TRUE )
 
-imgUnLock = UI_CreateCompent( frmInv, IMAGE_TYPE, "imgUnLock", 12, 15, 385, 346 )
-UI_LoadImage( imgUnLock, "texture/ui/a001.tga",NORMAL, 12, 15, 84, 165, TRUE )
+imgUnLock = UI_CreateCompent( frmInv, IMAGE_TYPE, "imgUnLock", 12, 15, 373, 337+43 )
+UI_LoadImage( imgUnLock, "texture/gui/a001.tga",NORMAL, 12, 15, 84, 165, TRUE )
 UI_SetHint( imgUnLock, "Lock Inventory" )
 
 ------
 -- Корзина
 ------
-btnbrush = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnbrush", 16, 19, 410, 372 )
-UI_LoadButtonImage( btnbrush, "texture/ui/SystemBotton3.tga", 16, 19, 151, 226, TRUE ) 
+btnbrush = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnbrush", 16, 19, 418, 334+43 )
+UI_LoadButtonImage( btnbrush, "texture/gui/SystemBotton3.tga", 16, 19, 151, 226, TRUE ) 
 
-cmdLost = UI_CreateCompent( frmInv, COMMAND_ONE_TYPE, "cmdLost", 16, 19, 410, 372 )
+cmdLost = UI_CreateCompent( frmInv, COMMAND_ONE_TYPE, "cmdLost", 16, 19, 418, 334+43 )
 UI_SetTag( cmdLost, 999 )
 UI_SetHint( cmdLost, "Delete" )
 
@@ -256,7 +225,7 @@ UI_SetTag( cmdShieldApp, 33 )
 -----------------------------------------------------------------------
 -- 定义技能
 -----------------------------------------------------------------------
-frmSkill = UI_CreateForm( "frmSkill", FALSE, 198, 394-37, 396, 160, FALSE, FALSE )
+frmSkill = UI_CreateForm( "frmSkill", FALSE, 223, 470, 396, 160, FALSE, FALSE )
 UI_FormSetHotKey( frmSkill, ALT_KEY, HOTKEY_S ) 
 UI_ShowForm( frmSkill, TRUE )
 UI_AddFormToTemplete( frmSkill, FORM_MAIN )
@@ -264,143 +233,64 @@ UI_SetIsDrag( frmSkill, TRUE )
 --UI_SetFormStyle( frmSkill, 0 )
 --UI_SetAlpha( frmSkill, 200 )
 
--- 加载背景图片
-imgSkillBTop = UI_CreateCompent( frmSkill, IMAGE_TYPE, "imgSkillBTop", 198, 256, 0, 0 )
-UI_LoadImage( imgSkillBTop, "texture/ui/PublicD.bmp", NORMAL, 198, 256, 0, 0 )
+-- Background
+imgSkillBTop = UI_CreateCompent( frmSkill, IMAGE_TYPE, "imgSkillBTop", 223, 470, 0, 0 )
+UI_LoadImage( imgSkillBTop, "texture/gui/skill-panel.png", NORMAL, 223, 470, 0, 0 )
 
-imgSkillBDown = UI_CreateCompent( frmSkill, IMAGE_TYPE, "imgSkillBDown", 198, 100, 0, 256 )
-UI_LoadImage( imgSkillBDown, "texture/ui/PublicD2.bmp", NORMAL, 198, 100, 0, 37 )
-
-imgSkillTop = UI_CreateCompent( frmSkill, IMAGE_TYPE, "imgSkillTop", 177, 256, 7, 54 )
-UI_LoadImage( imgSkillTop, "texture/ui/Skill.dds", NORMAL, 175, 256, 0, 0 )
-imgSkillDown = UI_CreateCompent( frmSkill, IMAGE_TYPE, "imgSkillDown", 177, 19, 7, 310 )
-UI_LoadImage( imgSkillDown, "texture/ui/ShipBuild2.tga", NORMAL, 175, 18, 80, 233 )
-
---imgSkillD = UI_CreateCompent( frmSkill, IMAGE_TYPE, "imgSkillD", 184, 43, 7, 330 )
---UI_LoadImage( imgSkillD, "texture/ui/TalkM.dds", NORMAL, 184, 43, 0, 213 )
-
---imgSkillDL = UI_CreateCompent( frmSkill, IMAGE_TYPE, "imgSkillDL", 36, 36, 15, 334 )
---UI_LoadImage( imgSkillDL, "texture/ui/PublicC.tga", NORMAL, 36, 36, 167, 59 )
-
-
------------------------------------------------------------------------------------------------------------------------------------------------
---创建剩余技能点信息
-imgSkillP = UI_CreateCompent( frmSkill, IMAGE_TYPE, "imgSkillP", 39, 18, 132, 296-42 )
-UI_LoadImage( imgSkillP, "texture/ui/SysBotton4.tga", NORMAL, 39, 18, 106, 99 )
-
-labFront = UI_CreateCompent( frmSkill, LABELEX_TYPE, "labFront", 59, 11, 69, 299-42 )
-UI_SetCaption( labFront, "Skill Pts" )
-UI_SetTextColor( labFront, COLOR_BLACK )
-UI_SetLabelExFont( labFront, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
---战斗技能点
-labPoint = UI_CreateCompent( frmSkill, LABELEX_TYPE, "labPoint", 19, 11, 143, 299-42 )
-UI_SetCaption( labPoint, "100" )
-UI_SetTextColor( labPoint, COLOR_BLACK )
-UI_SetLabelExFont( labPoint, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
---生活技能点
-labPoint1 = UI_CreateCompent( frmSkill, LABELEX_TYPE, "labPoint1", 19, 11, 143, 299-42 )
-UI_SetCaption( labPoint1, "100" )
-UI_SetTextColor( labPoint1, COLOR_BLACK )
-UI_SetLabelExFont( labPoint1, DEFAULT_FONT, TRUE, COLOR_WHITE )
------------------------------------------------------------------------------------------------------------------------------------------------
-
---创建关闭按钮
-btnClose = UI_CreateCompent( frmSkill, BUTTON_TYPE, "btnClose", 14, 14, 177, 3 )
-UI_LoadButtonImage( btnClose, "texture/ui/PublicC.tga", 14, 14, 116, 175, TRUE )
+btnClose = UI_CreateCompent( frmSkill, BUTTON_TYPE, "btnClose", 32, 32, 177, 3+11 )
+UI_LoadButtonImage( btnClose, "texture/gui/Inventory.png", 32, 32, 0, 368, TRUE )
 UI_SetButtonModalResult( btnClose, BUTTON_CLOSE )
 
--- 加载界面title
-labTitle = UI_CreateCompent( frmSkill, LABELEX_TYPE, "labTitle", 400, 150, 10, 3 )
-UI_SetCaption( labTitle, "Skill")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
+-- Skill points
+labPoint = UI_CreateCompent( frmSkill, LABELEX_TYPE, "labPoint", 19, 11, 155, 320 )
+UI_SetCaption( labPoint, "100" )
+UI_SetTextColor( labPoint, COLOR_968774 )
 
---创建战斗技能列表
-lstSkill = UI_CreateCompent( frmSkill, SKILL_LIST_TYPE, "lstSkill", 183, 275, 5, -20 )
+-- Life skill poitns
+labPoint1 = UI_CreateCompent( frmSkill, LABELEX_TYPE, "labPoint1", 19, 11, 155, 320 )
+UI_SetCaption( labPoint1, "100" )
+UI_SetTextColor( labPoint1, COLOR_968774 )
+
+-----------------------------------------------------------------------------------------------------------------------------------------------
+lstSkill = UI_CreateCompent( frmSkill, SKILL_LIST_TYPE, "lstSkill", 190, 320, 11, 10 )
 UI_SetMargin( lstSkill, 1, 4, 3, 5 )
 UI_SetListRowHeight( lstSkill, 38 )
---UI_ListLoadSelectImage( lstSkill, "texture/ui/button.dds", 148, 32, 38, 175 )
+UI_LoadSkillListButtonImage( lstSkill, "texture/gui/skill-panel.png", 17, 17, 233, 60, 17, 17 )
 
-UI_LoadSkillListButtonImage( lstSkill, "texture/ui/Quest1.tga", 17, 17, 4, 198, 17, 17 )
-
---获得滚动条
 scrollid = UI_GetScroll( lstSkill)
 UI_SetSize( scrollid, 11, 1 )
-UI_LoadImage( scrollid, "texture/ui/PublicC.tga", COMPENT_BACK, 11, 1, 194, 13 )
+UI_LoadImage( scrollid, "texture/gui/skill-panel.png", COMPENT_BACK, 11, 1, 230, 80 )
 
---加载向上按钮
-id = UI_GetScrollObj( scrollid, SCROLL_UP )
-UI_LoadButtonImage( id, "texture/ui/PublicC.tga", 11, 9, 166, 0, TRUE )
-UI_SetSize( id, 11, 9 )
-
---加载滚动条
 id = UI_GetScrollObj( scrollid, SCROLL_SCROLL )
-UI_LoadImage( id, "texture/ui/PublicC.tga", COMPENT_BACK, 11, 43, 166, 10 )
-UI_SetSize( id, 11, 43 )
-
---加载向下按钮
-id = UI_GetScrollObj( scrollid, SCROLL_DOWN )
-UI_LoadButtonImage( id, "texture/ui/PublicC.tga", 11, 9, 166, 0, TRUE )
-UI_SetSize( id, 11, 9 )
-
---创建生活技能列表
-lstSkillW = UI_CreateCompent( frmSkill, SKILL_LIST_TYPE, "lstSkillW", 183, 275, 5, -20 )
+UI_LoadImage( id, "texture/gui/skill-panel.png", COMPENT_BACK, 13, 43, 243, 79 )
+UI_SetSize( id, 13, 43 )
+-----------------------------------------------------------------------------------------------------------------------------------------------
+lstSkillW = UI_CreateCompent( frmSkill, SKILL_LIST_TYPE, "lstSkillW", 180, 320, 11, 11 )
 UI_SetMargin( lstSkillW, 1, 4, 3, 5 )
 UI_SetListRowHeight( lstSkillW, 38 )
---UI_ListLoadSelectImage( lstSkillW, "texture/ui/button.dds", 148, 32, 38, 175 )
-UI_LoadSkillListButtonImage( lstSkillW, "texture/ui/Quest1.tga", 17, 17, 4, 198, 17, 17 )
+UI_LoadSkillListButtonImage( lstSkillW, "texture/gui/skill-panel.png", 17, 17, 233, 60, 17, 17 )
 
---获得滚动条
 scrollid = UI_GetScroll( lstSkillW )
 UI_SetSize( scrollid, 11, 1 )
-UI_LoadImage( scrollid, "texture/ui/PublicC.tga", COMPENT_BACK, 11, 1, 194, 13 )
+UI_LoadImage( scrollid, "texture/gui/skill-panel.png", COMPENT_BACK, 11, 1, 230, 80 )
 
---加载向上按钮
-id = UI_GetScrollObj( scrollid, SCROLL_UP )
-UI_LoadButtonImage( id, "texture/ui/PublicC.tga", 11, 9, 166, 0, TRUE )
-UI_SetSize( id, 11, 9 )
-
---加载滚动条
 id = UI_GetScrollObj( scrollid, SCROLL_SCROLL )
-UI_LoadImage( id, "texture/ui/PublicC.tga", COMPENT_BACK, 11, 43, 166, 10 )
-UI_SetSize( id, 11, 43 )
-
---加载向下按钮
-id = UI_GetScrollObj( scrollid, SCROLL_DOWN )
-UI_LoadButtonImage( id, "texture/ui/PublicC.tga", 11, 9, 166, 0, TRUE )
-UI_SetSize( id, 11, 9 )
-
-
---创建海上技能列表
-lstSkillS = UI_CreateCompent( frmSkill, SKILL_LIST_TYPE, "lstSkillS", 183, 275, 5, -20 )
+UI_LoadImage( id, "texture/gui/skill-panel.png", COMPENT_BACK, 13, 43, 243, 79 )
+UI_SetSize( id, 13, 43 )
+-----------------------------------------------------------------------------------------------------------------------------------------------
+lstSkillS = UI_CreateCompent( frmSkill, SKILL_LIST_TYPE, "lstSkillS", 180, 320, 11, 11 )
 UI_SetMargin( lstSkillS, 1, 4, 3, 5 )
 UI_SetListRowHeight( lstSkillS, 38 )
---UI_ListLoadSelectImage( lstSkillS, "texture/ui/button.dds", 148, 32, 38, 175 )
+UI_LoadSkillListButtonImage( lstSkillS, "texture/gui/skill-panel.png", 17, 17, 233, 60, 17, 17 )
 
-UI_LoadSkillListButtonImage( lstSkillS, "texture/ui/Quest1.tga", 17, 17, 4, 198, 17, 17 )
-
---获得滚动条
 scrollid = UI_GetScroll( lstSkillS )
 UI_SetSize( scrollid, 11, 1 )
-UI_LoadImage( scrollid, "texture/ui/PublicC.tga", COMPENT_BACK, 11, 1, 194, 13 )
+UI_LoadImage( scrollid, "texture/gui/skill-panel.png", COMPENT_BACK, 11, 1, 230, 80 )
 
---加载向上按钮
-id = UI_GetScrollObj( scrollid, SCROLL_UP )
-UI_LoadButtonImage( id, "texture/ui/PublicC.tga", 11, 9, 166, 0, TRUE )
-UI_SetSize( id, 11, 9 )
-
---加载滚动条
 id = UI_GetScrollObj( scrollid, SCROLL_SCROLL )
-UI_LoadImage( id, "texture/ui/PublicC.tga", COMPENT_BACK, 11, 43, 166, 10 )
-UI_SetSize( id, 11, 43 )
-
---加载向下按钮
-id = UI_GetScrollObj( scrollid, SCROLL_DOWN )
-UI_LoadButtonImage( id, "texture/ui/PublicC.tga", 11, 9, 166, 0, TRUE )
-UI_SetSize( id, 11, 9 )
-
+UI_LoadImage( id, "texture/gui/skill-panel.png", COMPENT_BACK, 13, 43, 243, 79 )
+UI_SetSize( id, 13, 43 )
+-----------------------------------------------------------------------------------------------------------------------------------------------
 --创建页面
 pgeSkill = UI_CreateCompent( frmSkill, PAGE_TYPE, "pgeSkill", 211, 233, 11, 79 )
 UI_SetPageButton( pgeSkill, PAGE_BUTTON_CUSTOM, 48, 16 )
@@ -408,10 +298,10 @@ UI_SetPageButton( pgeSkill, PAGE_BUTTON_CUSTOM, 48, 16 )
 --战斗技能
 skillid = UI_CreatePageItem( pgeSkill )
 ttlBattle = UI_GetPageItemObj( skillid, PAGE_ITEM_TITLE )
-UI_LoadImage( ttlBattle, "texture/ui/player2.tga", PAGE_ITEM_TITLE_NORMAL, 49, 35, 103, 113 )
-UI_LoadImage( ttlBattle, "texture/ui/player2.tga", PAGE_ITEM_TITLE_ACTIVE, 49, 35, 48, 113 )
-UI_SetPos( ttlBattle, 12, -54 )
-UI_SetSize( ttlBattle, 49, 35 )
+UI_LoadImage( ttlBattle, "texture/gui/skill-panel.png", PAGE_ITEM_TITLE_NORMAL, 16, 20, 233, 0 )
+UI_LoadImage( ttlBattle, "texture/gui/skill-panel.png", PAGE_ITEM_TITLE_ACTIVE, 16, 20, 249, 0 )
+UI_SetPos( ttlBattle, 21, -21 )
+UI_SetSize( ttlBattle, 16, 20 )
 UI_AddCompent( skillid, lstSkill )
 UI_AddCompent( skillid, imgSkillP )
 UI_AddCompent( skillid, labFront )
@@ -420,10 +310,10 @@ UI_AddCompent( skillid, labPoint )
 --生活技能
 skillid = UI_CreatePageItem( pgeSkill )
 ttlLive = UI_GetPageItemObj( skillid, PAGE_ITEM_TITLE )
-UI_LoadImage( ttlLive, "texture/ui/player2.tga", PAGE_ITEM_TITLE_NORMAL, 49, 35, 100, 154 )
-UI_LoadImage( ttlLive, "texture/ui/player2.tga", PAGE_ITEM_TITLE_ACTIVE, 49, 35, 45, 154 )
-UI_SetPos( ttlLive, 61, -54 )
-UI_SetSize( ttlLive, 49, 35 )
+UI_LoadImage( ttlLive, "texture/gui/skill-panel.png", PAGE_ITEM_TITLE_NORMAL, 10, 20, 233, 20 )
+UI_LoadImage( ttlLive, "texture/gui/skill-panel.png", PAGE_ITEM_TITLE_ACTIVE, 10, 20, 243, 20 )
+UI_SetPos( ttlLive, 21+50+15, -21 )
+UI_SetSize( ttlLive, 10, 20 )
 UI_AddCompent( skillid, lstSkillW )
 UI_AddCompent( skillid, imgSkillP )
 UI_AddCompent( skillid, labFront )
@@ -432,10 +322,10 @@ UI_AddCompent( skillid, labPoint1 )
 --海上技能
 skillid = UI_CreatePageItem( pgeSkill )
 ttlSail = UI_GetPageItemObj( skillid, PAGE_ITEM_TITLE )
-UI_LoadImage( ttlSail, "texture/ui/player2.tga", PAGE_ITEM_TITLE_NORMAL, 49, 35, 103, 70 )
-UI_LoadImage( ttlSail, "texture/ui/player2.tga", PAGE_ITEM_TITLE_ACTIVE, 49, 35, 48, 70 )
-UI_SetPos( ttlSail, 110, -54 )
-UI_SetSize( ttlSail, 49, 35 )
+UI_LoadImage( ttlSail, "texture/gui/skill-panel.png", PAGE_ITEM_TITLE_NORMAL, 19, 18, 233, 40 )
+UI_LoadImage( ttlSail, "texture/gui/skill-panel.png", PAGE_ITEM_TITLE_ACTIVE, 19, 18, 252, 40 )
+UI_SetPos( ttlSail, 71+50+20+5, -20 )
+UI_SetSize( ttlSail, 19, 18 )
 UI_AddCompent( skillid, lstSkillS )
 
 
