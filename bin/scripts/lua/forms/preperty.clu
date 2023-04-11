@@ -1,8 +1,7 @@
 -----------------------------------------------------------------------
 -- 定义角色属性
 -----------------------------------------------------------------------
---frmState = UI_CreateForm( "frmState", FALSE, 190, 400, 150, 200, TRUE, FALSE )
-frmState = UI_CreateForm( "frmState", FALSE, 0, 0, 150, 200, TRUE, FALSE )
+frmState = UI_CreateForm( "frmState", FALSE, 190, 400, 150, 200, TRUE, FALSE )
 UI_FormSetHotKey( frmState, ALT_KEY, HOTKEY_A )
 UI_ShowForm( frmState, TRUE )
 UI_AddFormToTemplete( frmState, 1 )

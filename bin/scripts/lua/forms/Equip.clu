@@ -15,7 +15,7 @@ function addEquipGroup(X,Y,Xoff,Yoff,names,form,skillid)
 	end
 end
 
-frmInv = UI_CreateForm( "frmInv", FALSE, 447, 368, 198, 160, TRUE, FALSE )
+frmInv = UI_CreateForm( "frmInv", FALSE, 447, 414, 198, 160, TRUE, FALSE )
 UI_FormSetHotKey( frmInv, ALT_KEY, HOTKEY_E ) --'E'
 UI_ShowForm( frmInv, FALSE )
 UI_AddFormToTemplete( frmInv, FORM_MAIN )
@@ -24,8 +24,8 @@ UI_SetIsDrag( frmInv, TRUE )
 imgfrmInv = UI_CreateCompent( frmInv, IMAGE_TYPE, "imgfrmInv", 196, 368, 0, 0 )
 UI_LoadImage( imgfrmInv, "texture/gui/Inventory.png", NORMAL, 196, 368, 0, 0 )
 
-imgfrmInv = UI_CreateCompent( frmInv, IMAGE_TYPE, "imgfrmInv", 251, 414, 196, 0 )
-UI_LoadImage( imgfrmInv, "texture/gui/Inventory.png", NORMAL, 251, 414, 196, 0 )
+imgfrmInv2 = UI_CreateCompent( frmInv, IMAGE_TYPE, "imgfrmInv2", 251, 414, 196, 0 )
+UI_LoadImage( imgfrmInv2, "texture/gui/Inventory.png", NORMAL, 251, 414, 196, 0 )
 
 btnClose = UI_CreateCompent( frmInv, BUTTON_TYPE, "btnClose", 32, 32, 408, 7 )
 UI_LoadButtonImage( btnClose, "texture/gui/Inventory.png", 32, 32, 0, 368, TRUE )
