@@ -11,9 +11,8 @@ imgBakTop = UI_CreateCompent( frmArea, IMAGE_TYPE, "imgBakTop", 441, 281, 0, 0 )
 UI_LoadImage( imgBakTop, "texture/gui/region.png", NORMAL, 441, 281, 0, 0 )
 --UI_SetImageAlpha(imgBakTop,180)
 
-btnClose = UI_CreateCompent( frmArea, BUTTON_TYPE, "btnClose", 32, 32, 416-20, 13 )
-UI_LoadButtonImage( btnClose, "texture/gui/Inventory.png", 32, 32, 0, 368, TRUE )
-UI_SetButtonModalResult( btnClose, BUTTON_CLOSE )
+btnNo = UI_CreateCompent( frmArea, BUTTON_TYPE, "btnNo", 32, 32, 416-20, 13 )
+UI_LoadButtonImage( btnNo, "texture/gui/Inventory.png", 32, 32, 0, 368, TRUE )
 
 lstRegion0 = UI_CreateCompent( frmArea, LIST_TYPE, "lstRegion0", 210, 200, 16, 35 )
 UI_SetMargin( lstRegion0, 19, 20, 15, 0 )

@@ -387,67 +387,61 @@ UI_LoadButtonImage( btnFastDown, "texture/gui/fast-bar.png", 10, 10, 7, 87, TRUE
 UI_SetHint( btnFastDown, "-" )
 
 -----------------------------------------------------------------------
--- 定义功能区
+-- System pannel
 -----------------------------------------------------------------------	
--- 创建功能表单
-frmMainFun = UI_CreateForm( "frmMainFun", FALSE, 215, 30, 585, 566, TRUE, FALSE )
+frmMainFun = UI_CreateForm( "frmMainFun", FALSE, 215, 30, 185, 566, TRUE, FALSE )
 --UI_FormSetHotKey( frmMainFun, ALT_KEY, HOTKEY_D ) 
 UI_ShowForm( frmMainFun, TRUE )
 UI_AddFormToTemplete( frmMainFun, FORM_MAIN )
 UI_FormSetIsEscClose( frmMainFun, FALSE )
 UI_SetFormStyle( frmMainFun, 11 )---右下
 
-imgMainFun = UI_CreateCompent( frmMainFun, IMAGE_TYPE, "imgMainFun", 183, 30, 0, -4 )
-UI_LoadImage( imgMainFun, "texture/gui/fun-panel.png", NORMAL, 183, 28, 0, 0 )
+imgMainFun = UI_CreateCompent( frmMainFun, IMAGE_TYPE, "imgMainFun", 367, 80, -173, -52 )
+UI_LoadImage( imgMainFun, "texture/gui/system-btn.png", NORMAL, 367, 80, 0, 146+23 )
+UI_SetIsShow(imgMainFun, FALSE)
 
-local hhhh = -5
+btnMenuItemListView = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnMenuItemListView", 20, 50, 188, -37 )
+UI_LoadButtonImage( btnMenuItemListView, "texture/gui/system-btn.png", 30, 72, 0, 0, TRUE )
+UI_SetIsShow(btnMenuItemListView, TRUE)
 
---加载按钮图片
-btnState = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnState", 16, 17, 10+hhhh, 2 )
-UI_LoadButtonImage( btnState, "texture/gui/fun-panel.png", 16, 17, 0, 28, TRUE )
+btnMenuItemListHide = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnMenuItemListHide", 20, 50, 188, -37 )
+UI_LoadButtonImage( btnMenuItemListHide, "texture/gui/system-btn.png", 30, 72, 0, 72, TRUE )
+UI_SetIsShow(btnMenuItemListHide, FALSE)
+
+btnState = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnState", 42, 40, -143, -32 )
+UI_LoadButtonImage( btnState, "texture/gui/system-btn.png", 44, 42, 126, 0, FALSE )
 UI_SetHint( btnState , "Stats (Alt+A)" )
+UI_SetIsShow(btnState, FALSE)
 
-btnOpenBag = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnOpenBag", 16, 18, 32+hhhh, 2 )
-UI_LoadButtonImage( btnOpenBag, "texture/gui/fun-panel.png", 16, 18, 52, 28, TRUE )
-UI_SetHint( btnOpenBag , "Item" )
+btnOpenBag = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnOpenBag", 33, 40, -91, -32 )
+UI_LoadButtonImage( btnOpenBag, "texture/gui/system-btn.png", 33, 40, 170, 0, FALSE )
+UI_SetHint( btnOpenBag , "Item bag (Alt+E)" )
+UI_SetIsShow(btnOpenBag, FALSE)
 
-btnSkill = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnSkill", 16, 18, 54+hhhh, 2 )
-UI_LoadButtonImage( btnSkill, "texture/gui/fun-panel.png", 16, 18, 104, 28, TRUE )
-UI_SetHint( btnSkill , "Skill(Alt+S)" )
+btnSkill = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnSkill", 40, 40, -50, -32 )
+UI_LoadButtonImage( btnSkill, "texture/gui/system-btn.png", 40, 40, 203, 0, FALSE )
+UI_SetHint( btnSkill , "Skill (Alt+S)" )
+UI_SetIsShow(btnSkill, FALSE)
 
-btnMission = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnMission", 16, 18, 76+hhhh, 2 )
-UI_LoadButtonImage( btnMission, "texture/gui/fun-panel.png", 16, 18, 154, 28, TRUE )
+btnMission = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnMission", 33, 40, -2, -32 )
+UI_LoadButtonImage( btnMission, "texture/gui/system-btn.png", 33, 40, 243, 0, FALSE )
 UI_SetHint( btnMission , "Quest(Alt+Q)" )
+UI_SetIsShow(btnMission, FALSE)
 
-btnGuild = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnGuild", 17, 17, 121+hhhh, 2 )
-UI_LoadButtonImage( btnGuild, "texture/gui/fun-panel.png", 17, 16, 56, 47, TRUE )
-UI_SetHint( btnGuild , "Social Skill" )
+btnOpenSociliaty = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnOpenSociliaty", 40, 40, 39, -32 )
+UI_LoadButtonImage( btnOpenSociliaty, "texture/gui/system-btn.png", 42, 42, 276, 0, FALSE )
+UI_SetHint( btnOpenSociliaty , "Guild (Alt+C)" )
+UI_SetIsShow(btnOpenSociliaty, FALSE)
 
-btnOpenSociliaty = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnOpenSociliaty", 18, 17, 98+hhhh, 2 )
-UI_LoadButtonImage( btnOpenSociliaty, "texture/gui/fun-panel.png", 18, 17, 0, 46, TRUE )
-UI_SetHint( btnOpenSociliaty , "Guild(Alt+C)" )
-
-btnShip = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnShip", 17, 14, 143+hhhh, 3 )
-UI_LoadButtonImage( btnShip, "texture/gui/fun-panel.png", 17, 14, 108, 49, TRUE )
-UI_SetHint( btnShip , "Help(Alt+H)" )
-
-btnSystem = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnSystem", 16, 16, 165+hhhh, 2 )
-UI_LoadButtonImage( btnSystem, "texture/gui/fun-panel.png", 16, 16, 160, 47, TRUE )
-UI_SetHint( btnSystem , "Setting(Alt+O)" )
-
-btnQQ = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnQQ", 37, 22, 175, 4 )
---UI_LoadButtonImage( btnQQ, "texture/ui/new6.tga", 37, 22, 0, 154, TRUE )
+btnQQ = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnQQ", 40, 40, 87, -32 )
+UI_LoadButtonImage( btnQQ, "texture/gui/system-btn.png", 40, 40, 318, 0, FALSE )
 UI_SetHint( btnQQ , "Friend (Alt+F)" )
+UI_SetIsShow(btnQQ, FALSE)
 
---定义升级帮助系统
-btnLevelUpHelp = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnLevelUpHelp", 48, 48 , 160, -110 )
---UI_LoadButtonImage( btnLevelUpHelp, "texture/ui/newbutton.tga", 41, 41, 0, 0, FALSE )
-UI_SetIsShow(btnLevelUpHelp,FALSE)
-
---定义帮助按钮
-btnInfoCenter = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnInfoCenter",24, 24, 172, -60 )
---UI_LoadButtonImage( btnInfoCenter, "texture/ui/newbutton.tga", 41, 41, 41, 0, FALSE )
-UI_SetIsShow(btnInfoCenter,FALSE)
+btnSystem = UI_CreateCompent( frmMainFun, BUTTON_TYPE, "btnSystem", 41, 40, 135, -32 )
+UI_LoadButtonImage( btnSystem, "texture/gui/system-btn.png", 41, 40, 358, 0, FALSE )
+UI_SetHint( btnSystem , "Setting (Alt+O)" )
+UI_SetIsShow(btnSystem, FALSE)
 
 -------------------------------------------------------------------------
 ---- 定义功能区			--道具          点击btnOpenBag后显示
