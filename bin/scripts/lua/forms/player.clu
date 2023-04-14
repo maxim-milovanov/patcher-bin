@@ -313,15 +313,15 @@ btnClose = UI_CreateCompent( frmBooth, BUTTON_TYPE, "btnClose", 32, 32, 303, 10 
 UI_LoadButtonImage( btnClose, "texture/gui/Inventory.png", 32, 32, 0, 368, TRUE )
 UI_SetButtonModalResult( btnClose, BUTTON_CLOSE )
 
-lblOwnerName = UI_CreateCompent( frmBooth, LABELEX_TYPE, "lblOwnerName", 94, 31, 111, 12 )
-UI_SetCaption( lblOwnerName, "Player name" )
+lblOwnerName = UI_CreateCompent( frmBooth, LABELEX_TYPE, "lblOwnerName", 94, 31, 20, 12 )
 UI_SetTextColor( lblOwnerName, COLOR_FFEDCF )
 UI_SetLabelExFont( lblOwnerName, DEFAULT_FONT, FALSE, COLOR_WHITE )
 
-edtBoothName = UI_CreateCompent( frmBooth, LABELEX_TYPE, "edtBoothName", 94, 31, 111, 27 )
+edtBoothName = UI_CreateCompent( frmBooth, EDIT_TYPE, "edtBoothName", 264, 13, 20, 27 )
 UI_SetCaption( edtBoothName, "Baitan name" )
 UI_SetTextColor( edtBoothName, COLOR_A29688 )
 UI_SetLabelExFont( edtBoothName, DEFAULT_FONT, FALSE, COLOR_WHITE )
+UI_SetEditCursorColor( edtBoothName, COLOR_WHITE )
 
 grdBoothItem = UI_CreateCompent( frmBooth, GOODS_GRID_TYPE, "grdBoothItem", 320, 178, 11, 75 ) 
 UI_SetGridSpace( grdBoothItem, 7, 7 )
@@ -339,12 +339,11 @@ UI_SetSize( id, 13, 43 )
 
 
 --加载确定，取消按钮
-btnSetupBooth = UI_CreateCompent( frmBooth, BUTTON_TYPE, "btnSetupBooth", 41, 19, 119, 269 )
-UI_LoadButtonImage( btnSetupBooth, "texture/ui/SystemBotton3.tga", 41, 19, 0, 38, TRUE )
+btnSetupBooth = UI_CreateCompent( frmBooth, BUTTON_TYPE, "btnSetupBooth", 93, 32, 124, 253 )
+UI_LoadButtonImage( btnSetupBooth, "texture/gui/friends.png", 93, 32, 0, 494, FALSE )
 
-btnPullStakes = UI_CreateCompent( frmBooth, BUTTON_TYPE, "btnPullStakes", 41, 19, 119, 269 )
-UI_LoadButtonImage( btnPullStakes, "texture/ui/SystemBotton3.tga", 41, 19, 0, 57, TRUE )
-
+btnPullStakes = UI_CreateCompent( frmBooth, BUTTON_TYPE, "btnPullStakes", 93, 32, 124, 253 )
+UI_LoadButtonImage( btnPullStakes, "texture/gui/friends.png", 93, 32, 93, 494, FALSE )
 
 -----------------------------------------------------------------------
 -- 定义理发界面
