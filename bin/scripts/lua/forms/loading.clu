@@ -57,7 +57,7 @@ UI_SetTextColor( labLoad, COLOR_WHITE )
 -- Loading
 -----------------------------------------------------------------------	
 frmConnect = UI_CreateForm( "frmConnect", FALSE, 502, 21, 396, 80, FALSE, FALSE )
-imgBack = UI_CreateCompent( frmConnect, IMAGE_TYPE, "imgBack", 1198+2000, 768+1000, -1500, -1000 )
+imgBack = UI_CreateCompent( frmConnect, IMAGE_TYPE, "imgBack", 1198+3000, 768+3000, -1500, -1000 )
 UI_LoadImage( imgBack, "texture/gui/black-pixel-background.png", NORMAL, 1, 1, 0, 0 )
 UI_LoadFormImage( frmConnect, "texture/gui/loading.png", 502, 21, 0, 0, "", 0, 0 )
 --UI_FormSetHotKey( frmConnect, ALT_KEY, HOTKEY_L ) 

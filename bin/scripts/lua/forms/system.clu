@@ -79,12 +79,12 @@ end
 -----------------------------------------------------------------------
 -- ESC
 -----------------------------------------------------------------------
-frmSystem = UI_CreateForm( "frmSystem", FALSE, 190, 274, 150, 200, TRUE, FALSE )
+frmSystem = UI_CreateForm( "frmSystem", FALSE, 190, 274, 0, 0, TRUE, FALSE )
 UI_FormSetHotKey( frmSystem, ALT_KEY, HOTKEY_O )
 UI_ShowForm( frmSystem, TRUE )
 UI_SetIsDrag( frmSystem, FALSE )
 
-imgBack = UI_CreateCompent( frmSystem, IMAGE_TYPE, "imgBack", 1198+2000, 768+1000, -1500, -1000 )
+imgBack = UI_CreateCompent( frmSystem, IMAGE_TYPE, "imgBack", 1198+3000, 768+3000, -1500, -1000 )
 UI_LoadImage( imgBack, "texture/gui/black-pixel-background.png", NORMAL, 1, 1, 0, 0 )
 
 imgBackground = UI_CreateCompent( frmSystem, IMAGE_TYPE, "imgBackground", 278, 433, 0, 0 )
@@ -178,7 +178,6 @@ UI_LoadButtonImage( btnNo, "texture/ui/PublicC.tga", 41, 19, 0, 20, TRUE )
 -----------------------------------------------------------------------
 -- 创建系统视频表单
 frmVideo = UI_CreateForm( "frmVideo", FALSE, 190, 251, 150, 150, FALSE, FALSE )
---UI_FormSetHotKey( frmVideo, ALT_KEY, HOTKEY_O)
 UI_ShowForm( frmVideo, FALSE )
 UI_AddFormToTemplete( frmVideo, 1 )
 UI_SetIsDrag( frmVideo, TRUE )

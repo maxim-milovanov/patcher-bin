@@ -48,7 +48,7 @@ btnNo = UI_CreateCompent( frmQuit, BUTTON_TYPE, "btnNo", 212, 61, 138, 15 )
 UI_LoadButtonImage( btnNo, "texture/gui/select-cha-panel.png", 212, 61, 0, 341, TRUE )
 
 -- black background all window
-imgBack = UI_CreateCompent( frmQuit, IMAGE_TYPE, "imgBack", 1198+2000, 768+1000, -1500, -1000 )
+imgBack = UI_CreateCompent( frmQuit, IMAGE_TYPE, "imgBack", 1198+3000, 768+3000, -1500, -1000 )
 UI_LoadImage( imgBack, "texture/gui/black-pixel-background.png", NORMAL, 1, 1, 0, 0 )
 
 -----------------------------------------------------------------------
@@ -63,7 +63,7 @@ UI_AddFormToTemplete(frmFound, FORM_CREATE_CHA)
 UI_SetFormStyleEx(frmQuit, 7, 0, 2)
 
 -- black background all window
-imgBack = UI_CreateCompent( frmFound, IMAGE_TYPE, "imgBack", 1198+2000, 768+1000, -1500, -1000 )
+imgBack = UI_CreateCompent( frmFound, IMAGE_TYPE, "imgBack", 1198+3000, 768+3000, -1500, -1000 )
 UI_LoadImage( imgBack, "texture/gui/black-pixel-background.png", NORMAL, 1, 1, 0, 0 )
 
 imgSelect = UI_CreateCompent( frmFound, IMAGE_TYPE, "imgSelect", 460, 410, 200, -100 )
