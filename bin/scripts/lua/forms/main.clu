@@ -1648,61 +1648,15 @@ end
 -----------------------------------------------------------------------
 -- 定义组队面板  2006.10.17 by Leo
 -----------------------------------------------------------------------
-frmFindTeam = UI_CreateForm( "frmFindTeam", FALSE, 548, 386, 0, 0, TRUE, FALSE )
+frmFindTeam = UI_CreateForm( "frmFindTeam", FALSE, 568, 427, 0, 0, TRUE, FALSE )
 UI_ShowForm( frmFindTeam, FALSE )
 UI_AddFormToTemplete( frmFindTeam, FORM_MAIN )
 UI_FormSetIsEscClose( frmFindTeam, TRUE )
 UI_SetIsDrag( frmFindTeam,TRUE)
 UI_SetFormStyle( frmFindTeam,2)
 
---加载背景图片
-imgBackGround1 = UI_CreateCompent( frmFindTeam, IMAGE_TYPE, "imgBackGround1", 256, 256, 0, 0 )
-UI_LoadImage( imgBackGround1, "texture/ui/plist1.tga", NORMAL, 256,256, 0, 0 )
-
-imgBackGround2 = UI_CreateCompent( frmFindTeam, IMAGE_TYPE, "imgBackGround2", 256, 256, 256, 0 )
-UI_LoadImage( imgBackGround2, "texture/ui/plist2.tga", NORMAL, 256,256, 0, 0 )
-
-imgBackGround3 = UI_CreateCompent( frmFindTeam, IMAGE_TYPE, "imgBackGround3", 256, 130, 0, 256 )
-UI_LoadImage( imgBackGround3, "texture/ui/plist3.tga", NORMAL, 256, 130, 0, 0 )
-
-imgBackGround4 = UI_CreateCompent( frmFindTeam, IMAGE_TYPE, "imgBackGround4", 256, 130, 256, 256 )
-UI_LoadImage( imgBackGround4, "texture/ui/plist4.tga", NORMAL, 256,130, 0, 0 )
-
-imgBackGround5 = UI_CreateCompent( frmFindTeam, IMAGE_TYPE, "imgBackGround5", 46, 256, 512, 0 )
-UI_LoadImage( imgBackGround5, "texture/ui/plist5.tga", NORMAL, 46,256, 0, 0 )
-
-imgBackGround6 = UI_CreateCompent( frmFindTeam, IMAGE_TYPE, "imgBackGround6", 46, 130, 512, 256 )
-UI_LoadImage( imgBackGround6, "texture/ui/plist5.tga", NORMAL, 46,130, 46, 0 )
-
-labTitle = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labTtitle", 400, 150,89, 27 )
-UI_SetCaption( labTitle, "Look for suitable players to form a party")
-UI_SetTextColor( labTitle, COLOR_PURPLE )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labTitle = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labTitle", 400, 150,7, 3 )
-UI_SetCaption( labTitle, "Party Search")
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labTtitle1 = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labTtitle1", 400, 150,35, 55 )
-UI_SetCaption( labTtitle1, "Character")
-UI_SetTextColor( labTtitle1, COLOR_RED )
-UI_SetLabelExFont( labTtitle1, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labTtitle2 = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labTtitle2", 400, 150,164, 55 )
-UI_SetCaption( labTtitle2, "Level")
-UI_SetTextColor( labTtitle2, COLOR_RED )
-UI_SetLabelExFont( labTtitle2, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labTtitle3 = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labTtitle3", 400, 150,269, 55 )
-UI_SetCaption( labTtitle3, "Class")
-UI_SetTextColor( labTtitle3, COLOR_RED )
-UI_SetLabelExFont( labTtitle3, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
-labTtitle4 = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labTtitle4", 400, 150,376, 55 )
-UI_SetCaption( labTtitle4, "Location")
-UI_SetTextColor( labTtitle4, COLOR_RED )
-UI_SetLabelExFont( labTtitle4, DEFAULT_FONT, TRUE, COLOR_WHITE )
+imgBackGround1 = UI_CreateCompent( frmFindTeam, IMAGE_TYPE, "imgBackGround1", 568, 427, 0, 0 )
+UI_LoadImage( imgBackGround1, "texture/gui/search-party.png", NORMAL, 568, 427, 0, 0 )
 
 --定义玩家显示列表
 local labName = {}
@@ -1712,68 +1666,51 @@ local labPlace = {}
 local btnSubmit = {}
 
 for i=0 ,9 ,1 do
-	labName[i] = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labName_"..i, 10, 150, 35, i*28+83 )
+	labName[i] = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labName_"..i, 10, 150, 35+5, i*28+83+20 )
 	UI_SetCaption( labName[i], "User Name"..i)
-	UI_SetTextColor( labName[i], COLOR_BLACK )
-	UI_SetLabelExFont( labName[i], DEFAULT_FONT, TRUE, COLOR_WHITE )
+	UI_SetTextColor( labName[i], COLOR_FFEDCF )
+	UI_SetLabelExFont( labName[i], DEFAULT_FONT, FALSE, COLOR_WHITE )
 
-	labLevel[i] = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labLevel_"..i, 10, 150, 164, i*28+83 )
+	labLevel[i] = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labLevel_"..i, 10, 150, 164+5, i*28+83+20 )
 	UI_SetCaption( labLevel[i], "Player Lv"..i)
-	UI_SetTextColor( labLevel[i], COLOR_BLACK )
-	UI_SetLabelExFont( labLevel[i], DEFAULT_FONT, TRUE, COLOR_WHITE )
+	UI_SetTextColor( labLevel[i], COLOR_FFEDCF )
+	UI_SetLabelExFont( labLevel[i], DEFAULT_FONT, FALSE, COLOR_WHITE )
 
-	labJob[i] = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labJob_"..i, 10, 150, 269, i*28+83 )
+	labJob[i] = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labJob_"..i, 10, 150, 269+5, i*28+83+20 )
 	UI_SetCaption( labJob[i], "Player class"..i)
-	UI_SetTextColor( labJob[i], COLOR_BLACK )
-	UI_SetLabelExFont( labJob[i], DEFAULT_FONT, TRUE, COLOR_WHITE )
+	UI_SetTextColor( labJob[i], COLOR_FFEDCF )
+	UI_SetLabelExFont( labJob[i], DEFAULT_FONT, FALSE, COLOR_WHITE )
 
-	labPlace[i] = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labPlace_"..i, 10, 150, 376, i*28+83 )
+	labPlace[i] = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labPlace_"..i, 10, 150, 376+5, i*28+83+20 )
 	UI_SetCaption( labPlace[i], "Location"..i)
-	UI_SetTextColor( labPlace[i], COLOR_BLACK )
-	UI_SetLabelExFont( labPlace[i], DEFAULT_FONT, TRUE, COLOR_WHITE )
+	UI_SetTextColor( labPlace[i], COLOR_FFEDCF )
+	UI_SetLabelExFont( labPlace[i], DEFAULT_FONT, FALSE, COLOR_WHITE )
 
-	btnSubmit[i] =  UI_CreateCompent( frmFindTeam, BUTTON_TYPE, "btnSubmit_"..i, 41, 19, 470, i*28+80 )
-	UI_LoadButtonImage( btnSubmit[i], "texture/ui/PublicC.tga", 41, 19, 0, 0, TRUE )
+	btnSubmit[i] =  UI_CreateCompent( frmFindTeam, BUTTON_TYPE, "btnSubmit_"..i, 19, 19, 470+5, i*28+80+20 )
+	UI_LoadButtonImage( btnSubmit[i], "texture/gui/search-party.png", 19, 19, 245, 436, TRUE )
 end
 
 
---设置左箭头
-	btnLeftPage = UI_CreateCompent( frmFindTeam, BUTTON_TYPE, "btnLeftPage", 13, 13, 30, 365 )
-	UI_LoadButtonImage( btnLeftPage, "texture/ui/SystemBotton3.tga", 13, 13, 0, 197, TRUE )
+btnLeftPage = UI_CreateCompent( frmFindTeam, BUTTON_TYPE, "btnLeftPage", 32, 32, 30, 368 )
+UI_LoadButtonImage( btnLeftPage, "texture/gui/store.png", 32, 32, 372, 725, TRUE )
 
---设置页数显示
-	labListPage = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labListPage", 400, 150, 55, 365 )
-	UI_SetCaption( labListPage, "")
-	UI_SetTextColor( labListPage, COLOR_BLACK )
-	UI_SetLabelExFont( labListPage, DEFAULT_FONT, TRUE, COLOR_WHITE )
+labListPage = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labListPage", 400, 150, 70, 377 )
+UI_SetCaption( labListPage, "")
+UI_SetTextColor( labListPage, COLOR_C9C2B4 )
+UI_SetLabelExFont( labListPage, FONT016, FALSE, COLOR_WHITE )
 
---设置右箭头
-	btnRightPage = UI_CreateCompent( frmFindTeam, BUTTON_TYPE, "btnRightPage", 13, 13, 80, 365 )
-	UI_LoadButtonImage( btnRightPage, "texture/ui/SystemBotton3.tga", 13, 13, 0, 211, TRUE )
+btnRightPage = UI_CreateCompent( frmFindTeam, BUTTON_TYPE, "btnRightPage", 32, 32, 110, 368 )
+UI_LoadButtonImage( btnRightPage, "texture/gui/store.png", 32, 32, 372, 693, TRUE )
 
---定义添加按钮
-	btnAddme = UI_CreateCompent( frmFindTeam, BUTTON_TYPE, "btnAddme", 76, 19, 370, 360 )
-	UI_LoadButtonImage( btnAddme, "texture/ui/store8.tga", 76, 19, 0, 0, FALSE )
+btnAddme = UI_CreateCompent( frmFindTeam, BUTTON_TYPE, "btnAddme", 59, 30, 384, 369 )
+UI_LoadButtonImage( btnAddme, "texture/gui/search-party.png", 59, 30, 0, 434, TRUE )
 
-	labAddme = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labAddme", 400, 150, 378, 364 )
-	UI_SetCaption( labAddme, "Enlist")
-	UI_SetTextColor( labAddme, COLOR_BLACK )
-	UI_SetLabelExFont( labAddme, DEFAULT_FONT, TRUE, COLOR_WHITE )
+btnDelme = UI_CreateCompent( frmFindTeam, BUTTON_TYPE, "btnDelme", 78, 30, 461, 369 )
+UI_LoadButtonImage( btnDelme, "texture/gui/search-party.png", 78, 30, 0, 464, TRUE )
 
---定义删除按钮
-
-	btnDelme = UI_CreateCompent( frmFindTeam, BUTTON_TYPE, "btnDelme", 76, 19, 460, 360 )
-	UI_LoadButtonImage( btnDelme, "texture/ui/store8.tga", 76, 19, 0, 0, FALSE )
-
-	labDelme = UI_CreateCompent( frmFindTeam, LABELEX_TYPE, "labAddme", 400, 150, 468, 364 )
-	UI_SetCaption( labDelme, "Withdraw")
-	UI_SetTextColor( labDelme, COLOR_BLACK )
-	UI_SetLabelExFont( labDelme, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
---创建关闭按钮
-	btnClose = UI_CreateCompent( frmFindTeam, BUTTON_TYPE, "btnClose", 14, 14, 528, 3 )
-	UI_LoadButtonImage( btnClose, "texture/ui/PublicC.tga", 14, 14, 116, 175, TRUE )
-	UI_SetButtonModalResult( btnClose, BUTTON_CLOSE )
+btnClose = UI_CreateCompent( frmFindTeam, BUTTON_TYPE, "btnClose", 32, 32, 522, 20 )
+UI_LoadButtonImage( btnClose, "texture/gui/Inventory.png", 32, 32, 0, 368, TRUE )
+UI_SetButtonModalResult( btnClose, BUTTON_CLOSE )
 
 -----------------------------------------------------------------------
 -- Manufacturing
