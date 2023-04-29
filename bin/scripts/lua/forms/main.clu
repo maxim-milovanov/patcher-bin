@@ -694,6 +694,44 @@ UI_SetLabelExFont( labPetLv, DEFAULT_FONT, TRUE, COLOR_BLACK )
 UI_SetCaption( labPetLv, "99" )
 
 -----------------------------------------------------------------------
+-- Mount
+-----------------------------------------------------------------------	
+frmMainMount = UI_CreateForm( "frmMainMount", FALSE, 71+35, 47, 176, 78, FALSE, FALSE )
+UI_ShowForm( frmMainMount, FALSE )
+UI_AddFormToTemplete( frmMainMount, FORM_MAIN )
+UI_FormSetIsEscClose( frmMainMount, FALSE )
+--UI_FormSetHotKey( frmMainMount, ALT_KEY, HOTKEY_V )
+
+imgMainMount = UI_CreateCompent( frmMainMount, IMAGE_TYPE, "imgMainMount", 71, 22, 35, 12 )
+UI_LoadImage( imgMainMount, "texture/gui/detail-01.png", NORMAL, 71, 22, 249, 151 )
+
+proMountHP = UI_CreateCompent( frmMainMount, PROGRESS_TYPE, "proMountHP", 71, 13, 36, 0+12 )
+UI_LoadScaleImage( proMountHP, "texture/gui/detail-01.png", PROGRESS_PROGRESS, 71, 13, 250, 181, 1.0, 1.0 )
+UI_SetHint( proMountHP, "Stamina" )
+UI_SetProgressHintStyle( proMountHP, PROGRESS_HINT_NUM )
+
+proMountSP = UI_CreateCompent( frmMainMount, PROGRESS_TYPE, "proMountSP", 70, 9, 1+35, 12+12 )
+UI_LoadScaleImage( proMountSP, "texture/gui/detail-01.png", PROGRESS_PROGRESS, 70, 9, 250, 195, 1.0, 1.0 )
+UI_SetHint( proMountSP, "Growth" )
+UI_SetProgressHintStyle( proMountSP, PROGRESS_HINT_NUM )
+
+imgBackgroundMount = UI_CreateCompent( frmMainMount, IMAGE_TYPE, "imgBackgroundMount", 46, 46, 0, 0 )
+UI_LoadImage( imgBackgroundMount, "texture/gui/detail-01.png", NORMAL, 46, 46, 122, 199 )
+
+imgMountHead = UI_CreateCompent( frmMainMount, IMAGE_TYPE, "imgMountHead", 21, 21, 11, 13 )
+
+imgFrameMount = UI_CreateCompent( frmMainMount, IMAGE_TYPE, "imgFrameMount", 40, 40, 3, 3 )
+UI_LoadImage( imgFrameMount, "texture/gui/detail-01.png", NORMAL, 40, 40, 174, 202 )
+
+imgBackgroundMountLv = UI_CreateCompent( frmMainMount, IMAGE_TYPE, "imgBackgroundMountLv", 28, 26, 27, 10 )
+UI_LoadImage( imgBackgroundMountLv, "texture/gui/detail-01.png", NORMAL, 28, 26, 94, 85 )
+
+labMountLv = UI_CreateCompent( frmMainMount, LABELEX_TYPE, "labMountLv", 14, 9, 35, 16 )
+UI_SetTextColor( labMountLv, COLOR_WHITE )
+UI_SetLabelExFont( labMountLv, DEFAULT_FONT, TRUE, COLOR_BLACK )
+UI_SetCaption( labMountLv, "99" )
+
+-----------------------------------------------------------------------
 ---- 定义新手帮助系统面板
 -------------------------------------------------------------------------
 --创建帮助系统面板
