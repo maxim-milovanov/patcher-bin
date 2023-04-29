@@ -2288,51 +2288,35 @@ UI_SetButtonModalResult( btnClose, BUTTON_CLOSE )
 ----------------------------------------------------------------------- 
 -- §¦§Ø§Ö§Õ§ß§Ö§Ó§ß§í§Ö §ß§Ñ§Ô§â§Ñ§Õ§í
 ----------------------------------------------------------------------- 
-frmDailyPrize = UI_CreateForm( "frmDailyPrize", FALSE, 358, 275, 380, 507, TRUE, FALSE ) 
+frmDailyPrize = UI_CreateForm( "frmDailyPrize", FALSE, 640, 366, 0, 0, TRUE, FALSE ) 
 UI_AddFormToTemplete( frmDailyPrize, FORM_MAIN )
 UI_FormSetIsEscClose( frmDailyPrize, FALSE )
 UI_SetIsDrag( frmDailyPrize, FALSE)
 
--- §¶§à§ß
-imgDailyPrizeBack = UI_CreateCompent( frmDailyPrize, IMAGE_TYPE, "imgDailyPrizeBack", 358,275,0,0 ) 
-UI_LoadImage( imgDailyPrizeBack, "texture/ui/mordo/dailyPrize/dailyMain.tga", NORMAL, 358, 275, 0, 0 ) 
+imgBackground = UI_CreateCompent( frmDailyPrize, IMAGE_TYPE, "imgBackground", 640, 366, 0, 0 ) 
+UI_LoadImage( imgBackground, "texture/gui/daily-prize.png", NORMAL, 640, 366, 0, 0 ) 
 
--- §±§à§Õ§á§Ú§ã§î
-labTitle = UI_CreateCompent( frmDailyPrize, LABELEX_TYPE, "labTitle", 100, 11, 8, 4 )
-UI_SetCaption( labTitle, "Daily prize" )
-UI_SetTextColor( labTitle, COLOR_BLACK )
-UI_SetLabelExFont( labTitle, DEFAULT_FONT, TRUE, COLOR_WHITE )
-
--- §¬§ß§à§á§Ü§Ñ §Ù§Ñ§Ü§â§í§ä§Ú§ñ
---btnClose = UI_CreateCompent( frmDailyPrize, BUTTON_TYPE, "btnClose", 14, 14, 336, 3 )
---UI_LoadButtonImage( btnClose, "texture/ui/mordo/dailyPrize/dailyMain.tga", 14, 14, 171, 284, TRUE )
---UI_SetButtonModalResult( btnClose, BUTTON_CLOSE )
-
--- §¬§ß§à§á§Ü§Ñ §á§à§Ý§å§é§Ö§ß§Ú§ñ
-btnGetPrize = UI_CreateCompent( frmDailyPrize, BUTTON_TYPE, "btnGetPrize", 41, 19, 158, 250 )
-UI_LoadButtonImage( btnGetPrize, "texture/ui/mordo/dailyPrize/dailyMain.tga", 41, 19, 0, 281, TRUE )
+btnGetPrize = UI_CreateCompent( frmDailyPrize, BUTTON_TYPE, "btnGetPrize", 120, 46, 259, 256 )
+UI_LoadButtonImage( btnGetPrize, "texture/gui/daily-prize.png", 120, 46, 0, 397, TRUE )
 UI_SetButtonModalResult( btnGetPrize, BUTTON_CLOSE )
 
--- §Á§é§Ö§Û§Ü§Ú
-grdDailySocket = UI_CreateCompent( frmDailyPrize, GOODS_GRID_TYPE, "grdDailySocket", 32, 126, 21, 92 ) 
-UI_SetGridSpace( grdDailySocket, 15, 0 )
+grdDailySocket = UI_CreateCompent( frmDailyPrize, GOODS_GRID_TYPE, "grdDailySocket", 32, 340, 151, 141 ) 
+UI_SetGridSpace( grdDailySocket, 19, 0 )
 UI_SetGridContent( grdDailySocket, 1, 7 )
 UI_SetGridUnitSize( grdDailySocket, 32, 32 )
 UI_SetMargin( grdDailySocket, 0,0, 0, 	0 )
 
--- §Á§é§Ö§Û§Ü§Ú
-grdDailySocketVip = UI_CreateCompent( frmDailyPrize, GOODS_GRID_TYPE, "grdDailySocketVip", 32, 126, 21, 201 ) 
-UI_SetGridSpace( grdDailySocketVip, 15, 0 )
+grdDailySocketVip = UI_CreateCompent( frmDailyPrize, GOODS_GRID_TYPE, "grdDailySocketVip", 32, 340, 151, 204 ) 
+UI_SetGridSpace( grdDailySocketVip, 19, 0 )
 UI_SetGridContent( grdDailySocketVip, 1, 7 )
 UI_SetGridUnitSize( grdDailySocketVip, 32, 32 )
 UI_SetMargin( grdDailySocketVip, 0,0, 0, 	0 )
 
--- §±§à§Ý§å§é§Ö§ß§ß§í§Û §á§â§Ö§Õ§Þ§Ö§ä
-imgGettedPize = UI_CreateCompent( frmDailyPrize, IMAGE_TYPE, "imgGettedPize", 32,32,0,0 ) 
-UI_LoadImage( imgGettedPize, "texture/ui/mordo/dailyPrize/dailyMain.tga", NORMAL, 32, 32, 2, 306 )
+imgGettedPize = UI_CreateCompent( frmDailyPrize, IMAGE_TYPE, "imgGettedPize", 32, 30, 0, -20 ) 
+UI_LoadImage( imgGettedPize, "texture/gui/daily-prize.png", NORMAL, 32, 30, 544, 403 )
 
-imgNowDay = UI_CreateCompent( frmDailyPrize, IMAGE_TYPE, "imgNowDay", 44,44,0,0 ) 
-UI_LoadImage( imgNowDay, "texture/ui/mordo/dailyPrize/dailyMain.tga", NORMAL, 44, 44, 39, 305 )
+imgNowDay = UI_CreateCompent( frmDailyPrize, IMAGE_TYPE, "imgNowDay", 42, 42, 0, 0 ) 
+UI_LoadImage( imgNowDay, "texture/gui/daily-prize.png", NORMAL, 42, 42, 502, 397 )
 
 -------------------
 -------------------
