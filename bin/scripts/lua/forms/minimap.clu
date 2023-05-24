@@ -75,7 +75,7 @@ UI_LoadImage( imgBackground, "texture/gui/minimap-background.png", NORMAL, 25, 2
 
 btnRogerRaid = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnRogerRaid", 19, 19, 134+3, 53 )
 UI_LoadButtonImage( btnRogerRaid, "texture/gui/minimap-background.png", 19, 19, 30, 231, TRUE )
-UI_SetHint( btnRogerRaid, "Golden Roger (Purchase for IMPs!)" )
+--UI_SetHint( btnRogerRaid, "Golden Roger (Purchase for IMPs!)" )
 
 --btnOpenTop = UI_CreateCompent( frmMinimap, BUTTON_TYPE, "btnOpenTop", 20, 20, 54, 115 )
 --UI_LoadButtonImage( btnOpenTop, "texture/ui/corsairs/botton3.png", 20, 20, 50, 84, FALSE )
